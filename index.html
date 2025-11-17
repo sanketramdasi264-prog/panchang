@@ -1,1 +1,190 @@
-<h1>Hello OmKarmyog</h1>
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OmKarmyog Panchang Generator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;padding:20px;background:#f4f4f4;font-family:'Noto Sans Devanagari',sans-serif;}
+.box{max-width:900px;margin:auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.10);}
+label{font-weight:600;margin-top:12px;display:block}
+input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-top:6px;font-size:16px}
+button{width:100%;border:0;padding:14px;font-size:18px;border-radius:8px;color:#fff;margin-top:12px;cursor:pointer}
+#canvas{display:none}
+#preview{width:100%;border-radius:10px;margin-top:16px;border:1px solid #ddd}
+.btn1{background:#012b46}
+.btn2{background:#d97706}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h2 style="margin:0 0 12px;font-family:'Baloo 2'">आजचा पंचांग — OmKarmyog</h2>
+
+<label>नाव</label>
+<input id="username" placeholder="उदा. संकेत रामदासी">
+
+<label>संपर्क</label>
+<input id="mobile" placeholder="उदा. 98XXXXXXXX">
+
+<label>फोटो (ऐच्छिक)</label>
+<input type="file" id="photo" accept="image/*">
+
+<button class="btn1" onclick="generate()">Generate Card</button>
+<button class="btn2" onclick="downloadPNG()">Download PNG</button>
+
+<canvas id="canvas" width="1080" height="1316"></canvas>
+<img id="preview">
+</div>
+
+<script>
+const logoUrl = "https://blogger.googleusercontent.com/img/a/AVvXsEi1b1z9W0Emd6TROMLNG0AHDbF9oFVx3hrQWAA5sPXU0H0GutM8nlVBGpbcS_YI59L5xehYJefv6C5vvyDOOUZ6PyzvktW_48aSgPjM7JxL_1a5oxKz2T6_cH8xDzqVwg7uhwklag6Vs-U1NiMq06Tq3Wn8JItmyboW9Wz_drK9NP_lOhDq2IjnSlE8Fe6F=s975";
+
+let userPhoto=null;
+document.getElementById("photo").onchange = e=>{
+ const f=e.target.files[0];
+ if(!f) return;
+ const r=new FileReader();
+ r.onload=()=>userPhoto=r.result;
+ r.readAsDataURL(f);
+};
+
+function todayISO(){
+ let d=new Date();
+ return d.toISOString().split("T")[0];
+}
+
+async function getPanchang(){
+ let res = await fetch("./panchang.json");
+ let json = await res.json();
+ return json[todayISO()] || null;
+}
+
+async function generate(){
+ let p = await getPanchang();
+ if(!p){ alert("आजचा पंचांग उपलब्ध नाही. Admin अपडेट करेल."); return; }
+
+ let name = document.getElementById("username").value || "";
+ let mobile = document.getElementById("mobile").value || "";
+
+ let c = document.getElementById("canvas");
+ let ctx = c.getContext("2d");
+
+ ctx.fillStyle="#fffaf3";
+ ctx.fillRect(0,0,c.width,c.height);
+
+ // watermark
+ const wm = new Image();
+ wm.src = logoUrl;
+ await wm.decode();
+ ctx.save();
+ ctx.globalAlpha=0.08;
+ let w=c.width*0.7;
+ let h = (wm.height/wm.width)*w;
+ ctx.drawImage(wm,c.width/2-w/2,250,w,h);
+ ctx.restore();
+
+ // header
+ ctx.fillStyle="#012b46";
+ ctx.fillRect(0,0,c.width,120);
+
+ ctx.fillStyle="#fff";
+ ctx.font="56px Baloo 2";
+ ctx.fillText("आजचा पंचांग",40,78);
+
+ ctx.font="22px Noto Sans Devanagari";
+ let d=new Date();
+ let dt=d.toLocaleDateString('mr-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ ctx.fillText(dt, c.width-460, 40);
+
+ // logo
+ ctx.drawImage(wm,c.width-200,20,160,64);
+
+ // box
+ let X=40,Y=150,W=c.width-80;
+ ctx.strokeStyle="#d07a2d"; ctx.lineWidth=5;
+ round(ctx,X,Y,W,520,12);
+
+ ctx.font="30px Noto Sans Devanagari";
+ ctx.fillStyle="#0b2b3a";
+
+ let y=Y+70;
+
+ writeLine(`तिथी: ${p.tithi} • समाप्ती: ${p.tithi_end}`); 
+ writeLine(`वार: ${dt.split(",")[0]}`);
+ writeLine(`नक्षत्र: ${p.nakshatra} • समाप्ती: ${p.nak_end}`);
+ writeLine(`योग: ${p.yog}`);
+ writeLine(`करण: ${p.karan} • समाप्ती: ${p.karan_end}`);
+
+ let y2=Y+70;
+ ctx.font="28px Noto Sans Devanagari";
+
+ ctx.fillText(`सूर्योदय: ${p.sunrise}`, X+W/2+20, y2); y2+=48;
+ ctx.fillText(`सूर्यास्त: ${p.sunset}`, X+W/2+20, y2); y2+=48;
+ ctx.fillText(`चंद्रराशी: ${p.moon_rashi}`, X+W/2+20, y2); y2+=48;
+ ctx.fillText(`सूर्यराशी: ${p.sun_rashi}`, X+W/2+20, y2); y2+=48;
+ ctx.fillText(`गुरुराशी: ${p.guru_rashi}`, X+W/2+20, y2); y2+=48;
+ ctx.fillText(`राहू काल: ${p.rahu}`, X+W/2+20, y2);
+
+ // din-vishesh
+ if(p.din_vishesh){
+  ctx.fillStyle="#fff3cc";
+  ctx.fillRect(X,Y+520+10,W,70);
+  ctx.fillStyle="#0b2b3a";
+  ctx.font="26px Noto Sans Devanagari";
+  ctx.fillText(`दिनविशेष: ${p.din_vishesh}`,X+20,Y+565);
+ }
+
+ // bottom strip
+ ctx.fillStyle="#083b52";
+ ctx.fillRect(0, Y+620, c.width, 140);
+
+ ctx.fillStyle="#fff";
+ ctx.font="36px Noto Sans Devanagari";
+ ctx.fillText(name,50,Y+670);
+
+ ctx.font="24px Noto Sans Devanagari";
+ ctx.fillText(`संपर्क: ${mobile}`,50,Y+710);
+
+ if(userPhoto){
+  const up=new Image();
+  up.src=userPhoto;
+  await up.decode();
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(c.width-120,Y+690,56,0,Math.PI*2);
+  ctx.clip();
+  ctx.drawImage(up,c.width-176,Y+634,112,112);
+  ctx.restore();
+ }
+
+ document.getElementById("preview").src = c.toDataURL();
+ 
+ function writeLine(t){
+  ctx.fillText(t,X+20,y);
+  y+=58;
+ }
+}
+
+function round(ctx,x,y,w,h,r){
+ ctx.beginPath();
+ ctx.moveTo(x+r,y);
+ ctx.arcTo(x+w,y,x+w,y+h,r);
+ ctx.arcTo(x+w,y+h,x,y+h,r);
+ ctx.arcTo(x,y+h,x,y,r);
+ ctx.arcTo(x,y,x+w,y,r);
+ ctx.stroke();
+}
+
+function downloadPNG(){
+ let link=document.createElement("a");
+ link.download="panchang.png";
+ link.href=document.getElementById("canvas").toDataURL();
+ link.click();
+}
+</script>
+</body>
+</html>
