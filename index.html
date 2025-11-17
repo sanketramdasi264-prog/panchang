@@ -1,70 +1,71 @@
 <!doctype html>
 <html lang="mr">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>आजचा पंचांग — OmKarmyog (Premium 1080×1920)</title>
 
-<!-- Fonts: Poppins (Latin) + Noto Sans Devanagari for Marathi -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --w:1080; --h:1920;
-    --bg:#fffaf3;
-    --navy:#08324a;
-    --saffron:#c86d22;
-    --gold:#d9a64b;
-    --maroon:#5a1f18;
-    --muted:#6b6b6b;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f4f4f6;font-family:'Noto Sans Devanagari',sans-serif;color:#0b2b3a;padding:20px}
-  .panel{max-width:980px;margin:12px auto;background:#fff;border-radius:12px;padding:18px;box-shadow:0 12px 28px rgba(0,0,0,.08)}
-  h1{font-family:'Poppins', 'Noto Sans Devanagari';margin:0 0 8px;font-size:20px}
-  label{display:block;margin-top:10px;font-weight:700}
-  input,button,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin-top:6px;font-size:15px}
-  .controls{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-  .btn{padding:12px;border-radius:8px;border:0;cursor:pointer;color:#fff;font-weight:700}
-  .generate{background:var(--navy);flex:1}
-  .download{background:var(--saffron);flex:1}
-  .hint{font-size:13px;color:var(--muted);margin-top:8px}
-  canvas{display:none}
-  #preview{display:block;margin-top:12px;width:100%;border-radius:8px;border:1px solid #eee}
-  .note{font-size:12px;color:#666;margin-top:8px}
-  @media(max-width:720px){ .controls{flex-direction:column} }
+:root{
+  --W:1080; --H:1920;
+  --bg:#fffaf3;
+  --saffron:#c86d22;
+  --gold:#d9a64b;
+  --green1:#0b8a48;
+  --green2:#08743f;
+  --text:#0b2b3a;
+  --muted:#7a7a7a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f4f6;font-family:'Noto Sans Devanagari',sans-serif;color:var(--text);padding:18px}
+.container{max-width:980px;margin:12px auto}
+.card-ui{background:#fff;border-radius:12px;padding:16px;box-shadow:0 12px 28px rgba(0,0,0,.08)}
+label{display:block;margin-top:12px;font-weight:700}
+input,button{width:100%;padding:10px;border-radius:8px;border:1px solid #e8e8e8;margin-top:6px;font-size:15px}
+.controls{display:flex;gap:10px;margin-top:12px}
+.btn{border:0;padding:12px;border-radius:8px;color:#fff;font-weight:700;cursor:pointer}
+.generate{background:#08324a}
+.download{background:var(--saffron)}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+canvas{display:none}
+#preview{display:block;margin-top:12px;width:100%;border-radius:6px;border:1px solid #eee}
+@media(max-width:720px){ .controls{flex-direction:column} }
 </style>
 </head>
 <body>
-  <div class="panel">
-    <h1>आजचा पंचांग — OmKarmyog</h1>
-    <div class="hint">Card size: <strong>1080 × 1920</strong>. Ganpati top-center; right-side two-line metadata; panchang table styled like sample. Use Generate → Download.</div>
+  <div class="container">
+    <div class="card-ui">
+      <h2 style="margin:0;font-family:'Baloo 2';font-size:20px">आजचा पंचांग — OmKarmyog</h2>
+      <div class="hint">Size: <strong>1080×1920</strong>. Generate → Download. Admin: keep <code>panchang.json</code> up-to-date (YYYY-MM-DD).</div>
 
-    <label>आपले नाव</label>
-    <input id="username" placeholder="तुमचे नाव इथे लिहा">
+      <label>आपले नाव</label>
+      <input id="username" placeholder="तुमचे नाव">
 
-    <label>कार्यालय माहिती (ऐच्छिक)</label>
-    <input id="office" placeholder="उदा. दत्तकृपा ज्योतिष कार्यालय, जालना">
+      <label>कार्यालय माहिती (ऐच्छिक)</label>
+      <input id="office" placeholder="उदा. दत्तकृपा ज्योतिष कार्यालय, जालना">
 
-    <label>संपर्क</label>
-    <input id="mobile" placeholder="उदा. 98XXXXXXXX">
+      <label>संपर्क</label>
+      <input id="mobile" placeholder="उदा. 98XXXXXXXX">
 
-    <label>फोटो (ऐच्छिक) — square preferred</label>
-    <input id="photo" type="file" accept="image/*">
+      <label>फोटो (ऐच्छिक) — square preferred</label>
+      <input id="photo" type="file" accept="image/*">
 
-    <div class="controls">
-      <button id="generateBtn" class="btn generate">Generate Card</button>
-      <button id="downloadBtn" class="btn download">Download PNG</button>
+      <div class="controls">
+        <button id="generateBtn" class="btn generate">Generate Card</button>
+        <button id="downloadBtn" class="btn download">Download PNG</button>
+      </div>
+
+      <canvas id="canvas" width="1080" height="1920"></canvas>
+      <img id="preview" alt="Preview (1080×1920)" />
+      <div style="font-size:12px;color:#666;margin-top:8px">Uses Ganpati raw from repo + logo <code>1000894411.png</code>. If preview blank check console or panchang.json.</div>
     </div>
-
-    <canvas id="canvas" width="1080" height="1920"></canvas>
-    <img id="preview" alt="Preview (1080×1920)" />
-
-    <div class="note">Admin: keep <code>panchang.json</code> up-to-date. Images used: your Ganpati PNG (repo raw) and <code>1000894411.png</code> (logo).</div>
   </div>
 
 <script>
-/* ===== CONFIG ===== */
+/* ---------- CONFIG (change if you host images elsewhere) ---------- */
 const GANPATI_RAW = 'https://raw.githubusercontent.com/sanketramdasi264-prog/panchang/main/pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png';
 const LOGO_LOCAL = './1000894411.png';
 const PUNCH_JSON = './panchang.json';
@@ -73,34 +74,34 @@ const W = 1080, H = 1920;
 const el = id => document.getElementById(id);
 let userPhotoData = null;
 el('photo').addEventListener('change', e=>{
-  const f = e.target.files[0];
-  if(!f){ userPhotoData = null; return; }
-  const r = new FileReader();
-  r.onload = ()=> userPhotoData = r.result;
-  r.readAsDataURL(f);
+  const f = e.target.files[0]; if(!f){ userPhotoData=null; return; }
+  const r = new FileReader(); r.onload = ()=> userPhotoData = r.result; r.readAsDataURL(f);
 });
 
 function todayISO(){ const d=new Date(); const y=d.getFullYear(), m=('0'+(d.getMonth()+1)).slice(-2), dd=('0'+d.getDate()).slice(-2); return `${y}-${m}-${dd}`; }
-function wrapText(ctx, text, x, y, maxW, lineH){ const words=String(text).split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxW && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineH;} else line=test;} ctx.fillText(line,x,y); }
+function wrapText(ctx, text, x, y, maxW, lineH){ const words=String(text).split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; if(ctx.measureText(test).width>maxW && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineH; } else line=test; } ctx.fillText(line,x,y); }
 
-/* load panchang json */
-async function loadPanchang(){ const res = await fetch(PUNCH_JSON, {cache:'no-store'}); if(!res.ok) throw new Error('panchang.json fetch failed: '+res.status); return await res.json(); }
+async function loadPanchang(){
+  const res = await fetch(PUNCH_JSON, {cache:'no-store'});
+  if(!res.ok) throw new Error('panchang.json fetch failed: '+res.status);
+  return await res.json();
+}
 
-/* drawing helpers */
+/* canvas helpers */
 function roundRectPath(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
 function roundRectFill(ctx,x,y,w,h,r,color){ ctx.save(); ctx.fillStyle=color; roundRectPath(ctx,x,y,w,h,r); ctx.fill(); ctx.restore(); }
 function roundRectStroke(ctx,x,y,w,h,r,strokeStyle,lineWidth){ ctx.save(); ctx.strokeStyle=strokeStyle; ctx.lineWidth=lineWidth||1; roundRectPath(ctx,x,y,w,h,r); ctx.stroke(); ctx.restore(); }
-function drawIcon(ctx,x,y,glyph){ ctx.save(); ctx.fillStyle='#f9c846'; ctx.beginPath(); ctx.arc(x,y,26,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.font='18px Noto Sans Devanagari'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(glyph,x,y); ctx.restore(); }
+function circleIcon(ctx,x,y,label){ ctx.save(); ctx.fillStyle='#f9c846'; ctx.beginPath(); ctx.arc(x,y,26,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.font='18px Noto Sans Devanagari'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(label,x,y); ctx.restore(); }
 
-/* ===== main draw function ===== */
+/* main draw */
 async function drawCard(){
-  const canvas = el('canvas'); const ctx = canvas.getContext('2d');
+  const canvas = el('canvas'), ctx = canvas.getContext('2d');
 
-  // load panchang data
+  // load panchang
   let p;
   try{
-    const json = await loadPanchang();
-    p = json[todayISO()];
+    const data = await loadPanchang();
+    p = data[todayISO()];
     if(!p) throw new Error('आजची entry panchang.json मध्ये नाही: ' + todayISO());
   }catch(err){
     alert('Panchang load error: ' + err.message + '\n\nकृपया panchang.json मध्ये आजची तारीख जोडा (YYYY-MM-DD).');
@@ -111,210 +112,189 @@ async function drawCard(){
   ctx.fillStyle = '#fffaf3';
   ctx.fillRect(0,0,W,H);
 
-  /* ---------- TOP AREA: left title, center Ganpati, right 2-line metadata ---------- */
-
-  // draw ganpati (center-top)
+  /* ---------- GANPATI TOP CENTER ---------- */
   try{
     const gp = new Image(); gp.crossOrigin='anonymous'; gp.src = GANPATI_RAW;
     await new Promise((res,rej)=>{ gp.onload=res; gp.onerror=rej; });
-    // scale to target height ~320
-    const tgtH = 320;
-    const scale = tgtH / gp.height;
-    const gw = gp.width * scale, gh = tgtH;
-    const gx = W/2 - gw/2, gy = 36;
+    const tgtH = 480; const sc = tgtH/gp.height; const gw = gp.width*sc, gh = tgtH;
+    const gx = W/2 - gw/2, gy = 38;
     ctx.drawImage(gp, gx, gy, gw, gh);
   }catch(e){ console.warn('Ganpati load fail', e); }
 
-  // left: big "आजचे पंचांग" + date + day (use Poppins for heading)
+  /* ---------- HEADER LEFT - title, date, day ---------- */
   ctx.fillStyle = '#111';
   ctx.textAlign = 'left';
-  ctx.font = '700 46px Poppins, Noto Sans Devanagari';
-  ctx.fillText('आजचे पंचांग', 48, 420);
+  ctx.font = '800 72px Baloo 2'; // large title
+  ctx.fillText('आजचे पंचांग', 56, 520 - 60); // above ganpati baseline
 
-  ctx.font = '28px Noto Sans Devanagari';
-  const dt = new Date();
-  const dtStr = dt.toLocaleDateString('mr-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-  ctx.fillText(dtStr, 48, 460);
+  // date and day 20% smaller
+  ctx.font = '600 56px Noto Sans Devanagari';
+  const d = new Date();
+  const dateStr = d.toLocaleDateString('mr-IN',{day:'numeric', month:'long', year:'numeric'});
+  const dayStr = d.toLocaleDateString('mr-IN',{weekday:'long'});
+  ctx.fillText(dateStr, 56, 520 - 12);
+  ctx.fillText(dayStr, 56, 520 + 40);
 
-  // right: two-line shalivahan info (as chosen)
-  ctx.textAlign = 'right';
-  ctx.fillStyle = '#0b2b3a';
-  ctx.font = '20px Noto Sans Devanagari';
-  const rightX = W - 48;
+  /* ---------- SHALIVAHAN LINES centered under Ganpati (both same big size) ---------- */
   const meta1 = 'शालिवाहन शके १९४७';
   const meta2 = 'विश्वावसु नाम संवत्सरे, दक्षिणायन, शरदऋतू, कार्तिक मास, कृष्ण पक्ष';
-  ctx.fillText(meta1, rightX, 420);
-  // second line (wrap if needed)
-  // split meta2 into two approx halves if too long
-  ctx.font = '18px Noto Sans Devanagari';
-  wrapText(ctx, meta2, rightX - 420, 448, 420, 24); // right align handled by drawing slightly left; more refined below
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#08324a';
+  ctx.font = '700 36px Baloo 2'; // both lines same size as requested
+  const metaY = 38 + 480 + 12; // gy + tgtH + small gap
+  ctx.fillText(meta1, W/2, metaY);
+  ctx.font = '700 36px Baloo 2';
+  // wrap meta2 centered across width
+  wrapText(ctx, meta2, W/2 - 420, metaY + 36, 840, 36);
 
-  /* ---------- horizontal saffron rule under header ---------- */
-  ctx.strokeStyle = '#f1a45f';
-  ctx.lineWidth = 6;
-  ctx.beginPath(); ctx.moveTo(48, 492); ctx.lineTo(W - 48, 492); ctx.stroke();
+  /* saffron separator */
+  ctx.strokeStyle = '#f1a45f'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(56, metaY + 72); ctx.lineTo(W - 56, metaY + 72); ctx.stroke();
 
-  /* ---------- MAIN PANCHANG TABLE CARD ---------- */
-  const boxX = 48, boxY = 520, boxW = W - 96, boxH = 640;
-  roundRectStroke(ctx, boxX, boxY, boxW, boxH, 16, '#c86d22', 6);
-  // faint watermark behind table
-  ctx.save(); ctx.globalAlpha = 0.04; ctx.fillStyle = '#dba84a'; ctx.beginPath(); ctx.ellipse(W/2, boxY + boxH/2 - 20, 420, 180, 0, 0, Math.PI*2); ctx.fill(); ctx.restore();
+  /* ---------- MAIN PANCHANG CARD ---------- */
+  const boxX = 56, boxY = metaY + 104, boxW = W - 112, boxH = 640;
+  roundRectStroke(ctx, boxX, boxY, boxW, boxH, 18, '#c86d22', 6);
 
-  // Table rows: we will render 5 rows (तिथी, वार, नक्षत्र, योग, करण)
-  ctx.textAlign = 'left';
+  // watermark ellipse behind
+  ctx.save(); ctx.globalAlpha = 0.04; ctx.fillStyle = '#dba84a'; ctx.beginPath(); ctx.ellipse(W/2, boxY + boxH/2 - 10, 420, 180, 0, 0, Math.PI*2); ctx.fill(); ctx.restore();
+
+  // rows
   ctx.fillStyle = '#0b2b3a';
   ctx.font = '28px Noto Sans Devanagari';
-  const startY = boxY + 72;
-  const gap = 84;
-  const textX = boxX + 120;
-  let yy = startY;
+  const startY = boxY + 72; const gap = 84; const textX = boxX + 120;
+  let y = startY;
 
-  // row 1: तिथी
-  drawIcon(ctx, boxX + 56, yy - 8, 'ति');
-  ctx.fillText(`तिथी: ${p.tithi || ''}${p.tithi_end ? ' • समाप्ती: '+p.tithi_end : ''}`, textX, yy);
-  // right column time e.g. सूर्यादय etc
-  ctx.textAlign = 'right'; ctx.font = '26px Noto Sans Devanagari';
-  ctx.fillText(`सूर्योदय: ${p.sunrise || ''}`, boxX + boxW - 36, yy); ctx.textAlign='left';
-  yy += gap;
+  circleIcon = (x,y,label)=>{ ctx.save(); ctx.fillStyle='#f9c846'; ctx.beginPath(); ctx.arc(x,y,26,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.font='18px Noto Sans Devanagari'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(label,x,y); ctx.restore(); };
 
-  // row 2: वार
-  drawIcon(ctx, boxX + 56, yy - 8, 'वा');
-  ctx.fillText(`वार: ${new Date().toLocaleDateString('mr-IN',{weekday:'long'})}`, textX, yy);
-  ctx.textAlign = 'right'; ctx.fillText(`सूर्यास्त: ${p.sunset || ''}`, boxX + boxW - 36, yy); ctx.textAlign='left';
-  yy += gap;
+  // Row 1 - तिथी
+  circleIcon(boxX+56, y-8, 'ति');
+  ctx.textAlign='left'; ctx.fillText(`तिथी: ${p.tithi || ''}${p.tithi_end ? ' • समाप्ती: '+p.tithi_end : ''}`, textX, y);
+  ctx.textAlign='right'; ctx.fillText(`सूर्योदय: ${p.sunrise || ''}`, boxX + boxW - 18, y);
+  y += gap;
 
-  // row 3: नक्षत्र
-  drawIcon(ctx, boxX + 56, yy - 8, 'न');
-  ctx.fillText(`नक्षत्र: ${p.nakshatra || ''}${p.nakshatra_end ? ' • समाप्ती: '+p.nakshatra_end : ''}`, textX, yy);
-  ctx.textAlign='right'; ctx.fillText(`चंद्रराशी: ${p.moon_rashi || p.chandra_rashi || ''}`, boxX + boxW - 36, yy); ctx.textAlign='left';
-  yy += gap;
+  // Row 2 - वार
+  circleIcon(boxX+56, y-8, 'वा');
+  ctx.textAlign='left'; ctx.fillText(`वार: ${new Date().toLocaleDateString('mr-IN',{weekday:'long'})}`, textX, y);
+  ctx.textAlign='right'; ctx.fillText(`सूर्यास्त: ${p.sunset || ''}`, boxX + boxW - 18, y);
+  y += gap;
 
-  // row 4: योग
-  drawIcon(ctx, boxX + 56, yy - 8, 'यो');
-  ctx.fillText(`योग: ${p.yog || ''}`, textX, yy);
-  ctx.textAlign='right'; ctx.fillText(`सूर्यराशी: ${p.sun_rashi || p.surya_rashi || ''}`, boxX + boxW - 36, yy); ctx.textAlign='left';
-  yy += gap;
+  // Row 3 - नक्षत्र
+  circleIcon(boxX+56, y-8, 'न');
+  ctx.textAlign='left'; ctx.fillText(`नक्षत्र: ${p.nakshatra || ''}${p.nakshatra_end ? ' • समाप्ती: '+p.nakshatra_end : ''}`, textX, y);
+  ctx.textAlign='right'; ctx.fillText(`चंद्रराशी: ${p.moon_rashi || ''}`, boxX + boxW - 18, y);
+  y += gap;
 
-  // row 5: करण
-  drawIcon(ctx, boxX + 56, yy - 8, 'क');
-  ctx.fillText(`करण: ${p.karan || ''}${p.karan_end ? ' • समाप्ती: '+p.karan_end : ''}`, textX, yy);
-  ctx.textAlign='right'; ctx.fillText(`गुरुराशी: ${p.guru_rashi || ''}`, boxX + boxW - 36, yy); ctx.textAlign='left';
-  yy += gap;
+  // Row 4 - योग
+  circleIcon(boxX+56, y-8, 'यो');
+  ctx.textAlign='left'; ctx.fillText(`योग: ${p.yog || ''}`, textX, y);
+  ctx.textAlign='right'; ctx.fillText(`सूर्यराशी: ${p.sun_rashi || ''}`, boxX + boxW - 18, y);
+  y += gap;
 
-  // rahu line below rows (right)
+  // Row 5 - करण
+  circleIcon(boxX+56, y-8, 'क');
+  ctx.textAlign='left'; ctx.fillText(`करण: ${p.karan || ''}${p.karan_end ? ' • समाप्ती: '+p.karan_end : ''}`, textX, y);
+  ctx.textAlign='right'; ctx.fillText(`गुरुराशी: ${p.guru_rashi || ''}`, boxX + boxW - 18, y);
+  y += gap;
+
+  // Rahu
   ctx.font = '24px Noto Sans Devanagari'; ctx.textAlign='right';
-  ctx.fillText(`राहू काल: ${p.rahu || p.rahu_kal || ''}`, boxX + boxW - 36, yy);
+  ctx.fillText(`राहू काल: ${p.rahu || ''}`, boxX + boxW - 18, y);
 
-  /* ---------- decorative rashi strip under table ---------- */
-  const stripY = boxY + boxH - 100;
-  roundRectFill(ctx, boxX + 12, stripY, boxW - 24, 56, 8, '#08324a');
-  ctx.fillStyle = '#fff'; ctx.font = '20px Noto Sans Devanagari'; ctx.textAlign='center';
-  ctx.fillText(`चंद्र राशि - ${p.moon_rashi || ''}     सूर्य राशि - ${p.sun_rashi || ''}     गुरु राशि - ${p.guru_rashi || ''}`, W/2, stripY + 36);
+  // rashi bar
+  const stripY = boxY + boxH - 92;
+  roundRectFill(ctx, boxX + 12, stripY, boxW - 24, 56, 10, '#08324a');
+  ctx.fillStyle = '#fff'; ctx.font = '18px Noto Sans Devanagari'; ctx.textAlign='center';
+  ctx.fillText(`चंद्र राशि - ${p.moon_rashi || ''}     सूर्य राशि - ${p.sun_rashi || ''}     गुरु राशि - ${p.guru_rashi || ''}`, W/2, stripY + 34);
 
-  /* ---------- din-vishesh box below table ---------- */
+  // din vishesh
   if(p.din_vishesh){
-    const dvY = boxY + boxH + 12;
-    roundRectFill(ctx, boxX, dvY, boxW, 80, 12, '#fff3cc');
-    roundRectStroke(ctx, boxX, dvY, boxW, 80, 12, '#e2a92f', 2);
-    ctx.fillStyle = '#0b2b3a'; ctx.font = '22px Noto Sans Devanagari';
-    wrapText(ctx, `दिनविशेष: ${p.din_vishesh}`, boxX + 20, dvY + 46, boxW - 40, 30);
+    const dvY = boxY + boxH + 18;
+    roundRectFill(ctx, boxX, dvY, boxW, 84, 12, '#fff8e6');
+    roundRectStroke(ctx, boxX, dvY, boxW, 84, 12, '#e2a92f', 2);
+    ctx.fillStyle = '#0b2b3a'; ctx.font = '22px Noto Sans Devanagari'; ctx.textAlign='left';
+    wrapText(ctx, `दिनविशेष: ${p.din_vishesh}`, boxX + 20, dvY + 48, boxW - 40, 28);
   }
 
-  /* ---------- Bottom footer (maroon textured or green/gold as earlier?) - user chose maroon+gold earlier for previous version.
-     Here per your last requests you wanted Canva-style green; earlier you asked maroon+gold. You previously confirmed C=maroon textured+gold.
-     We will use maroon+gold textured footer as requested earlier. ---------- */
+  /* ---------- FOOTER (GREEN + GOLD exact sample look) ---------- */
+  const footerH = 360, footerY = H - footerH - 20;
+  const grad = ctx.createLinearGradient(0, footerY, 0, footerY + footerH);
+  grad.addColorStop(0, '#0b8a48'); grad.addColorStop(1, '#08743f');
+  ctx.fillStyle = grad; ctx.fillRect(0, footerY, W, footerH);
 
-  const footerH = 360;
-  const footerY = H - footerH - 24;
-  // maroon gradient
-  const g = ctx.createLinearGradient(0, footerY, 0, footerY + footerH);
-  g.addColorStop(0, '#6a1f18');
-  g.addColorStop(1, '#4a120f');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, footerY, W, footerH);
+  // gold strip top
+  ctx.fillStyle = '#d9a64b'; ctx.fillRect(24, footerY + 10, W - 48, 12);
 
-  // gold decorative top stripe
-  ctx.fillStyle = '#d9a64b';
-  ctx.fillRect(40, footerY + 8, W - 80, 8);
-
-  // user info (bottom-most): big yellow name, office, contact (Contact: ...)
+  // user texts
   const usrName = el('username').value.trim() || 'आपले नाव';
   const usrOffice = el('office').value.trim() || '';
   const usrMobile = el('mobile').value.trim() || '';
 
-  ctx.textAlign = 'left';
+  ctx.textAlign='left';
   ctx.fillStyle = '#ffd84a';
-  ctx.font = 'bold 56px Poppins, Noto Sans Devanagari';
-  ctx.fillText(usrName, 56, footerY + 110);
+  ctx.font = '800 64px Baloo 2'; // big name
+  ctx.fillText(usrName, 56, footerY + 120);
 
-  // small gold underline
-  ctx.fillStyle = '#f0c06d';
-  ctx.fillRect(56, footerY + 122, 280, 8);
+  // office and contact 20% smaller
+  const officeSize = Math.round(64 * 0.80);
+  ctx.fillStyle = '#fff'; ctx.font = `600 ${officeSize}px Noto Sans Devanagari`;
+  if(usrOffice) ctx.fillText(usrOffice, 56, footerY + 170);
+  if(usrMobile) ctx.fillText(`Contact: ${usrMobile}`, 56, footerY + 210);
 
-  ctx.fillStyle = '#fff';
-  ctx.font = '22px Noto Sans Devanagari';
-  if(usrOffice) ctx.fillText(usrOffice, 56, footerY + 160);
-  if(usrMobile) ctx.fillText(`Contact: ${usrMobile}`, 56, footerY + 200);
-
-  // right: big square user photo with gold frame
-  const photoSize = 320;
+  // right photo large square with gold border
+  const photoSize = 360;
   const px = W - 56 - photoSize;
-  const py = footerY + 24;
-  // gold outer frame
-  roundRectFill(ctx, px - 12, py - 12, photoSize + 24, photoSize + 24, 18, '#d4a24a');
-  roundRectFill(ctx, px - 8, py - 8, photoSize + 16, photoSize + 16, 14, '#fff');
+  const py = footerY + 12;
+  // outer gold frame
+  roundRectFill(ctx, px - 16, py - 16, photoSize + 32, photoSize + 32, 20, '#d9a64b');
+  roundRectFill(ctx, px - 8, py - 8, photoSize + 16, photoSize + 16, 16, '#fff');
 
   if(userPhotoData){
     try{
       const img = new Image(); img.crossOrigin='anonymous'; img.src = userPhotoData;
       await new Promise((res,rej)=>{ img.onload=res; img.onerror=rej; });
-      // cover-crop
+      // cover crop
       let sx=0, sy=0, sw=img.width, sh=img.height;
-      const ratio = img.width / img.height;
-      if(ratio > 1){ sx = Math.floor((img.width - img.height)/2); sw = img.height; sh = img.height; }
-      else if(ratio < 1){ sy = Math.floor((img.height - img.width)/2); sh = img.width; sw = img.width; }
-      roundRectPath(ctx, px, py, photoSize, photoSize, 12);
-      ctx.save(); ctx.clip();
+      const r = img.width / img.height;
+      if(r > 1){ sx = Math.floor((img.width - img.height)/2); sw = img.height; sh = img.height; }
+      else if(r < 1){ sy = Math.floor((img.height - img.width)/2); sh = img.width; sw = img.width; }
+      roundRectPath(ctx, px, py, photoSize, photoSize, 16); ctx.save(); ctx.clip();
       ctx.drawImage(img, sx, sy, sw, sh, px, py, photoSize, photoSize);
       ctx.restore();
     }catch(e){
-      roundRectFill(ctx, px, py, photoSize, photoSize, 12, '#f2f2f2');
+      roundRectFill(ctx, px, py, photoSize, photoSize, 16, '#f2f2f2');
       ctx.fillStyle = '#999'; ctx.font='18px Noto Sans Devanagari'; ctx.textAlign='center';
       ctx.fillText('आपला फोटो', px + photoSize/2, py + photoSize/2 + 6);
     }
   } else {
-    roundRectFill(ctx, px, py, photoSize, photoSize, 12, '#f2f2f2');
+    roundRectFill(ctx, px, py, photoSize, photoSize, 16, '#f2f2f2');
     ctx.fillStyle = '#999'; ctx.font='18px Noto Sans Devanagari'; ctx.textAlign='center';
     ctx.fillText('आपला फोटो', px + photoSize/2, py + photoSize/2 + 6);
   }
 
-  // subtle bottom-right logo watermark tiny
+  // subtle logo watermark bottom-right
   try{
     const logo = new Image(); logo.crossOrigin='anonymous'; logo.src = LOGO_LOCAL;
     await new Promise((res,rej)=>{ logo.onload=res; logo.onerror=rej; });
     ctx.save(); ctx.globalAlpha = 0.12;
     const lw = 120, lh = (logo.height/logo.width)*lw;
-    ctx.drawImage(logo, W - lw - 18, H - lh - 18, lw, lh);
+    ctx.drawImage(logo, W - lw - 16, H - lh - 16, lw, lh);
     ctx.restore();
   }catch(e){}
 
-  // export to preview image
+  // done: preview
   el('preview').src = canvas.toDataURL('image/png');
 }
 
-/* EVENTS */
+/* events */
 el('generateBtn').addEventListener('click', async ()=>{
   el('generateBtn').disabled = true;
   try{ await drawCard(); }catch(e){ console.error(e); }
   el('generateBtn').disabled = false;
 });
 el('downloadBtn').addEventListener('click', ()=>{
-  const a = document.createElement('a');
-  a.href = el('canvas').toDataURL('image/png');
-  a.download = `panchang_1080x1920.png`;
-  a.click();
+  const a = document.createElement('a'); a.href = el('canvas').toDataURL('image/png'); a.download = 'panchang_1080x1920.png'; a.click();
 });
-window.addEventListener('load', ()=> setTimeout(()=> el('generateBtn').click(), 700));
+window.addEventListener('load', ()=> setTimeout(()=> el('generateBtn').click(), 600));
 </script>
 </body>
 </html>
