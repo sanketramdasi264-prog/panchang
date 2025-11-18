@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>आजचे पंचांग — OmKarmyog</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root{
@@ -20,15 +20,17 @@
     --muted:#6d6d6d;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
+  html,body{height:100%;overflow-x:hidden}
   body{
     background:linear-gradient(180deg,#eef6ec,#e9f0ef);
     font-family:'Noto Sans Devanagari',sans-serif;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+    align-items:center;
     padding:18px;
+    overflow-y:auto;
   }
 
   .page {
@@ -40,7 +42,7 @@
     align-items:center;
   }
 
-  /* INPUT PANEL - placed ABOVE the card (not fixed) */
+  /* INPUT PANEL */
   .input-panel{
     width:100%;
     max-width:1200px;
@@ -59,14 +61,14 @@
     padding:10px;
     border:2px solid #e8e8e8;
     border-radius:8px;
-    font-size:16px;
+    font-size:15px;
   }
   .input-panel .grow{flex:1;min-width:160px}
-  .input-panel button{background:linear-gradient(135deg,#d32f2f,#c62828);color:#fff;border:0;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer}
-  .input-panel label{font-weight:700;font-size:14px;color:#333;margin-right:6px}
-  .input-panel .note{font-size:12px;color:#666;margin-left:6px}
+  .input-panel button{background:linear-gradient(135deg,#d32f2f,#c62828);color:#fff;border:0;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer;font-size:15px}
+  .input-panel label{font-weight:700;font-size:13px;color:#333;margin-right:6px}
+  .input-panel .note{font-size:11px;color:#666;margin-left:6px}
 
-  /* CARD (visual) - responsive */
+  /* CARD */
   .card-wrap{width:100%;display:flex;justify-content:center}
   #panchangCard{
     width:100%;
@@ -81,125 +83,382 @@
     flex-direction:column;
   }
 
-  /* Header: left (title/date/day), center ganesh (absolute center), right logo */
+  /* Header */
   .top-header{
     display:flex;
-    align-items:flex-start;
+    align-items:center;
     justify-content:space-between;
-    padding:28px 36px;
+    padding:24px 32px;
     background:#fff;
-    border-bottom:8px solid var(--gold);
+    border-bottom:6px solid var(--gold);
     position:relative;
-    min-height:220px;
+    min-height:200px;
   }
-  .top-left{width:340px}
-  .title{font-family:'Baloo 2';font-size:40px;font-weight:800;color:var(--dark)}
-  .top-date{font-size:26px;font-weight:900;color:#c62828;margin-top:8px}
-  .top-day{font-size:22px;font-weight:700;color:#d32f2f;margin-top:6px}
+  .top-left{
+    width:280px;
+    z-index:1;
+  }
+  .title{
+    font-family:'Baloo 2';
+    font-size:36px;
+    font-weight:800;
+    color:var(--dark);
+    line-height:1.1;
+  }
+  .top-date{
+    font-size:24px;
+    font-weight:900;
+    color:#c62828;
+    margin-top:6px;
+  }
+  .top-day{
+    font-size:20px;
+    font-weight:700;
+    color:#d32f2f;
+    margin-top:4px;
+  }
 
   .ganesh-center{
     position:absolute;
     left:50%;
-    top:20px;
+    top:10px;
     transform:translateX(-50%);
-    width:260px;height:260px;
-    display:flex;align-items:center;justify-content:center;
+    width:240px;
+    height:240px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
   }
-  .ganesh-center img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
+  .ganesh-center img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    filter:drop-shadow(0 6px 20px rgba(0,0,0,.3));
+  }
 
-  .logo-right{width:160px;height:120px;display:flex;align-items:center;justify-content:flex-end}
-  .logo-right img{max-width:120px;max-height:100%;object-fit:contain}
+  .logo-right{
+    width:140px;
+    height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    z-index:1;
+  }
+  .logo-right img{
+    max-width:110px;
+    max-height:90px;
+    object-fit:contain;
+  }
 
   /* Shalivahan */
   .shalivahan{
     background:linear-gradient(180deg,#c62828,#b71c1c);
-    color:#fff;text-align:center;padding:20px 26px;border-bottom:6px solid var(--gold)
+    color:#fff;
+    text-align:center;
+    padding:18px 24px;
+    border-bottom:6px solid var(--gold);
   }
-  .shalivahan h3{font-family:'Baloo 2';font-size:30px;margin-bottom:6px}
-  .shalivahan p{font-size:22px;margin:0;opacity:0.95}
+  .shalivahan h3{
+    font-family:'Baloo 2';
+    font-size:28px;
+    margin-bottom:6px;
+    font-weight:800;
+  }
+  .shalivahan p{
+    font-size:18px;
+    margin:0;
+    opacity:0.95;
+    font-weight:600;
+  }
 
-  /* Sunrise / sunset */
-  .sun-row{display:flex;gap:24px;justify-content:center;padding:18px 16px;background:linear-gradient(90deg,var(--blue-1),var(--blue-2));border-bottom:6px solid var(--gold)}
-  .sun-box{display:flex;align-items:center;gap:14px;padding:10px 18px;border-radius:40px;background:rgba(255,255,255,0.08)}
-  .sun-icon{width:64px;height:64px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-  .sun-info h4{color:#fff;font-size:14px;margin:0}
-  .sun-info .time{color:var(--gold);font-weight:900;font-size:22px}
+  /* Sunrise/sunset */
+  .sun-row{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    padding:16px 14px;
+    background:linear-gradient(90deg,var(--blue-1),var(--blue-2));
+    border-bottom:6px solid var(--gold);
+  }
+  .sun-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 16px;
+    border-radius:40px;
+    background:rgba(255,255,255,0.08);
+  }
+  .sun-icon{
+    width:56px;
+    height:56px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+  }
+  .sun-info h4{
+    color:#fff;
+    font-size:13px;
+    margin:0;
+    font-weight:600;
+  }
+  .sun-info .time{
+    color:var(--gold);
+    font-weight:900;
+    font-size:20px;
+  }
 
-  /* Table simplified */
-  .table-section{padding:18px;background:linear-gradient(180deg,#fff8e6,#ffffff)}
-  .p-table{width:100%;border-collapse:collapse;border-left:4px solid #ff9800;border-right:4px solid #ff9800}
-  .p-table tr{border-bottom:2px solid #f2d2b0}
-  .p-table td{padding:16px;font-weight:800;vertical-align:middle;font-size:18px}
-  .p-table td.event{width:18%;color:var(--muted);text-align:left;padding-left:22px}
-  .p-table td.info{width:42%;text-align:left;padding-left:14px;font-size:20px}
-  .p-table td.time{width:20%;text-align:center;color:#c62828;font-weight:900}
-  .p-table td.next{width:20%;text-align:center;color:var(--muted);font-weight:700}
+  /* Table */
+  .table-section{
+    padding:16px;
+    background:linear-gradient(180deg,#fff8e6,#ffffff);
+  }
+  .p-table{
+    width:100%;
+    border-collapse:collapse;
+    border-left:4px solid #ff9800;
+    border-right:4px solid #ff9800;
+  }
+  .p-table tr{
+    border-bottom:2px solid #f2d2b0;
+  }
+  .p-table td{
+    padding:14px 8px;
+    font-weight:700;
+    vertical-align:middle;
+    font-size:16px;
+  }
+  .p-table td.event{
+    width:18%;
+    color:var(--muted);
+    text-align:left;
+    padding-left:18px;
+  }
+  .p-table td.info{
+    width:42%;
+    text-align:left;
+    padding-left:12px;
+    font-size:18px;
+    font-weight:800;
+  }
+  .p-table td.time{
+    width:20%;
+    text-align:center;
+    color:#c62828;
+    font-weight:900;
+    font-size:16px;
+  }
+  .p-table td.next{
+    width:20%;
+    text-align:center;
+    color:var(--muted);
+    font-weight:700;
+    font-size:15px;
+  }
 
-  /* Rashi boxes (3) */
-  .rashi-wrap{display:flex;gap:16px;padding:18px;background:#fff;justify-content:space-between}
-  .rashi{flex:1;background:#fff;border:3px solid #ff9800;border-radius:12px;padding:18px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.06)}
-  .rashi .icon{font-size:28px;margin-bottom:8px}
-  .rashi .label{color:#666;font-size:14px}
-  .rashi .val{font-size:20px;color:#c62828;font-weight:900}
+  /* Rashi */
+  .rashi-wrap{
+    display:flex;
+    gap:14px;
+    padding:16px;
+    background:#fff;
+    justify-content:space-between;
+  }
+  .rashi{
+    flex:1;
+    background:#fff;
+    border:3px solid #ff9800;
+    border-radius:12px;
+    padding:16px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+  .rashi .icon{
+    font-size:26px;
+    margin-bottom:6px;
+  }
+  .rashi .label{
+    color:#666;
+    font-size:13px;
+    font-weight:600;
+  }
+  .rashi .val{
+    font-size:18px;
+    color:#c62828;
+    font-weight:900;
+  }
 
   /* Din vishesh */
-  .din-box{margin:18px;padding:12px 18px;background:linear-gradient(180deg,#fff8e6,#fff2d9);border-radius:10px;border:2px solid #e2a92f;font-weight:800;color:var(--dark);margin-left:18px;margin-right:18px}
+  .din-box{
+    margin:16px;
+    padding:12px 16px;
+    background:linear-gradient(180deg,#fff8e6,#fff2d9);
+    border-radius:10px;
+    border:2px solid #e2a92f;
+    font-weight:700;
+    color:var(--dark);
+    font-size:15px;
+  }
 
-  /* Footer dark maroon */
-  .footer{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:22px;border-top:8px solid var(--gold);background:linear-gradient(90deg,var(--maroon-1),var(--maroon-1));color:#fff;margin-top:auto}
-  .footer-left{flex:1}
-  .u-name{font-family:'Baloo 2';font-size:34px;color:#ffd84a;font-weight:900}
-  .u-office{font-size:18px;color:#fff;margin-top:6px;font-weight:700}
-  .u-contact{font-size:18px;color:#fff;margin-top:6px}
-  .u-address{font-size:16px;color:#fff;margin-top:8px;opacity:0.95}
-  .footer-photo{width:220px;height:300px;border-radius:12px;border:6px solid var(--gold);object-fit:cover;box-shadow:0 8px 28px rgba(0,0,0,.28)}
+  /* Footer */
+  .footer{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px;
+    border-top:6px solid var(--gold);
+    background:linear-gradient(90deg,var(--maroon-1),var(--maroon-1));
+    color:#fff;
+    margin-top:auto;
+  }
+  .footer-left{
+    flex:1;
+  }
+  .u-name{
+    font-family:'Baloo 2';
+    font-size:30px;
+    color:#ffd84a;
+    font-weight:900;
+    line-height:1.2;
+  }
+  .u-office{
+    font-size:16px;
+    color:#fff;
+    margin-top:6px;
+    font-weight:700;
+  }
+  .u-contact{
+    font-size:16px;
+    color:#fff;
+    margin-top:6px;
+    font-weight:600;
+  }
+  .u-address{
+    font-size:15px;
+    color:#fff;
+    margin-top:6px;
+    opacity:0.95;
+    font-weight:600;
+  }
+  .footer-photo{
+    width:200px;
+    height:280px;
+    border-radius:12px;
+    border:5px solid var(--gold);
+    object-fit:cover;
+    box-shadow:0 6px 24px rgba(0,0,0,.28);
+  }
 
-  /* small screens: scale card visually but keep internal layout readable */
+  /* Responsive */
   @media (max-width:1100px){
     .input-panel{padding:12px;gap:8px}
     #panchangCard{max-width:880px}
-    .top-left{width:260px}
+    .top-left{width:240px}
+    .title{font-size:32px}
+    .top-date{font-size:22px}
+    .top-day{font-size:18px}
+    .ganesh-center{width:220px;height:220px}
   }
   @media (max-width:820px){
     .input-panel{flex-direction:column;align-items:stretch}
     #panchangCard{max-width:640px}
-    .ganesh-center{width:200px;height:200px;top:14px}
-    .u-name{font-size:28px}
+    .top-left{width:200px}
+    .title{font-size:28px}
+    .top-date{font-size:20px}
+    .top-day{font-size:16px}
+    .ganesh-center{width:200px;height:200px;top:8px}
+    .logo-right{width:120px}
+    .logo-right img{max-width:90px;max-height:70px}
+    .shalivahan h3{font-size:24px}
+    .shalivahan p{font-size:16px}
+    .u-name{font-size:26px}
     .footer-photo{width:180px;height:240px}
+    .p-table td{font-size:14px;padding:12px 6px}
+    .p-table td.info{font-size:16px}
+    .p-table td.time{font-size:14px}
   }
   @media (max-width:480px){
+    body{padding:12px}
     #panchangCard{max-width:420px}
-    .title{font-size:30px}
+    .top-header{padding:18px 20px;min-height:160px}
+    .top-left{width:160px}
+    .title{font-size:24px}
     .top-date{font-size:18px}
-    .top-day{font-size:16px}
-    .ganesh-center{width:160px;height:160px}
-    .footer-photo{width:160px;height:220px}
-    .u-name{font-size:24px}
+    .top-day{font-size:15px}
+    .ganesh-center{width:170px;height:170px;top:6px}
+    .logo-right{width:100px}
+    .logo-right img{max-width:75px;max-height:60px}
+    .shalivahan{padding:14px 18px}
+    .shalivahan h3{font-size:20px}
+    .shalivahan p{font-size:14px}
+    .sun-icon{width:48px;height:48px;font-size:22px}
+    .sun-info h4{font-size:11px}
+    .sun-info .time{font-size:18px}
+    .p-table td{font-size:13px;padding:10px 5px}
+    .p-table td.info{font-size:15px}
+    .p-table td.time{font-size:13px}
+    .p-table td.next{font-size:13px}
+    .rashi .icon{font-size:22px}
+    .rashi .label{font-size:12px}
+    .rashi .val{font-size:16px}
+    .din-box{font-size:13px;padding:10px 14px}
+    .footer{padding:16px}
+    .u-name{font-size:22px}
+    .u-office{font-size:14px}
+    .u-contact{font-size:14px}
+    .u-address{font-size:13px}
+    .footer-photo{width:150px;height:200px}
+  }
+
+  /* Download button */
+  .download-btn{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:9999;
+    background:linear-gradient(135deg,#d32f2f,#c62828);
+    color:#fff;
+    border:none;
+    padding:14px 18px;
+    border-radius:10px;
+    font-weight:800;
+    box-shadow:0 8px 28px rgba(0,0,0,.2);
+    cursor:pointer;
+    font-size:15px;
+  }
+  .download-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 32px rgba(0,0,0,.25);
   }
 </style>
 </head>
 <body>
   <div class="page">
-    <!-- INPUT PANEL (placed above the card, not overlapping) -->
+    <!-- INPUT PANEL -->
     <div class="input-panel" role="region" aria-label="Input panel">
       <div class="grow">
         <label>नाव</label><br>
-        <input id="nameInput" type="text" placeholder="आपले नाव (उदा. संकेत रामदासी)" />
+        <input id="nameInput" type="text" placeholder="आपले नाव" />
       </div>
 
-      <div style="width:220px">
+      <div style="width:200px">
         <label>कार्यालय</label><br>
-        <input id="officeInput" type="text" placeholder="कार्यालय / संपर्क माहिती (पर्यायी)" />
+        <input id="officeInput" type="text" placeholder="कार्यालय" />
       </div>
 
-      <div style="width:180px">
+      <div style="width:160px">
         <label>संपर्क</label><br>
         <input id="contactInput" type="tel" placeholder="मोबाईल" />
       </div>
 
-      <div style="width:200px">
+      <div style="width:180px">
         <label>पत्ता</label><br>
-        <input id="addressInput" type="text" placeholder="पत्ता (पर्यायी)" />
+        <input id="addressInput" type="text" placeholder="पत्ता" />
       </div>
 
       <div>
@@ -207,9 +466,9 @@
         <input id="fileInput" type="file" accept="image/*" />
       </div>
 
-      <div style="min-width:140px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+      <div style="min-width:120px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
         <button id="applyBtn">Apply</button>
-        <div class="note">Admin: update <code>panchang.json</code> in repo root</div>
+        <div class="note">JSON: <code>panchang.json</code></div>
       </div>
     </div>
 
@@ -245,7 +504,7 @@
           <div class="sun-box"><div class="sun-icon">🌄</div><div class="sun-info"><h4>सूर्यास्त</h4><div id="sunset" class="time">--:--</div></div></div>
         </div>
 
-        <!-- TABLE (simplified). Show P (प) and N (नं) markers inline -->
+        <!-- TABLE -->
         <div class="table-section">
           <table class="p-table" role="table" aria-label="Panchang details">
             <tbody>
@@ -283,7 +542,7 @@
           </table>
         </div>
 
-        <!-- RASHI (3 items) -->
+        <!-- RASHI -->
         <div class="rashi-wrap">
           <div class="rashi"><div class="icon">🌙</div><div class="label">चंद्र</div><div class="val" id="moonRashi">--</div></div>
           <div class="rashi"><div class="icon">☀️</div><div class="label">सूर्य</div><div class="val" id="sunRashi">--</div></div>
@@ -297,7 +556,7 @@
         <div class="footer" role="contentinfo">
           <div class="footer-left">
             <div class="u-name" id="footerName">आपले नाव</div>
-            <div class="u-office" id="footerOffice">कार्यालय माहिती (पर्यायी)</div>
+            <div class="u-office" id="footerOffice">कार्यालय माहिती</div>
             <div class="u-contact" id="footerContact">संपर्क: --</div>
             <div class="u-address" id="footerAddress"></div>
           </div>
@@ -312,7 +571,7 @@
 <script>
 /* CONFIG */
 const JSON_LOCAL = './panchang.json';
-const JSON_FALLBACK = 'https://sanketramdasi264-prog.github.io/panchang/panchang.json'; // fallback for GitHub pages raw
+const JSON_FALLBACK = 'https://sanketramdasi264-prog.github.io/panchang/panchang.json';
 const daysMar = ['रविवार','सोमवार','मंगळवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
 
 /* HELPERS */
@@ -323,7 +582,7 @@ function fmtDate(d=new Date()){
   return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
 }
 
-/* LOAD JSON (try local first, then fallback) */
+/* LOAD JSON */
 async function fetchJson(){
   try{
     const r = await fetch(JSON_LOCAL, {cache:'no-store'});
@@ -345,7 +604,6 @@ async function fillPanchang(){
   document.getElementById('hdrDay').textContent = daysMar[now.getDay()];
 
   if(!data || !data[key]){
-    // hide din, show placeholders
     ['tithiName','tithiTime','tithiNext','vaar','vaarTime','vaarSanskrit','nakshatra','nakshatraTime','nakshatraNext','yog','yogTime','yogNext','karan','karanTime','karanNext','sunrise','sunset','moonRashi','sunRashi','guruRashi'].forEach(id=>{
       const el=document.getElementById(id); if(el) el.textContent='--';
     });
@@ -356,49 +614,39 @@ async function fillPanchang(){
 
   const p = data[key];
 
-  // shalivahan
   if(p.shalivahan) document.getElementById('shalivahanLine').textContent = p.shalivahan;
   if(p.shalivahan_meta) document.getElementById('shalivahanMeta').textContent = p.shalivahan_meta;
 
-  // sunrise/sunset
   document.getElementById('sunrise').textContent = p.sunrise || '--';
   document.getElementById('sunset').textContent = p.sunset || '--';
 
-  // format endings: add 'प' for end times and 'नं ' for next
   function endP(val){ return val ? (val + ' प') : '--'; }
   function nextN(val){ return val ? ('नं ' + val) : '--'; }
 
-  // tithi
   document.getElementById('tithiName').textContent = p.tithi || '--';
   document.getElementById('tithiTime').textContent = endP(p.tithi_end || p.tithi_end_raw || p.tithi_end_time);
   document.getElementById('tithiNext').textContent = nextN(p.tithi_next || p.tithiNext);
 
-  // vaar
   document.getElementById('vaar').textContent = p.vaar || daysMar[now.getDay()];
   document.getElementById('vaarTime').textContent = p.vaar_time || '--';
   document.getElementById('vaarSanskrit').textContent = p.vaar_sanskrit || p.vaarSanskrit || '--';
 
-  // nakshatra
   document.getElementById('nakshatra').textContent = p.nakshatra || '--';
   document.getElementById('nakshatraTime').textContent = endP(p.nakshatra_end);
   document.getElementById('nakshatraNext').textContent = nextN(p.nakshatra_next);
 
-  // yoga
   document.getElementById('yog').textContent = p.yog || '--';
   document.getElementById('yogTime').textContent = p.yog_time || '--';
   document.getElementById('yogNext').textContent = nextN(p.yog_next);
 
-  // karan
   document.getElementById('karan').textContent = p.karan || p.karana || '--';
   document.getElementById('karanTime').textContent = endP(p.karan_end);
   document.getElementById('karanNext').textContent = nextN(p.karan_next);
 
-  // rashis
   document.getElementById('moonRashi').textContent = p.moon_rashi || p.moonRashi || '--';
   document.getElementById('sunRashi').textContent = p.sun_rashi || p.sunRashi || '--';
   document.getElementById('guruRashi').textContent = p.guru_rashi || p.guruRashi || '--';
 
-  // din vishesh
   if(p.din_vishesh){
     const dv = document.getElementById('dinVishesh');
     dv.textContent = 'दिनविशेष: ' + p.din_vishesh;
@@ -408,7 +656,7 @@ async function fillPanchang(){
   }
 }
 
-/* USER INPUT HANDLING */
+/* USER INPUT */
 let uploadedImageData = '';
 document.getElementById('fileInput').addEventListener('change', e=>{
   const f = e.target.files[0];
@@ -436,15 +684,13 @@ document.getElementById('applyBtn').addEventListener('click', ()=>{
   }
 });
 
-/* DOWNLOAD: ensure logo included in canvas by using images with crossOrigin and inline <img> */
+/* DOWNLOAD */
 async function downloadImage(){
-  // apply footer first (in case user didn't click apply)
   document.getElementById('applyBtn').click();
-  await new Promise(r=>setTimeout(r,220)); // let images render
+  await new Promise(r=>setTimeout(r,220));
 
   const card = document.getElementById('panchangCard');
 
-  // html2canvas render at true pixel size
   html2canvas(card, {
     scale: 2,
     useCORS: true,
@@ -462,41 +708,3 @@ async function downloadImage(){
       a.href = url; document.body.appendChild(a); a.click(); a.remove();
       setTimeout(()=>URL.revokeObjectURL(url),500);
     }, 'image/png');
-  }).catch(err=>{
-    console.error(err);
-    alert('चित्र तयार करताना त्रुटी आली. Console तपासा.');
-  });
-}
-
-/* small helper to ensure logos/images loaded with crossorigin */
-function ensureCrossOrigin(img){
-  try{ img.crossOrigin = 'anonymous'; }catch(e){}
-}
-
-/* Wire a keyboard-friendly download shortcut (Ctrl/Cmd+D) */
-document.addEventListener('keydown', e=>{
-  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='d'){
-    e.preventDefault(); downloadImage();
-  }
-});
-
-/* Initial */
-window.addEventListener('load', async ()=>{
-  // try to set crossOrigin for images already present
-  ensureCrossOrigin(document.getElementById('ganeshImg'));
-  ensureCrossOrigin(document.getElementById('logoImg'));
-  ensureCrossOrigin(document.getElementById('footerPhoto'));
-
-  await fillPanchang();
-});
-
-/* Expose download function on global (for easy button binding if needed) */
-window.downloadPanchangImage = downloadImage;
-</script>
-
-<!-- Small floating download button bottom-right -->
-<div style="position:fixed;right:18px;bottom:18px;z-index:9999">
-  <button onclick="downloadPanchangImage()" style="background:linear-gradient(135deg,#d32f2f,#c62828);color:#fff;border:none;padding:14px 18px;border-radius:10px;font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.2);cursor:pointer">Download PNG</button>
-</div>
-</body>
-</html>
