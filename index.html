@@ -311,9 +311,16 @@
   .footer-left div{margin-top:6px;font-size:18px}
 
   #footer_img{
-    width:240px;height:280px;border-radius:10px;border:6px solid var(--gold);
-    object-fit:cover;display:none;margin-right:-20px;
-  }
+    width:180px;                 /* fixed width */
+    height:220px;                /* fixed height */
+    object-fit:cover;            /* photo crop होऊन exact फोटो */
+    border-radius:10px;
+    border:6px solid var(--gold);
+    display:block;
+    background:#fff;             /* जर user blank image देला तर clean दिसेल */
+    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+
 
   /* DOWNLOAD BUTTON UNDER CARD */
   #downloadFab{
