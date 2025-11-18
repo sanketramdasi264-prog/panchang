@@ -1,3 +1,5 @@
+सॉरी कोड पूर्ण आला नाही त्यामुळे थांबलो मी कोड पुन्हा देतो.
+
 <!doctype html>
 <html lang="mr">
 <head>
@@ -68,7 +70,7 @@
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    padding:12px 18px;
+    padding:12px 18px;        /* 20px → 12px (height कमी) */
     background:#fff;
     border-bottom:6px solid var(--gold);
     position:relative;
@@ -77,36 +79,37 @@
 
 .title{
     font-family:'Baloo 2';
-    font-size:30px;
+    font-size:30px;           /* 34px → 30px (looks same, less height) */
     font-weight:800;
     color:#0b2b3a;
-    line-height:1.15;
+    line-height:1.15;         /* height कमी */
 }
 .date{
-    font-size:19px;
+    font-size:19px;           /* 22px → 19px */
     font-weight:900;
     color:var(--accent);
     margin-top:4px;
 }
 .day{
-    font-size:16px;
+    font-size:16px;           /* 18px → 16px */
     font-weight:700;
     color:var(--accent);
     margin-top:2px;
 }
 
 .ganesh-center{
-    width:150px;
-    margin:0 auto;
-    padding:10px;
-    background:#fff;
+    width:150px;              /* thoda mota (120 → 150) */
+    margin:0 auto;            /* EXAACT HORIZONTAL CENTER */
+    padding:10px;             /* neat white padding */
+    background:#fff;          /* white box */
     border-radius:12px;
-    display:flex;
+    display:flex;             /* proper centering */
     justify-content:center;
-    align-items:center;
-    position:relative;
+    align-items:center;       /* EXACT vertical centering */
+    position:relative;        /* NO ABSOLUTE → NO OVERLAP */
     top:0;
 }
+
 .ganesh-center img{
     width:100%;
     height:auto;
@@ -114,48 +117,47 @@
     display:block;
 }
 
+
+
 .logo-right{
-    width:120px;
+    width:120px;              /* 140px → 120px */
     display:flex;
     align-items:flex-start;
     justify-content:flex-end;
-    margin-right:-10px;
+    margin-right:-10px;       /* look same but less width */
 }
 .logo-right img{
     max-width:120px;
 }
 
+
   /* SHALIVAHAN */
   .shalivahan{
-    background:linear-gradient(180deg,var(--accent),#8c1c1c);
-    color:#fff;
-    padding:16px;
-    text-align:center;
-    border-bottom:6px solid var(--gold)
+    background:linear-gradient(180deg,var(--accent),#8c1c1c);color:#fff;
+    padding:16px;text-align:center;border-bottom:6px solid var(--gold)
   }
  .shalivahan h3{
     font-family:'Baloo 2';
-    font-size:20px;
+    font-size:20px;          /* 28 → 22 */
     font-weight:900;
     margin-bottom:4px;
-    line-height:1.1;
+    line-height:1.1;         /* height कमी */
 }
+
 .shalivahan p{
-    font-size:16px;
+    font-size:16px;          /* 20 → 18 */
     font-weight:700;
     margin:0;
-    line-height:1.1;
+    line-height:1.1;         /* दोन्ही height match */
     opacity:0.95;
 }
 
+
   /* SUN BOX */
   .sun-row{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    padding:14px;
+    display:flex;justify-content:center;gap:12px;padding:14px;
     background:linear-gradient(90deg,var(--blue1),var(--blue2));
-    border-bottom:6px solid var(--gold);
+    border-bottom:6px solid var(--gold)
   }
  .sun-box{
     display:flex;
@@ -166,7 +168,12 @@
     background:rgba(255,255,255,0.10);
 }
 .sun-icon{
+    width:auto;
+    height:auto;
+    background:none;
+    border-radius:0;
     font-size:24px;
+    box-shadow:none;
 }
 .sun-data{
     display:flex;
@@ -175,6 +182,7 @@
     gap:6px;
 }
 .sun-data h4{
+    margin:0;
     color:#fff;
     font-weight:700;
     font-size:16px;
@@ -185,143 +193,328 @@
     font-weight:900;
 }
 
-/* 🌙 NEW BLACK MOON + RAHUKAAL ROW */
+/* MOON / RAHUKAL BLACK ROW */
 .moon-row{
   display:flex;
   justify-content:center;
   gap:12px;
   padding:14px;
-  background:#000;
+  background:#000;             /* BLACK BACKGROUND */
   border-bottom:6px solid var(--gold);
 }
+
 .black-box{
   background:rgba(255,255,255,0.10);
   padding:8px 12px;
   border-radius:40px;
 }
+
 .black-box h4{
   color:#fff;
-  font-size:16px;
-  font-weight:700;
 }
+
 .black-box .time{
   color:var(--gold);
-  font-size:20px;
   font-weight:900;
+  font-size:20px;
+}
+
+  
+/* TABLE */
+.table-section{padding:12px 14px;background:#fffdf8}
+.p-table{width:100%;border-collapse:collapse;font-weight:700}
+
+.p-table td{
+    padding:6px 6px;
+    font-size:15px;
+    line-height:1.15;
+    border-bottom:1px dashed #f1d7b2;
+}
+
+.event{width:18%;color:#666}
+.info{width:40%}
+.
+ time{width:22%;color:var(--accent);font-weight:900;text-align:center}
+.next{width:12%;text-align:center;color:#444}
+
+  /* RASHI */
+ .rashi-section{
+    display:flex;
+    gap:10px;              /* 12 → 10 */
+    padding:10px 14px;     /* 16 → 10 */
+    background:#fff;
+}
+
+.rashi-card{
+    flex:1;
+    background:#fff;
+    border:2px solid #ffb300;
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex;                /* horizontal layout */
+    align-items:center;
+    gap:10px;                    /* icon-text gap */
+    box-shadow:0 6px 16px rgba(0,0,0,.05);
+}
+
+/* icon left side */
+.rashi-card .icon{
+    font-size:22px;              /* थोडं छोटं */
+    margin:0;
+    padding:0;
+}
+
+/* label + value together = text column */
+.rashi-text-block{
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+/* Label */
+.rashi-card .label{
+    color:#0d47a1;     /* Dark Blue */
+    font-size:12px;
+    margin:0;
+    padding:0;
+}
+
+/* Value */
+.rashi-card .val{
+    font-size:16px;
+    color:var(--accent);
+    font-weight:900;
+    margin-top:2px;
+}
+
+
+
+  /* DIN VISHESH */
+  .din-box{
+    margin:16px;padding:14px;font-weight:900;
+    background:#fff8e6;border:2px solid #e4b236;border-radius:8px;display:none
   }
-  <!-- 🌙 NEW BLACK MOON + RAHUKAAL ROW -->
-<div class="moon-row">
-    <div class="black-box">
-        <h4>🌙 चंद्रोदय</h4>
-        <div id="moonrise" class="time">--</div>
+
+  /* FOOTER (INSIDE IMAGE) */
+  .footer{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px;background:linear-gradient(90deg,#4e0f0f,#3f0c0c);color:#fff;border-top:6px solid var(--gold)
+  }
+
+  #footer_name{
+    font-family:'Arya';
+    font-size:30px;color:var(--gold);font-weight:900;
+  }
+  .footer-left div{margin-top:6px;font-size:18px}
+
+  #footer_img{
+    width:240px;height:280px;border-radius:10px;border:6px solid var(--gold);
+    object-fit:cover;display:none;margin-right:-20px;
+  }
+
+  /* DOWNLOAD BUTTON UNDER CARD */
+  #downloadFab{
+    width:100%;margin-top:20px;padding:16px;border:0;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),#8c1b1b);
+    color:#fff;font-size:20px;font-weight:900;cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.2)
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- USER INPUT PANEL -->
+  <div class="input-panel">
+    <h2>📋 आपली माहिती भरा</h2>
+
+    <div class="ipt-row">
+
+      <div class="ipt-box">
+        <label>📸 आपला फोटो</label>
+        <input id="userFile" type="file" accept="image/*">
+        <img id="preview" />
+      </div>
+
+      <div class="ipt-box">
+        <label>👤 आपले नाव</label>
+        <input id="inpName" type="text" placeholder="आपले नाव">
+        
+        <label style="margin-top:10px">🏢 कार्यालय / व्यवसाय</label>
+        <input id="inpOffice" type="text" placeholder="कार्यालय / व्यवसाय">
+
+        <label style="margin-top:10px">📍 पत्ता</label>
+        <input id="inpAddress" type="text" placeholder="पत्ता">
+      </div>
+
+      <div class="ipt-box">
+        <label>📱 संपर्क</label>
+        <input id="inpContact" type="tel" placeholder="मोबाईल नंबर">
+
+        <button class="btn-apply" id="applyBtn">✔ लागू करा</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- PANCHANG CARD -->
+  <div id="panchangCard">
+
+    <!-- HEADER -->
+    <div class="top-header">
+      <div class="left-info">
+        <div class="title">आजचे पंचांग</div>
+        <div class="date" id="hdrDate">--</div>
+        <div class="day" id="hdrDay">--</div>
+      </div>
+
+      <div class="ganesh-center">
+        <img id="ganesh" src="pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png" crossorigin="anonymous">
+      </div>
+
+      <div class="logo-right">
+        <img id="logo" src="logo.png" crossorigin="anonymous" style="width:150px;">
+      </div>
     </div>
 
-    <div class="black-box">
-        <h4>⚫ राहुकाल</h4>
-        <div id="rahu" class="time">--</div>
+    <!-- SHALIVAHAN -->
+    <div class="shalivahan">
+      <h3 id="shalivahanLine">शालिवाहन शके १९४७</h3>
+      <p id="shalivahanMeta">विश्वावसु नाम संवत्सर, दक्षिणायन, शरदऋतू, कार्तिक मास, कृष्ण पक्ष</p>
     </div>
-</div>
 
+    <!-- SUN -->
+    <div class="sun-row">
+      <div class="sun-box">
+        <div class="sun-icon">🌅</div>
+        <div class="sun-data"><h4>सूर्योदय</h4><div id="sunrise" class="time">--</div></div>
+      </div>
+      <div class="sun-box">
+        <div class="sun-icon">🌄</div>
+        <div class="sun-data"><h4>सूर्यास्त</h4><div id="sunset" class="time">--</div></div>
+      </div>
+    </div>
 
-<!-- TABLE SECTION -->
-<div class="table-section">
-  <table class="p-table">
-    <tbody>
+    <!-- TABLE -->
+    <div class="table-section">
+      <table class="p-table">
+        <tbody>
 
-      <tr>
-        <td class="event">तिथी</td>
-        <td class="info" id="tithi">--</td>
-        <td class="time" id="tithi_end">--</td>
-        <td class="next" id="tithi_next">--</td>
-      </tr>
+          <tr>
+            <td class="event">तिथी</td>
+            <td class="info" id="tithi">--</td>
+            <td class="time" id="tithi_end">--</td>
+            <td class="next" id="tithi_next">--</td>
+          </tr>
 
-      <tr>
-        <td class="event">वार</td>
-        <td class="info" id="vaar">--</td>
-        <td class="time" id="vaar_time">--</td>
-        <td class="next" id="vaar_sanskrit">--</td>
-      </tr>
+          <tr>
+            <td class="event">वार</td>
+            <td class="info" id="vaar">--</td>
+            <td class="time" id="vaar_time">--</td>
+            <td class="next" id="vaar_sanskrit">--</td>
+          </tr>
 
-      <tr>
-        <td class="event">नक्षत्र</td>
-        <td class="info" id="nak">--</td>
-        <td class="time" id="nak_end">--</td>
-        <td class="next" id="nak_next">--</td>
-      </tr>
+          <tr>
+            <td class="event">नक्षत्र</td>
+            <td class="info" id="nak">--</td>
+            <td class="time" id="nak_end">--</td>
+            <td class="next" id="nak_next">--</td>
+          </tr>
 
-      <tr>
-        <td class="event">योग</td>
-        <td class="info" id="yog">--</td>
-        <td class="time" id="yog_time">--</td>
-        <td class="next" id="yog_next">--</td>
-      </tr>
+          <tr>
+            <td class="event">योग</td>
+            <td class="info" id="yog">--</td>
+            <td class="time" id="yog_time">--</td>
+            <td class="next" id="yog_next">--</td>
+          </tr>
 
-      <tr>
-        <td class="event">करण</td>
-        <td class="info" id="kar">--</td>
-        <td class="time" id="kar_end">--</td>
-        <td class="next" id="kar_next">--</td>
-      </tr>
+          <tr>
+            <td class="event">करण</td>
+            <td class="info" id="kar">--</td>
+            <td class="time" id="kar_end">--</td>
+            <td class="next" id="kar_next">--</td>
+          </tr>
 
-    </tbody>
-  </table>
-</div>
+        </tbody>
+      </table>
+    </div>
 
-
-<!-- RASHI SECTION -->
-<div class="rashi-section">
-
- <div class="rashi-card">
+    <!-- RASHIS -->
+    <div class="rashi-section">
+     <div class="rashi-card">
     <div class="icon">🌙</div>
     <div class="rashi-text-block">
         <div class="label">चंद्रराशी</div>
         <div class="val" id="moon_rashi">--</div>
     </div>
- </div>
+</div>
 
- <div class="rashi-card">
+
+     <div class="rashi-card">
     <div class="icon">☀️</div>
     <div class="rashi-text-block">
         <div class="label">सूर्यराशी</div>
         <div class="val" id="sun_rashi">--</div>
     </div>
- </div>
+</div>
 
- <div class="rashi-card">
+
+     <div class="rashi-card">
     <div class="icon">🔆</div>
     <div class="rashi-text-block">
         <div class="label">गुरुराशी</div>
         <div class="val" id="guru_rashi">--</div>
     </div>
- </div>
-
 </div>
 
+    </div>
 
-<!-- DIN VISHESH -->
-<div id="din_vishesh" class="din-box"></div>
-
-
-<!-- FOOTER INSIDE IMAGE -->
-<div class="footer">
-  <div class="footer-left">
-    <div id="footer_name">आपले नाव</div>
-    <div id="footer_office"></div>
-    <div id="footer_address"></div>
-    <div id="footer_contact"></div>
+    <!-- MOON & RAHUKAL (NEW SECTION) -->
+<div class="moon-row">
+  <div class="sun-box black-box">
+    <div class="sun-icon">🌙</div>
+    <div class="sun-data">
+      <h4>चंद्रोदय</h4>
+      <div id="moonrise" class="time">--</div>
+    </div>
   </div>
 
-  <img id="footer_img" />
+  <div class="sun-box black-box">
+    <div class="sun-icon">⏱️</div>
+    <div class="sun-data">
+      <h4>राहुकाल</h4>
+      <div id="rahukaal" class="time">--</div>
+    </div>
+  </div>
 </div>
 
-</div>  <!-- END #panchangCard -->
+    
+    <!-- DIN VISHESH -->
+    <div id="din_vishesh" class="din-box"></div>
+
+    <!-- FOOTER INSIDE IMAGE -->
+    <div class="footer">
+      <div class="footer-left">
+        <div id="footer_name">आपले नाव</div>
+        <div id="footer_office"></div>
+        <div id="footer_address"></div>
+        <div id="footer_contact"></div>
+      </div>
+
+      <img id="footer_img" />
+    </div>
+
+  </div>
+
+  <!-- DOWNLOAD BUTTON -->
+  <button id="downloadFab">Download Panchang</button>
+
+</div>
 
 
-<!-- DOWNLOAD BUTTON -->
-<button id="downloadFab">Download Panchang</button>
-
-</div> <!-- END .page -->
-  <script>
+<script>
 /* -------- PANCHANG DATA LOADING LOGIC -------- */
 
 const LOCAL_JSON="./panchang.json";
@@ -367,19 +560,14 @@ async function populatePanchang(){
 
   const p=data[key];
 
-  /* TOP SHALIVAHAN */
   if(p.shalivahan) document.getElementById("shalivahanLine").textContent=p.shalivahan;
   if(p.shalivahan_meta) document.getElementById("shalivahanMeta").textContent=p.shalivahan_meta;
+document.getElementById("moonrise").textContent = p.moonrise || "--";
+document.getElementById("rahukaal").textContent = p.rahukaal || "--";
 
-  /* SUN DATA */
   document.getElementById("sunrise").textContent=p.sunrise || "--";
   document.getElementById("sunset").textContent=p.sunset || "--";
 
-  /* 🌙 MOONRISE + RAHU ADDED */
-  document.getElementById("moonrise").textContent = p.moonrise || "--";
-  document.getElementById("rahu").textContent     = p.rahu || "--";
-
-  /* TABLE DATA */
   const endP=v=> v ? (v+' प') : '--';
   const nextN=v=> v ? ('नं — '+v) : '--';
 
@@ -403,12 +591,10 @@ async function populatePanchang(){
   document.getElementById("kar_end").textContent=endP(p.karan_end);
   document.getElementById("kar_next").textContent=nextN(p.karan_next);
 
-  /* RASHI */
   document.getElementById("moon_rashi").textContent=p.moon_rashi || "--";
   document.getElementById("sun_rashi").textContent=p.sun_rashi || "--";
   document.getElementById("guru_rashi").textContent=p.guru_rashi || "--";
 
-  /* DIN VISHESH */
   if(p.din_vishesh){
     const dv=document.getElementById("din_vishesh");
     dv.textContent="दिनविशेष: "+p.din_vishesh;
