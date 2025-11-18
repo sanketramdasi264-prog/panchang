@@ -64,32 +64,79 @@
     box-shadow:0 24px 50px rgba(0,0,0,.16);
   }
 
-  .top-header{
-    display:flex;justify-content:space-between;align-items:flex-start;
-    padding:20px;background:#fff;border-bottom:6px solid var(--gold);position:relative
-  }
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:12px 18px;        /* 20px → 12px (height कमी) */
+    background:#fff;
+    border-bottom:6px solid var(--gold);
+    position:relative;
+}
+.left-info{max-width:42%}
 
-  .left-info{max-width:42%}
-  .title{font-family:'Baloo 2';font-size:36px;font-weight:800;color:#0b2b3a}
-  .date{font-size:22px;font-weight:900;color:var(--accent);margin-top:6px}
-  .day{font-size:18px;font-weight:700;color:var(--accent);margin-top:6px}
+.title{
+    font-family:'Baloo 2';
+    font-size:30px;           /* 34px → 30px (looks same, less height) */
+    font-weight:800;
+    color:#0b2b3a;
+    line-height:1.15;         /* height कमी */
+}
+.date{
+    font-size:19px;           /* 22px → 19px */
+    font-weight:900;
+    color:var(--accent);
+    margin-top:4px;
+}
+.day{
+    font-size:16px;           /* 18px → 16px */
+    font-weight:700;
+    color:var(--accent);
+    margin-top:2px;
+}
 
-  .ganesh-center{
-    position:absolute;left:50%;top:6px;transform:translateX(-50%);
-    width:220px;height:220px;pointer-events:none;
-  }
-  .ganesh-center img{width:100%;height:100%;object-fit:contain}
+.ganesh-center{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:2px;
+    width:170px;              /* 220px → 170px */
+    height:170px;
+}
 
-  .logo-right{
-    width:160px;display:flex;justify-content:flex-end;margin-right:-30px;
-  }
+.logo-right{
+    width:120px;              /* 140px → 120px */
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-end;
+    margin-right:-10px;       /* look same but less width */
+}
+.logo-right img{
+    max-width:120px;
+}
+
 
   /* SHALIVAHAN */
   .shalivahan{
     background:linear-gradient(180deg,var(--accent),#8c1c1c);color:#fff;
     padding:16px;text-align:center;border-bottom:6px solid var(--gold)
   }
-  .shalivahan h3{font-family:'Baloo 2';font-size:28px;font-weight:900;margin-bottom:6px}
+ .shalivahan h3{
+    font-family:'Baloo 2';
+    font-size:20px;          /* 28 → 22 */
+    font-weight:900;
+    margin-bottom:4px;
+    line-height:1.1;         /* height कमी */
+}
+
+.shalivahan p{
+    font-size:16px;          /* 20 → 18 */
+    font-weight:700;
+    margin:0;
+    line-height:1.1;         /* दोन्ही height match */
+    opacity:0.95;
+}
+
 
   /* SUN BOX */
   .sun-row{
@@ -97,35 +144,109 @@
     background:linear-gradient(90deg,var(--blue1),var(--blue2));
     border-bottom:6px solid var(--gold)
   }
-  .sun-box{
-    display:flex;align-items:center;gap:10px;
-    padding:10px 18px;border-radius:40px;background:rgba(255,255,255,0.10);
-  }
-  .sun-icon{
-    width:50px;height:50px;background:#fff;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;box-shadow:0 6px 16px rgba(0,0,0,.22)
-  }
-  .sun-data h4{color:#fff;margin:0;font-size:14px;font-weight:700}
-  .sun-data .time{color:var(--gold);font-size:22px;font-weight:900;margin-top:4px}
+ .sun-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;
+    border-radius:40px;
+    background:rgba(255,255,255,0.10);
+}
+.sun-icon{
+    width:auto;
+    height:auto;
+    background:none;
+    border-radius:0;
+    font-size:24px;
+    box-shadow:none;
+}
+.sun-data{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:6px;
+}
+.sun-data h4{
+    margin:0;
+    color:#fff;
+    font-weight:700;
+    font-size:16px;
+}
+.sun-data .time{
+    color:var(--gold);
+    font-size:20px;
+    font-weight:900;
+}
 
-  /* TABLE */
-  .table-section{padding:16px 18px;background:#fffdf8}
-  .p-table{width:100%;border-collapse:collapse;font-weight:700}
-  .p-table td{padding:12px;border-bottom:1px dashed #f1d7b2}
-  .event{width:22%;color:#666}
-  .info{width:43%}
-  .time{width:20%;color:var(--accent);font-weight:900;text-align:center}
-  .next{width:15%;text-align:center;color:#444}
+
+/* TABLE */
+.table-section{padding:12px 14px;background:#fffdf8}
+.p-table{width:100%;border-collapse:collapse;font-weight:700}
+
+.p-table td{
+    padding:6px 6px;
+    font-size:15px;
+    line-height:1.15;
+    border-bottom:1px dashed #f1d7b2;
+}
+
+.event{width:18%;color:#666}
+.info{width:40%}
+.
+ time{width:22%;color:var(--accent);font-weight:900;text-align:center}
+.next{width:12%;text-align:center;color:#444}
 
   /* RASHI */
-  .rashi-section{display:flex;gap:12px;padding:16px;background:#fff}
-  .rashi-card{
-    flex:1;background:#fff;border:3px solid #ffb300;border-radius:10px;
-    padding:14px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.06)
-  }
-  .rashi-card .label{color:#666;font-size:14px;margin-top:4px}
-  .rashi-card .val{font-size:18px;color:var(--accent);font-weight:900;margin-top:6px}
+ .rashi-section{
+    display:flex;
+    gap:10px;              /* 12 → 10 */
+    padding:10px 14px;     /* 16 → 10 */
+    background:#fff;
+}
+
+.rashi-card{
+    flex:1;
+    background:#fff;
+    border:2px solid #ffb300;
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex;                /* horizontal layout */
+    align-items:center;
+    gap:10px;                    /* icon-text gap */
+    box-shadow:0 6px 16px rgba(0,0,0,.05);
+}
+
+/* icon left side */
+.rashi-card .icon{
+    font-size:22px;              /* थोडं छोटं */
+    margin:0;
+    padding:0;
+}
+
+/* label + value together = text column */
+.rashi-text-block{
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+/* Label */
+.rashi-card .label{
+    color:#0d47a1;     /* Dark Blue */
+    font-size:12px;
+    margin:0;
+    padding:0;
+}
+
+/* Value */
+.rashi-card .val{
+    font-size:16px;
+    color:var(--accent);
+    font-weight:900;
+    margin-top:2px;
+}
+
+
 
   /* DIN VISHESH */
   .din-box{
@@ -213,7 +334,7 @@
       </div>
 
       <div class="logo-right">
-        <img id="logo" src="1000894411.png" crossorigin="anonymous" style="width:150px;">
+        <img id="logo" src="logo.png" crossorigin="anonymous" style="width:150px;">
       </div>
     </div>
 
@@ -281,23 +402,32 @@
 
     <!-- RASHIS -->
     <div class="rashi-section">
-      <div class="rashi-card">
-        <div class="icon">🌙</div>
+     <div class="rashi-card">
+    <div class="icon">🌙</div>
+    <div class="rashi-text-block">
         <div class="label">चंद्रराशी</div>
         <div class="val" id="moon_rashi">--</div>
-      </div>
+    </div>
+</div>
 
-      <div class="rashi-card">
-        <div class="icon">☀️</div>
+
+     <div class="rashi-card">
+    <div class="icon">☀️</div>
+    <div class="rashi-text-block">
         <div class="label">सूर्यराशी</div>
         <div class="val" id="sun_rashi">--</div>
-      </div>
+    </div>
+</div>
 
-      <div class="rashi-card">
-        <div class="icon">🔆</div>
+
+     <div class="rashi-card">
+    <div class="icon">🔆</div>
+    <div class="rashi-text-block">
         <div class="label">गुरुराशी</div>
         <div class="val" id="guru_rashi">--</div>
-      </div>
+    </div>
+</div>
+
     </div>
 
     <!-- DIN VISHESH -->
@@ -452,7 +582,7 @@ async function generatePNG(){
   await new Promise(res=>setTimeout(res,200));
 
   return html2canvas(el,{
-    scale:2,
+    scale:1,
     useCORS:true,
     allowTaint:true,
     backgroundColor:"#ffffff"
