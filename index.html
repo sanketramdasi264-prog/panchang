@@ -1,434 +1,497 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>आजचे पंचांग — OmKarmyog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>आजचे पंचांग</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #1b5e20;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
 
-  <!-- html2canvas for download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        #panchangCard {
+            width: 1080px;
+            height: 1920px;
+            background: white;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        }
 
-  <style>
-    :root{
-      --card-w:1080px;
-      --card-h:1920px;
-      --cream:#fff9f1;
-      --maroon-1:#5a110e;
-      --maroon-2:#3a0706;
-      --gold:#d9a64b;
-      --saffron:#e56a2e;
-      --blue-1:#1565c0;
-      --blue-2:#0d47a1;
-      --dark:#0b2b3a;
-      --muted:#6d6d6d;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:linear-gradient(180deg,#f0f3f5, #e8edf0);font-family:'Noto Sans Devanagari',sans-serif;padding:20px;display:flex;justify-content:center}
-    .wrap{max-width:1200px;width:100%}
-    .layout{display:flex;gap:18px;align-items:flex-start}
-    /* Panchang card */
-    #panchangCard{width:var(--card-w);height:var(--card-h);background:var(--cream);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);position:relative}
-    /* HEADER */
-    .header{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px;border-bottom:6px solid var(--gold);background:linear-gradient(180deg,#fff 0%,#fbfbfb 100%)}
-    .header-left{width:320px}
-    .title{font-family:'Baloo 2',sans-serif;font-size:40px;color:var(--dark);font-weight:800}
-    .top-date{font-size:22px;color:#d32f2f;font-weight:800;margin-top:6px}
-    .top-day{font-size:20px;color:#d32f2f;font-weight:700;margin-top:4px}
-    .header-center{flex:1;text-align:center}
-    .ganesh{display:inline-block}
-    .ganesh img{width:220px;height:220px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.35))}
-    .header-right{width:140px;text-align:right}
-    .logo img{max-width:120px;max-height:80px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.18))}
-    /* Shalivahan */
-    .shalivahan{background:linear-gradient(180deg,#c62828 0%,#b71c1c 100%);color:#fff;text-align:center;padding:18px 26px;border-bottom:6px solid var(--gold)}
-    .shalivahan h3{font-family:'Baloo 2';font-size:30px;margin-bottom:6px}
-    .shalivahan p{font-size:18px;margin:0;opacity:0.95}
-    /* Sunrise / Sunset */
-    .sun-row{background:linear-gradient(90deg,var(--blue-1),var(--blue-2));padding:14px 26px;display:flex;justify-content:center;gap:28px;align-items:center}
-    .sun-card{display:flex;align-items:center;gap:12px;padding:10px 18px;border-radius:36px;background:rgba(255,255,255,0.08)}
-    .sun-icon{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
-    .sun-info h4{color:#fff;font-size:14px;margin:0}
-    .sun-info .time{color:var(--gold);font-weight:800;font-size:22px}
-    /* Table section - simplified */
-    .table-section{padding:22px 36px;background:linear-gradient(180deg,#fff8e8 0%,#fff 100%)}
-    .panchang-table{width:100%;border-collapse:collapse;border-left:3px solid #ff9800;border-right:3px solid #ff9800}
-    .panchang-table tr{border-bottom:2px solid #f2d2b0}
-    .panchang-table td{padding:14px 10px;font-weight:700;font-size:18px;color:var(--dark);vertical-align:middle}
-    .panchang-table td.event{width:20%;text-align:left;padding-left:18px;color:var(--muted);font-weight:800}
-    .panchang-table td.info{width:40%;text-align:left;padding-left:12px;font-size:20px}
-    .panchang-table td.time{width:20%;text-align:center;color:#c62828;font-weight:900}
-    .panchang-table td.next{width:20%;text-align:center;color:var(--muted);font-weight:700}
-    /* Rashi boxes: only 3 */
-    .rashi-wrap{display:flex;gap:18px;padding:20px 36px}
-    .rashi{flex:1;background:#fff;border:3px solid #ff9800;border-radius:12px;padding:18px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.06)}
-    .rashi .icon{font-size:26px;margin-bottom:8px}
-    .rashi .label{color:#666;font-size:14px;margin-bottom:6px}
-    .rashi .value{font-size:20px;color:#c62828;font-weight:900}
-    /* Din vishesh box */
-    .din-box{margin:18px 36px;padding:14px;background:linear-gradient(180deg,#fff8e6 0%,#fff2d9 100%);border-radius:10px;border:2px solid #e2a92f;color:var(--dark);font-weight:800;text-align:left}
-    /* Footer dark maroon */
-    .footer{margin-top:auto;background:linear-gradient(90deg,var(--maroon-1),var(--maroon-2));padding:26px 36px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .footer-left{flex:1;color:#fff}
-    .u-name{font-family:'Baloo 2';font-size:36px;color:#ffd84a;font-weight:900;margin-bottom:6px}
-    .u-office{font-size:18px;color:#fff;margin-bottom:6px;font-weight:700;opacity:0.95}
-    .u-contact{font-size:18px;color:#fff;font-weight:700}
-    .footer-photo{width:200px;height:200px;border-radius:12px;object-fit:cover;border:6px solid var(--gold);box-shadow:0 8px 28px rgba(0,0,0,.25)}
-    /* Sidebar form */
-    .side{width:340px;background:#fff;border-radius:12px;padding:16px;box-shadow:0 16px 44px rgba(0,0,0,.14);position:sticky;top:20px;height:fit-content}
-    .side .form-header{background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;padding:12px;border-radius:8px;margin:-16px -16px 12px -16px;text-align:center}
-    .form-group{margin-bottom:12px}
-    .form-group label{display:block;margin-bottom:6px;font-weight:700}
-    .form-input, textarea{width:100%;padding:10px;border-radius:8px;border:2px solid #e8e8e8;font-size:15px}
-    .photo-preview{width:120px;height:120px;border-radius:8px;display:none;object-fit:cover;border:4px solid #2e7d32;margin:8px auto}
-    .btn{display:block;width:100%;padding:12px;border-radius:8px;background:linear-gradient(135deg,#d32f2f,#c62828);color:#fff;border:0;font-weight:900;cursor:pointer;margin-top:8px}
-    @media(max-width:1200px){.layout{flex-direction:column;align-items:center}.side{width:100%}}
-  </style>
+        .top-header {
+            height: 280px;
+            background: #ffffff;
+            border-bottom: 8px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        .left-info {
+            text-align: left;
+        }
+
+        .left-info .title {
+            font-size: 52px;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .left-info .date {
+            font-size: 46px;
+            font-weight: 900;
+            color: #c62828;
+            margin-top: 10px;
+        }
+
+        .left-info .day {
+            font-size: 40px;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-top: 5px;
+        }
+
+        .ganesh-center {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 260px;
+        }
+
+        .ganesh-center img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
+        }
+
+        .logo-right {
+            width: 180px;
+            height: 180px;
+        }
+
+        .logo-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .shake-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            border-bottom: 8px solid #ffd700;
+        }
+
+        .shake-section h2 {
+            font-size: 54px;
+            font-weight: 900;
+        }
+
+        .shake-section p {
+            font-size: 40px;
+            margin-top: 12px;
+        }
+        .sun-section {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            border-bottom: 8px solid #ffd700;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .sun-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.15);
+            padding: 20px 40px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .sun-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .sun-text {
+            color: white;
+        }
+
+        .sun-text h4 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .sun-text .time {
+            font-size: 46px;
+            font-weight: 900;
+            color: #ffea00;
+        }
+
+        .table-section {
+            padding: 30px 20px;
+            background: #fff8e1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 6px solid #ff9800;
+        }
+
+        th, td {
+            padding: 22px;
+            border: 3px solid #ff9800;
+            text-align: center;
+        }
+
+        th {
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            font-size: 40px;
+            color: #b71c1c;
+            font-weight: 900;
+        }
+
+        td {
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        .rashi-section {
+            padding: 40px;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .rashi-box {
+            border: 5px solid #ff9800;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .rashi-box .icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .rashi-box .label {
+            color: #444;
+            font-size: 32px;
+        }
+
+        .rashi-box .value {
+            color: #c62828;
+            font-size: 48px;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background: #5a0e0e;
+            padding: 30px 40px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 260px;
+            border-top: 8px solid #ffd700;
+        }
+
+        .footer-info {
+            flex: 1;
+        }
+
+        .footer-info .name {
+            font-size: 58px;
+            font-weight: 900;
+            color: #ffeb3b;
+        }
+
+        .footer-info .office {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .footer-info .contact {
+            font-size: 36px;
+            margin-top: 10px;
+        }
+
+        .footer-photo {
+            width: 260px;
+            height: 330px;
+            border-radius: 12px;
+            border: 8px solid #ffd700;
+            object-fit: cover;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 768px) {
+            #panchangCard {
+                transform: scale(0.48);
+                transform-origin: top center;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="layout">
-      <!-- Card -->
-      <div id="panchangCard" aria-label="पंचांग कार्ड">
-        <!-- HEADER -->
-        <div class="header">
-          <!-- TOP LEFT: title / date / day -->
-          <div class="header-left">
+
+<div id="panchangCard">
+
+    <div class="top-header">
+        <div class="left-info">
             <div class="title">आजचे पंचांग</div>
-            <div class="top-date" id="topDate">--</div>
-            <div class="top-day" id="topDay">--</div>
-          </div>
-
-          <!-- TOP CENTER: Ganesh -->
-          <div class="header-center">
-            <div class="ganesh"><img id="ganeshImg" src="https://raw.githubusercontent.com/sanketramdasi264-prog/panchang/main/pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png" alt="Ganesh"></div>
-          </div>
-
-          <!-- TOP RIGHT: logo -->
-          <div class="header-right logo"><img id="logoImg" src="https://blogger.googleusercontent.com/img/a/AVvXsEghUXDnRLeFXsuapWEpRem_Mtzst5Ae9zlttWprP9nI7dQ_Rh41nkHP3PqCiHrZo1YKUiMvbHaPZC6VZEBCSvuAvzQOVF7MxUon4i3Hdko0qGWwyl4BQ44KeAe-6qQACSUB8k-3wdI6N2Bt-8xsQSQnHW-a2AMw9SwT0hK4b5Ej5zmN_anbnY1pX2TC9pwR=s500" alt="Logo"></div>
+            <div class="date" id="hdrDate">--</div>
+            <div class="day" id="hdrDay">--</div>
         </div>
 
-        <!-- SHALIVAHAN -->
-        <div class="shalivahan">
-          <h3 id="shalivahanLine">शालिवाहन शके १९४७</h3>
-          <p id="shalivahanMeta">विश्वावसुनामसंवत्सर, दक्षिणायन, शरदऋतू, कार्तिक मास, कृष्ण पक्ष</p>
+        <div class="ganesh-center">
+            <img src="https://raw.githubusercontent.com/sanketramdasi264-prog/panchang/main/pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png" />
         </div>
 
-        <!-- SUNRISE / SUNSET -->
-        <div class="sun-row">
-          <div class="sun-card">
-            <div class="sun-icon">🌅</div>
-            <div class="sun-info">
-              <h4>सूर्योदय</h4>
-              <div id="sunrise" class="time">--:--</div>
-            </div>
-          </div>
-
-          <div class="sun-card">
-            <div class="sun-icon">🌄</div>
-            <div class="sun-info">
-              <h4>सूर्यास्त</h4>
-              <div id="sunset" class="time">--:--</div>
-            </div>
-          </div>
+        <div class="logo-right">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEghUXDnRLeFXsuapWEpRem_Mtzst5Ae9zlttWprP9nI7dQ_Rh41nkHP3PqCiHrZo1YKUiMvbHaPZC6VZEBCSvuAvzQOVF7MxUon4i3Hdko0qGWwyl4BQ44KeAe-6qQACSUB8k-3wdI6N2Bt-8xsQSQnHW-a2AMw9SwT0hK4b5Ej5zmN_anbnY1pX2TC9pwR=s500">
         </div>
-
-        <!-- SIMPLIFIED TABLE -->
-        <div class="table-section">
-          <table class="panchang-table" aria-label="पंचांग तपशील">
-            <tbody>
-              <tr>
-                <td class="event">तिथी</td>
-                <td class="info" id="tithiName">--</td>
-                <td class="time" id="tithiTime">--</td>
-                <td class="next" id="tithiNext">--</td>
-              </tr>
-
-              <tr>
-                <td class="event">वार</td>
-                <td class="info" id="vaar">--</td>
-                <td class="time" id="vaarTime">--</td>
-                <td class="next" id="vaarSanskrit">--</td>
-              </tr>
-
-              <tr>
-                <td class="event">नक्षत्र</td>
-                <td class="info" id="nakshatra">--</td>
-                <td class="time" id="nakshatraTime">--</td>
-                <td class="next" id="nakshatraNext">--</td>
-              </tr>
-
-              <tr>
-                <td class="event">योग</td>
-                <td class="info" id="yoga">--</td>
-                <td class="time" id="yogaTime">--</td>
-                <td class="next" id="yogaNext">--</td>
-              </tr>
-
-              <tr>
-                <td class="event">करण</td>
-                <td class="info" id="karana">--</td>
-                <td class="time" id="karanaTime">--</td>
-                <td class="next" id="karanaNext">--</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- RASHI BOXES (only 3) -->
-        <div class="rashi-wrap">
-          <div class="rashi">
-            <div class="icon">🌙</div>
-            <div class="label">चंद्र</div>
-            <div class="value" id="chandraRashi">--</div>
-          </div>
-
-          <div class="rashi">
-            <div class="icon">☀️</div>
-            <div class="label">सूर्य</div>
-            <div class="value" id="suryaRashi">--</div>
-          </div>
-
-          <div class="rashi">
-            <div class="icon">🔆</div>
-            <div class="label">गुरु</div>
-            <div class="value" id="guruRashi">--</div>
-          </div>
-        </div>
-
-        <!-- DIN VISHESH (before footer) -->
-        <div id="dinVishesh" class="din-box" style="display:none"></div>
-
-        <!-- FOOTER: dark maroon -->
-        <div class="footer" role="contentinfo">
-          <div class="footer-left">
-            <div class="u-name" id="footerName">आपले नाव</div>
-            <div class="u-office" id="footerOffice">कार्यालय माहिती (पर्यायी)</div>
-            <div class="u-contact" id="footerContact">संपर्क: --</div>
-          </div>
-
-          <div>
-            <img id="footerPhoto" class="footer-photo" src="" alt="User Photo" style="display:none">
-          </div>
-        </div>
-      </div>
-
-      <!-- SIDE FORM -->
-      <aside class="side" aria-label="User form (generate)">
-        <div class="form-header"><strong>📋 आपली माहिती भरा (पर्यायी)</strong></div>
-
-        <div class="form-group">
-          <label>फोटो (पर्यायी)</label>
-          <div style="border:2px dashed #2e7d32;padding:10px;border-radius:8px;text-align:center;cursor:pointer" onclick="document.getElementById('userPhoto').click()">फोटो निवडा</div>
-          <input id="userPhoto" type="file" accept="image/*" style="display:none" />
-          <img id="photoPreview" class="photo-preview" alt="preview" />
-        </div>
-
-        <div class="form-group">
-          <label>पूर्ण नाव</label>
-          <input id="userName" class="form-input" placeholder="आपले नाव"/>
-        </div>
-
-        <div class="form-group">
-          <label>कार्यालय / माहिती (पर्यायी)</label>
-          <input id="officeName" class="form-input" placeholder="कार्यालयाचे नाव"/>
-        </div>
-
-        <div class="form-group">
-          <label>संपर्क</label>
-          <input id="userContact" class="form-input" placeholder="मोबाईल क्रमांक"/>
-        </div>
-
-        <div class="form-group">
-          <label>पत्ता (पर्यायी)</label>
-          <textarea id="userAddress" class="form-input" placeholder="पत्ता (पर्यायी)" rows="3"></textarea>
-        </div>
-
-        <button class="btn" onclick="downloadPanchang()">📥 Generate & Download (1080×1920)</button>
-        <div style="font-size:12px;color:#666;margin-top:8px">Admin: update <code>panchang.json</code> in repo root (YYYY-MM-DD keys).</div>
-      </aside>
     </div>
-  </div>
 
-  <script>
-    // ---------- CONFIG ----------
-    const JSON_PATH = './panchang.json'; // must exist in repo root
-    const CARD_WIDTH = 1080;
-    const CARD_HEIGHT = 1920;
+    <div class="shake-section">
+        <h2 id="shakeMain">शालिवाहन शके १९४७</h2>
+        <p id="shakeSub">विश्वावसुनामसंवत्सर, दक्षिणायन...</p>
+    </div>
 
-    // Helper: today's ISO key
-    function todayISO(){
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const dd = String(d.getDate()).padStart(2,'0');
-      return `${y}-${m}-${dd}`;
+    <div class="sun-section">
+        <div class="sun-box">
+            <div class="sun-icon">🌅</div>
+            <div class="sun-text">
+                <h4>सूर्योदय</h4>
+                <div class="time" id="sunrise">--</div>
+            </div>
+        </div>
+
+        <div class="sun-box">
+            <div class="sun-icon">🌄</div>
+            <div class="sun-text">
+                <h4>सूर्यास्त</h4>
+                <div class="time" id="sunset">--</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>🕉</th>
+                    <th>तत्त्व</th>
+                    <th>माहिती</th>
+                    <th>वेळ</th>
+                    <th>नंतर</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🕉</td>
+                    <td>तिथी</td>
+                    <td id="tblTithi">--</td>
+                    <td id="tblTithiEnd">--</td>
+                    <td id="tblTithiNext">--</td>
+                </tr>
+                <tr>
+                    <td>🕉</td>
+                    <td>नक्षत्र</td>
+                    <td id="tblNak">--</td>
+                    <td id="tblNakEnd">--</td>
+                    <td id="tblNakNext">--</td>
+                </tr>
+                <tr>
+                    <td>🕉</td>
+                    <td>योग</td>
+                    <td id="tblYog">--</td>
+                    <td id="tblYogTime">--</td>
+                    <td id="tblYogNext">--</td>
+                </tr>
+                <tr>
+                    <td>🕉</td>
+                    <td>करण</td>
+                    <td id="tblKar">--</td>
+                    <td id="tblKarEnd">--</td>
+                    <td id="tblKarNext">--</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="rashi-section">
+        <div class="rashi-box">
+            <div class="icon">🌙</div>
+            <div class="label">चंद्र राशी</div>
+            <div class="value" id="rashiMoon">--</div>
+        </div>
+        <div class="rashi-box">
+            <div class="icon">☀️</div>
+            <div class="label">सूर्य राशी</div>
+            <div class="value" id="rashiSun">--</div>
+        </div>
+        <div class="rashi-box">
+            <div class="icon">⭐</div>
+            <div class="label">गुरु राशी</div>
+            <div class="value" id="rashiGuru">--</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-info">
+            <div class="name" id="userNameBox"></div>
+            <div class="office" id="userOfficeBox"></div>
+            <div class="contact" id="userContactBox"></div>
+        </div>
+
+        <img id="userPhotoBox" class="footer-photo" style="display:none;">
+    </div>
+
+</div>
+
+<script>
+async function loadPanchang() {
+    let today = new Date();
+    let y = today.getFullYear();
+    let m = String(today.getMonth() + 1).padStart(2, "0");
+    let d = String(today.getDate()).padStart(2, "0");
+    let key = `${y}-${m}-${d}`;
+
+    let url = "https://sanketramdasi264-prog.github.io/panchang/panchang.json";
+
+    let data = await fetch(url).then(r => r.json()).catch(e => null);
+
+    if (!data || !data[key]) return;
+
+    let p = data[key];
+
+    document.getElementById("hdrDate").textContent = `${d}-${m}-${y}`;
+    document.getElementById("hdrDay").textContent = ["रविवार","सोमवार","मंगळवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"][today.getDay()];
+
+    document.getElementById("shakeMain").textContent = p.shalivahan;
+    document.getElementById("shakeSub").textContent = p.shalivahan_meta;
+
+    document.getElementById("sunrise").textContent = p.sunrise;
+    document.getElementById("sunset").textContent = p.sunset;
+
+    document.getElementById("tblTithi").textContent = p.tithi;
+    document.getElementById("tblTithiEnd").textContent = p.tithi_end;
+    document.getElementById("tblTithiNext").textContent = p.tithi_next;
+
+    document.getElementById("tblNak").textContent = p.nakshatra;
+    document.getElementById("tblNakEnd").textContent = p.nakshatra_end;
+    document.getElementById("tblNakNext").textContent = p.nakshatra_next;
+
+    document.getElementById("tblYog").textContent = p.yog;
+    document.getElementById("tblYogTime").textContent = p.yog_time;
+    document.getElementById("tblYogNext").textContent = p.yog_next;
+
+    document.getElementById("tblKar").textContent = p.karan;
+    document.getElementById("tblKarEnd").textContent = p.karan_end;
+    document.getElementById("tblKarNext").textContent = p.karan_next;
+
+    document.getElementById("rashiMoon").textContent = p.moon_rashi;
+    document.getElementById("rashiSun").textContent = p.sun_rashi;
+    document.getElementById("rashiGuru").textContent = p.guru_rashi;
+}
+
+loadPanchang();
+
+let userInputName = "";
+let userInputOffice = "";
+let userInputContact = "";
+let userPhotoData = "";
+
+function updateFooter() {
+    document.getElementById("userNameBox").textContent = userInputName;
+    document.getElementById("userOfficeBox").textContent = userInputOffice;
+    document.getElementById("userContactBox").textContent = userInputContact;
+
+    if (userPhotoData) {
+        let img = document.getElementById("userPhotoBox");
+        img.src = userPhotoData;
+        img.style.display = "block";
     }
+}
 
-    // Load JSON (admin-updated file)
-    async function loadPanchangJson(){
-      try{
-        const res = await fetch(JSON_PATH, {cache:'no-store'});
-        if(!res.ok) throw new Error('panchang.json not found');
-        return await res.json();
-      }catch(err){
-        console.warn('panchang.json load error:', err);
-        return null;
-      }
-    }
+function downloadCard() {
+    updateFooter();
 
-    // Fill UI from JSON (if available) or set placeholders
-    async function fillFromJson(){
-      const json = await loadPanchangJson();
-      const key = todayISO();
-      const d = new Date();
-      const days = ['रविवार','सोमवार','मंगळवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
-
-      // top date/day
-      document.getElementById('topDate').textContent = `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
-      document.getElementById('topDay').textContent = days[d.getDay()];
-
-      if(!json || !json[key]){
-        // JSON missing for today
-        // Keep reasonable placeholders and show din-vishesh missing
-        console.warn('Today panchang not found in panchang.json for key:', key);
-        // set placeholders
-        const placeholders = ['--','--','--','--'];
-        ['tithiName','tithiTime','tithiNext','vaar','vaarTime','vaarSanskrit','nakshatra','nakshatraTime','nakshatraNext','yoga','yogaTime','yogaNext','karana','karanaTime','karanaNext','sunrise','sunset','chandraRashi','suryaRashi','guruRashi'].forEach(id=>{
-          const el = document.getElementById(id);
-          if(el) el.textContent = '--';
-        });
-        document.getElementById('dinVishesh').style.display = 'none';
-        return;
-      }
-
-      const p = json[key];
-
-      // Shalivahan overrides (optional)
-      if(p.shalivahan) document.getElementById('shalivahanLine').textContent = p.shalivahan;
-      if(p.shalivahan_meta) document.getElementById('shalivahanMeta').textContent = p.shalivahan_meta;
-
-      // Sunrise/ Sunset
-      document.getElementById('sunrise').textContent = p.sunrise || '--';
-      document.getElementById('sunset').textContent = p.sunset || '--';
-
-      // Table rows format:
-      // Tithi row: tithi, tithi_end, tithi_next
-      document.getElementById('tithiName').textContent = p.tithi || '--';
-      document.getElementById('tithiTime').textContent = p.tithi_end || '--';
-      document.getElementById('tithiNext').textContent = p.tithi_next ? ('नंतर — ' + p.tithi_next) : (p.tithi_next || '--');
-
-      // Vaar row
-      document.getElementById('vaar').textContent = p.vaar || days[new Date().getDay()] || '--';
-      document.getElementById('vaarTime').textContent = p.vaar_time || '--';
-      document.getElementById('vaarSanskrit').textContent = p.vaar_sanskrit || p.vaarSanskrit || '--';
-
-      // Nakshatra
-      document.getElementById('nakshatra').textContent = p.nakshatra || '--';
-      document.getElementById('nakshatraTime').textContent = p.nakshatra_end || '--';
-      document.getElementById('nakshatraNext').textContent = p.nakshatra_next ? ('नंतर — ' + p.nakshatra_next) : (p.nakshatra_next || '--');
-
-      // Yoga
-      document.getElementById('yoga').textContent = p.yog || '--';
-      document.getElementById('yogaTime').textContent = p.yog_time || '--';
-      document.getElementById('yogaNext').textContent = p.yog_next ? ('नंतर — ' + p.yog_next) : (p.yog_next || '--');
-
-      // Karana
-      document.getElementById('karana').textContent = p.karan || '--';
-      document.getElementById('karanaTime').textContent = p.karan_end || '--';
-      document.getElementById('karanaNext').textContent = p.karan_next ? ('नंतर — ' + p.karan_next) : (p.karan_next || '--');
-
-      // Rashis
-      document.getElementById('chandraRashi').textContent = p.moon_rashi || p.moonRashi || '--';
-      document.getElementById('suryaRashi').textContent = p.sun_rashi || p.sunRashi || '--';
-      document.getElementById('guruRashi').textContent = p.guru_rashi || p.guruRashi || '--';
-
-      // Din Vishesh
-      if(p.din_vishesh){
-        const dv = document.getElementById('dinVishesh');
-        dv.textContent = 'दिनविशेष: ' + p.din_vishesh;
-        dv.style.display = 'block';
-      } else {
-        document.getElementById('dinVishesh').style.display = 'none';
-      }
-    }
-
-    // Handle user photo selection & preview + footer mapping
-    document.getElementById('userPhoto').addEventListener('change', function(ev){
-      const f = ev.target.files[0];
-      if(!f) return;
-      const reader = new FileReader();
-      reader.onload = function(e){
-        const data = e.target.result;
-        // preview in side form
-        const pv = document.getElementById('photoPreview');
-        pv.src = data; pv.style.display = 'block';
-        // footer photo
-        const fp = document.getElementById('footerPhoto');
-        fp.src = data; fp.style.display = 'block';
-      };
-      reader.readAsDataURL(f);
-    });
-
-    // apply footer user fields
-    function applyFooter(){
-      const name = document.getElementById('userName').value.trim();
-      const office = document.getElementById('officeName').value.trim();
-      const contact = document.getElementById('userContact').value.trim();
-      const addr = document.getElementById('userAddress').value.trim();
-
-      document.getElementById('footerName').textContent = name || 'आपले नाव';
-      document.getElementById('footerOffice').textContent = office || '';
-      document.getElementById('footerContact').textContent = contact ? ('संपर्क: ' + contact) : 'संपर्क: --';
-
-      // If no photo chosen, hide footerPhoto
-      if(!document.getElementById('footerPhoto').src) {
-        document.getElementById('footerPhoto').style.display = 'none';
-      }
-    }
-
-    // Download / Generate PNG
-    async function downloadPanchang(){
-      applyFooter();
-      // small wait to ensure images rendered
-      await new Promise(r=>setTimeout(r,220));
-
-      const el = document.getElementById('panchangCard');
-      html2canvas(el, {
+    html2canvas(document.querySelector("#panchangCard"), {
         scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: CARD_WIDTH,
-        height: CARD_HEIGHT,
-        logging: false
-      }).then(canvas=>{
-        canvas.toBlob(function(blob){
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          const name = document.getElementById('userName').value.trim();
-          const d = new Date();
-          const fn = name ? `panchang_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${name.replace(/\s+/g,'_')}.png` : `panchang_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.png`;
-          a.href = url; a.download = fn; document.body.appendChild(a); a.click(); a.remove();
-          setTimeout(()=>URL.revokeObjectURL(url),500);
-        }, 'image/png');
-      }).catch(err=>{
-        console.error('html2canvas failed', err);
-        alert('चित्र तयार करताना त्रुटी आली. Console तपासा.');
-      });
-    }
-
-    // init
-    window.addEventListener('load', async ()=>{
-      await fillFromJson();
-      // refresh at midnight
-      setInterval(async ()=> {
-        const now = new Date();
-        if(now.getHours()===0 && now.getMinutes()===0) await fillFromJson();
-      }, 60000);
+        useCORS: true
+    }).then(canvas => {
+        let link = document.createElement("a");
+        link.download = "panchang.png";
+        link.href = canvas.toDataURL();
+        link.click();
     });
-  </script>
+}
+
+document.body.insertAdjacentHTML("beforeend", `
+<style>
+#inputPanel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    width: 320px;
+    z-index: 9999;
+}
+#inputPanel input { width:100%; padding:10px; margin-bottom:10px; font-size:18px; }
+#inputPanel button { width:100%; padding:12px; background:#c62828; color:white; font-size:20px; border:none; border-radius:10px; }
+</style>
+
+<div id="inputPanel">
+    <input id="nameInput" placeholder="आपले नाव" />
+    <input id="officeInput" placeholder="कार्यालय नाव" />
+    <input id="contactInput" placeholder="संपर्क" />
+    <input type="file" id="userPhoto" accept="image/*" />
+    <button onclick="downloadCard()">Download Panchang</button>
+</div>
+`);
+
+document.getElementById("nameInput").oninput = e => userInputName = e.target.value;
+document.getElementById("officeInput").oninput = e => userInputOffice = e.target.value;
+document.getElementById("contactInput").oninput = e => userInputContact = e.target.value;
+
+document.getElementById("userPhoto").onchange = e => {
+    let file = e.target.files[0];
+    let reader = new FileReader();
+    reader.onload = () => userPhotoData = reader.result;
+    reader.readAsDataURL(file);
+};
+</script>
+
 </body>
 </html>
