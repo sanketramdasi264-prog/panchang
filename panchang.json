@@ -1,34 +1,497 @@
 {
-  "2025-11-17": {
-    "tithi": "त्रयोदशी",
-    "tithi_end": "11:15 say",
-    "nakshatra": "चित्रा",
-    "nakshatra_end": "05:54 dupari",
-    "yog": "प्रीति",
-    "karan": "तैतिल",
-    "karan_end": "54:22",
-    "sunrise": "06:49",
-    "sunset": "17:59",
+  "2025-11-15": {
+    "tithi": "एकादशी",
+    "tithi_end": "26:20",
+    "tithi_next": "द्वादशी",
+
+    "nakshatra": "हस्त",
+    "nakshatra_end": "22:45",
+    "nakshatra_next": "चित्रा",
+
+    "yog": "सौभाग्य",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "बव",
+    "karan_end": "14:10",
+    "karan_next": "बालव",
+
+    "sunrise": "06:48",
+    "sunset": "18:00",
+
     "moon_rashi": "कन्या",
     "sun_rashi": "वृश्चिक",
     "guru_rashi": "कर्क",
-    "rahu": "07:53 ते 09:35",
-    "din_vishesh": "त्रयोदशी विशेष"
+
+    "rahu": "09:00 ते 10:30",
+    "din_vishesh": "एकादशी विशेष",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, शरद्ऋतू, कार्तिक मास, शुक्ल पक्ष"
   },
+
+  "2025-11-16": {
+    "tithi": "द्वादशी",
+    "tithi_end": "28:45",
+    "tithi_next": "त्रयोदशी",
+
+    "nakshatra": "चित्रा",
+    "nakshatra_end": "26:59",
+    "nakshatra_next": "स्वाती",
+
+    "yog": "प्रीति",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "कौलव",
+    "karan_end": "15:49",
+    "karan_next": "तैतिल",
+
+    "sunrise": "06:48",
+    "sunset": "17:59",
+
+    "moon_rashi": "कन्या",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "16:34 ते 18:19",
+    "din_vishesh": "द्वादशी श्राद्ध",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, शरद्ऋतू, कार्तिक मास, कृष्ण पक्ष"
+  },
+
+  "2025-11-17": {
+    "tithi": "त्रयोदशी",
+    "tithi_end": "11:15 say",
+    "tithi_next": "चतुर्दशी",
+
+    "nakshatra": "चित्रा",
+    "nakshatra_end": "05:54 dupari",
+    "nakshatra_next": "स्वाती",
+
+    "yog": "प्रीति",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "तैतिल",
+    "karan_end": "54:22",
+    "karan_next": "गर",
+
+    "sunrise": "06:49",
+    "sunset": "17:59",
+
+    "moon_rashi": "कन्या",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "07:53 ते 09:35",
+    "din_vishesh": "त्रयोदशी विशेष",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, शरद्ऋतू, कार्तिक मास, कृष्ण पक्ष"
+  },
+
   "2025-11-18": {
     "tithi": "चतुर्दशी",
     "tithi_end": "11:15 say",
+    "tithi_next": "अमावस्या",
+
     "nakshatra": "स्वाती",
     "nakshatra_end": "11:15 say",
+    "nakshatra_next": "विशाखा",
+
     "yog": "आयुष्मान",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
     "karan": "गर",
     "karan_end": "11:15 say",
+    "karan_next": "वणिज",
+
     "sunrise": "06:50",
     "sunset": "17:58",
+
     "moon_rashi": "तुला",
     "sun_rashi": "वृश्चिक",
     "guru_rashi": "कर्क",
+
     "rahu": "13:50 ते 15:20",
-    "din_vishesh": "प्रबोधिनी एकादशी"
+    "din_vishesh": "प्रबोधिनी एकादशी",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, शरद्ऋतू, कार्तिक मास, कृष्ण पक्ष"
+  },
+
+  "2025-11-19": {
+    "tithi": "अमावस्या",
+    "tithi_end": "24:20",
+    "tithi_next": "प्रतिपदा",
+
+    "nakshatra": "विशाखा",
+    "nakshatra_end": "17:40",
+    "nakshatra_next": "अनुराधा",
+
+    "yog": "सौभाग्य",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "वणिज",
+    "karan_end": "15:15",
+    "karan_next": "विष्टि",
+
+    "sunrise": "06:50",
+    "sunset": "17:58",
+
+    "moon_rashi": "वृश्चिक",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "11:30 ते 13:00",
+    "din_vishesh": "अमावस्या पूजा",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-20": {
+    "tithi": "प्रतिपदा",
+    "tithi_end": "28:30",
+    "tithi_next": "द्वितीया",
+
+    "nakshatra": "अनुराधा",
+    "nakshatra_end": "22:10",
+    "nakshatra_next": "ज्येष्ठा",
+
+    "yog": "शुभ",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "विष्टि",
+    "karan_end": "14:40",
+    "karan_next": "शकुनी",
+
+    "sunrise": "06:51",
+    "sunset": "17:57",
+
+    "moon_rashi": "वृश्चिक",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "10:00 ते 11:30",
+    "din_vishesh": "प्रथम दिवस पूजा",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-21": {
+    "tithi": "द्वितीया",
+    "tithi_end": "30:45",
+    "tithi_next": "तृतीया",
+
+    "nakshatra": "ज्येष्ठा",
+    "nakshatra_end": "25:35",
+    "nakshatra_next": "मूळ",
+
+    "yog": "शोभन",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "शकुनी",
+    "karan_end": "13:48",
+    "karan_next": "चतुष्पाद",
+
+    "sunrise": "06:51",
+    "sunset": "17:57",
+
+    "moon_rashi": "धनु",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "08:30 ते 10:00",
+    "din_vishesh": "द्वितीया व्रत",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-22": {
+    "tithi": "तृतीया",
+    "tithi_end": "29:05",
+    "tithi_next": "चतुर्थी",
+
+    "nakshatra": "मूळ",
+    "nakshatra_end": "20:40",
+    "nakshatra_next": "पूर्वाषाढा",
+
+    "yog": "अतिगण्ड",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "चतुष्पाद",
+    "karan_end": "12:25",
+    "karan_next": "नाग",
+
+    "sunrise": "06:52",
+    "sunset": "17:56",
+
+    "moon_rashi": "धनु",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "07:00 ते 08:30",
+    "din_vishesh": "चंद्र दर्शन",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-23": {
+    "tithi": "चतुर्थी",
+    "tithi_end": "24:00",
+    "tithi_next": "पंचमी",
+
+    "nakshatra": "पूर्वाषाढा",
+    "nakshatra_end": "23:15",
+    "nakshatra_next": "उत्तराषाढा",
+
+    "yog": "सुकर्मा",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "नाग",
+    "karan_end": "14:50",
+    "karan_next": "किंस्तुघ्न",
+
+    "sunrise": "06:52",
+    "sunset": "17:56",
+
+    "moon_rashi": "मकर",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "15:00 ते 16:30",
+    "din_vishesh": "श्री गणेश चतुर्थी",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-24": {
+    "tithi": "पंचमी",
+    "tithi_end": "27:55",
+    "tithi_next": "षष्ठी",
+
+    "nakshatra": "उत्तराषाढा",
+    "nakshatra_end": "25:10",
+    "nakshatra_next": "श्रवण",
+
+    "yog": "धृति",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "किंस्तुघ्न",
+    "karan_end": "15:20",
+    "karan_next": "बव",
+
+    "sunrise": "06:53",
+    "sunset": "17:55",
+
+    "moon_rashi": "मकर",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "13:30 ते 15:00",
+    "din_vishesh": "पंचमी व्रत",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-25": {
+    "tithi": "षष्ठी",
+    "tithi_end": "29:40",
+    "tithi_next": "सप्तमी",
+
+    "nakshatra": "श्रवण",
+    "nakshatra_end": "24:10",
+    "nakshatra_next": "धनिष्ठा",
+
+    "yog": "गण्ड",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "बव",
+    "karan_end": "16:10",
+    "karan_next": "बालव",
+
+    "sunrise": "06:53",
+    "sunset": "17:55",
+
+    "moon_rashi": "कुंभ",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "12:00 ते 13:30",
+    "din_vिशेश": "षष्ठी व्रत",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-26": {
+    "tithi": "सप्तमी",
+    "tithi_end": "28:15",
+    "tithi_next": "अष्टमी",
+
+    "nakshatra": "धनिष्ठा",
+    "nakshatra_end": "22:00",
+    "nakshatra_next": "शततारका",
+
+    "yog": "वृद्धि",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "बालव",
+    "karan_end": "14:40",
+    "karan_next": "कौलव",
+
+    "sunrise": "06:54",
+    "sunset": "17:55",
+
+    "moon_rashi": "कुंभ",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "10:30 ते 12:00",
+    "din_vishesh": "सप्तमी व्रत",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-27": {
+    "tithi": "अष्टमी",
+    "tithi_end": "29:30",
+    "tithi_next": "नवमी",
+
+    "nakshatra": "शततारका",
+    "nakshatra_end": "23:50",
+    "nakshatra_next": "पूर्वाभाद्रपदा",
+
+    "yog": "ध्रुव",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "कौलव",
+    "karan_end": "16:10",
+    "karan_next": "तैतिल",
+
+    "sunrise": "06:54",
+    "sunset": "17:54",
+
+    "moon_rashi": "मीन",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "09:00 ते 10:30",
+    "din_vishesh": "अष्टमी व्रत",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-28": {
+    "tithi": "नवमी",
+    "tithi_end": "26:25",
+    "tithi_next": "दशमी",
+
+    "nakshatra": "पूर्वाभाद्रपदा",
+    "nakshatra_end": "22:00",
+    "nakshatra_next": "उत्तराभाद्रपदा",
+
+    "yog": "व्याघात",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "तैतिल",
+    "karan_end": "13:15",
+    "karan_next": "गर",
+
+    "sunrise": "06:55",
+    "sunset": "17:54",
+
+    "moon_rashi": "मीन",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "07:30 ते 09:00",
+    "din_vishesh": "नवमी विशेष",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-29": {
+    "tithi": "दशमी",
+    "tithi_end": "29:10",
+    "tithi_next": "एकादशी",
+
+    "nakshatra": "उत्तराभाद्रपदा",
+    "nakshatra_end": "23:30",
+    "nakshatra_next": "रेवती",
+
+    "yog": "हर्षण",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "गर",
+    "karan_end": "15:14",
+    "karan_next": "वणिज",
+
+    "sunrise": "06:55",
+    "sunset": "17:54",
+
+    "moon_rashi": "मेष",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "15:00 ते 16:30",
+    "din_vishesh": "दशमी उत्सव",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
+  },
+
+  "2025-11-30": {
+    "tithi": "एकादशी",
+    "tithi_end": "24:40",
+    "tithi_next": "द्वादशी",
+
+    "nakshatra": "रेवती",
+    "nakshatra_end": "22:10",
+    "nakshatra_next": "अश्विनी",
+
+    "yog": "वज्र",
+    "yog_time": "अहोरात्र",
+    "yog_next": "",
+
+    "karan": "वणिज",
+    "karan_end": "13:40",
+    "karan_next": "विष्टि",
+
+    "sunrise": "06:56",
+    "sunset": "17:53",
+
+    "moon_rashi": "मेष",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "कर्क",
+
+    "rahu": "13:30 ते 15:00",
+    "din_vishesh": "मोक्षदा एकादशी",
+
+    "shalivahan": "शालिवाहन शके १९४७",
+    "shalivahan_meta": "विश्वावसुनामसंवत्सर, दक्षिणायन, हेमंतऋतू, मार्गशीर्ष मास, शुक्ल पक्ष"
   }
 }
