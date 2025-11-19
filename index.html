@@ -68,7 +68,7 @@
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    padding:12px 18px;        /* 20px → 12px (height कमी) */
+    padding:12px 18px 0px 18px;        /* 20px → 12px (height कमी) */
     background:#fff;
     border-bottom:4px solid var(--gold);
     position:relative;
@@ -80,7 +80,7 @@
     font-size:25px;           /* 34px → 30px (looks same, less height) */
     font-weight:700;
     color:#0b2b3a;
-    line-height:1.15;         /* height कमी */
+    line-height:1.50;         /* height कमी */
 }
 .date{
     font-size:18px;           /* 22px → 19px */
@@ -92,21 +92,22 @@
     font-size:18px;           /* 18px → 16px */
     font-weight:700;
     color:var(--accent);
-    margin-top:2px;
+    margin-top:4px;
 }
 
 .ganesh-center{
-    width:100px;              /* thoda mota (120 → 150) */
-    margin:0 auto;            /* EXAACT HORIZONTAL CENTER */
-    padding:10px;             /* neat white padding */
-    background:#fff;          /* white box */
+    width:130px;            /* little bigger, good proportion */
+    margin:0 auto;
+    padding:10px;
+    background:#fff;
     border-radius:12px;
-    display:flex;             /* proper centering */
+    display:flex;
     justify-content:center;
-    align-items:center;       /* EXACT vertical centering */
-    position:relative;        /* NO ABSOLUTE → NO OVERLAP */
-    top:0;
+    align-items:center;
+    position:relative;
+    top:-12px;              /* ← EXACT best value */
 }
+
 
 .ganesh-center img{
     width:100%;
@@ -311,27 +312,47 @@
   }
 
   /* FOOTER (INSIDE IMAGE) */
-  .footer{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:20px;background:linear-gradient(90deg,#4e0f0f,#3f0c0c);color:#fff;border-top:6px solid var(--gold)
-  }
-
-  #footer_name{
-    font-family:'Arya';
-    font-size:30px;color:var(--gold);font-weight:900;
-  }
-  .footer-left div{margin-top:6px;font-size:18px}
-
-  #footer_img{
-    width:180px;                 /* fixed width */
-    height:220px;                /* fixed height */
-    object-fit:cover;            /* photo crop होऊन exact फोटो */
-    border-radius:10px;
-    border:6px solid var(--gold);
-    display:block;
-    background:#fff;             /* जर user blank image देला तर clean दिसेल */
-    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;                    /* smaller & tighter */
+    background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
+    color:#fff;
+    border-top:4px solid var(--gold);
+    gap:10px;                             /* spacing balance */
 }
+
+/* LEFT TEXT BLOCK */
+.footer-left{
+    flex:1;
+}
+
+#footer_name{
+    font-family:'Arya';
+    font-size:26px;                       /* 30px → 26px (premium look) */
+    color:var(--gold);
+    font-weight:900;
+    line-height:1.1;
+}
+
+.footer-left div{
+    margin-top:4px;                       /* 6px → 4px (compact) */
+    font-size:17px;                       /* 18px → 17px (balanced) */
+}
+
+/* RIGHT PHOTO FIXED PERFECT SIZE */
+#footer_img{
+    width:130px;                          /* 180 → 130 (perfect size) */
+    height:160px;                         /* 220 → 160 (best proportion) */
+    object-fit:cover;
+    border-radius:10px;
+    border:5px solid var(--gold);         /* 6px → 5px */
+    background:#fff;
+    box-shadow:0 8px 16px rgba(0,0,0,0.25);
+    flex-shrink:0;                        /* IMPORTANT — fixed size */
+}
+
 
 
   /* DOWNLOAD BUTTON UNDER CARD */
