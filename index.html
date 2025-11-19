@@ -70,26 +70,26 @@
     align-items:flex-start;
     padding:12px 18px;        /* 20px → 12px (height कमी) */
     background:#fff;
-    border-bottom:6px solid var(--gold);
+    border-bottom:4px solid var(--gold);
     position:relative;
 }
 .left-info{max-width:42%}
 
 .title{
     font-family:'Baloo 2';
-    font-size:30px;           /* 34px → 30px (looks same, less height) */
-    font-weight:800;
+    font-size:25px;           /* 34px → 30px (looks same, less height) */
+    font-weight:700;
     color:#0b2b3a;
     line-height:1.15;         /* height कमी */
 }
 .date{
-    font-size:19px;           /* 22px → 19px */
-    font-weight:900;
+    font-size:18px;           /* 22px → 19px */
+    font-weight:700;
     color:var(--accent);
     margin-top:4px;
 }
 .day{
-    font-size:16px;           /* 18px → 16px */
+    font-size:18px;           /* 18px → 16px */
     font-weight:700;
     color:var(--accent);
     margin-top:2px;
@@ -132,12 +132,13 @@
   /* SHALIVAHAN */
   .shalivahan{
     background:linear-gradient(180deg,var(--accent),#8c1c1c);color:#fff;
-    padding:16px;text-align:center;border-bottom:6px solid var(--gold)
+    padding:8px;text-align:center;border-bottom:4px solid var(--gold)
   }
- .shalivahan h3{
+ .shalivahan h4    background:linear-gradient(90deg,var(--blue1),var(--blue2));
+{
     font-family:'Baloo 2';
-    font-size:20px;          /* 28 → 22 */
-    font-weight:900;
+    font-size:16px;          /* 28 → 22 */
+    font-weight:700;
     margin-bottom:4px;
     line-height:1.1;         /* height कमी */
 }
@@ -153,71 +154,80 @@
 
  /* SUN BOX */
 .sun-row{
-    display:flex;
+  display:flex;
     justify-content:center;
-    gap:12px;
-    padding:14px;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;              /* 14px → 8px */
     background:linear-gradient(90deg,var(--blue1),var(--blue2));
-    border-bottom:6px solid var(--gold);
+    border-bottom:4px solid var(--gold);  /* 6 → 4 */
 }
+
 .sun-box{
     display:flex;
     align-items:center;
-    gap:10px;
-    padding:8px 12px;
-    border-radius:40px;
+    gap:5px;
+    padding:3px 6px;         /* ultra small */
+    border-radius:22px;
     background:rgba(255,255,255,0.10);
 }
+
+
+
+
 .sun-icon{
-    font-size:24px;
+    font-size:24px;                     /* moon-box सारखे */
 }
+
 .sun-data{
     display:flex;
     align-items:center;
     gap:6px;
 }
+
 .sun-data h4{
     margin:0;
     color:#fff;
     font-weight:700;
-    font-size:16px;
+    font-size:16px;                     /* moon-box सारखे */
 }
+
 .sun-data .time{
     color:var(--gold);
-    font-size:20px;
+    font-size:20px;                     /* moon-box सारखे */
     font-weight:900;
 }
+
 
 
 /* ⭐ EXACT SAME SIZE MOON / RAHUKAL ROW */
 .moon-row{
     display:flex;
     justify-content:center;
-    gap:12px;
-    padding:14px;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;              /* 14px → 8px */
     background:#000;
-    border-bottom:6px solid var(--gold);
+    border-bottom:4px solid var(--gold);  /* 6 → 4 */
 }
-
 .black-box{
     display:flex;
     align-items:center;
-    gap:10px;
-    padding:8px 12px;
-    border-radius:40px;
-    background:rgba(255,255,255,0.10);
+    gap:8px;                       /* 10 → 8 */
+    padding:6px 10px;              /* 8 12 → 6 10 */
+    border-radius:30px;            /* 40 → 30 */
+    background:rgba(255,255,255,0.12);
 }
-
 .black-box h4{
     margin:0;
     color:#fff;
     font-weight:700;
-    font-size:16px;      /* SAME AS SUN */
+    font-size:15px;                /* 16 → 15 (same as sunrise compact) */
 }
 
 .black-box .time{
     color:var(--gold);
-    font-size:20px;      /* SAME AS SUN */
+    font-size:18px;                /* 20 → 18 */
     font-weight:900;
 }
 
@@ -228,7 +238,7 @@
 .p-table{width:100%;border-collapse:collapse;font-weight:700}
 
 .p-table td{
-    padding:6px 6px;
+    padding:5px 5px;
     font-size:15px;
     line-height:1.15;
     border-bottom:1px dashed #f1d7b2;
@@ -245,6 +255,8 @@
     display:flex;
     gap:10px;              /* 12 → 10 */
     padding:10px 14px;     /* 16 → 10 */
+    border-bottom:4px solid var(--gold);
+
     background:#fff;
 }
 
@@ -271,13 +283,13 @@
 .rashi-text-block{
     display:flex;
     flex-direction:column;
-    line-height:1.2;
+    line-height:1;
 }
 
 /* Label */
 .rashi-card .label{
     color:#0d47a1;     /* Dark Blue */
-    font-size:12px;
+    font-size:11px;
     margin:0;
     padding:0;
 }
@@ -286,7 +298,7 @@
 .rashi-card .val{
     font-size:16px;
     color:var(--accent);
-    font-weight:900;
+    font-weight:700;
     margin-top:2px;
 }
 
@@ -294,7 +306,7 @@
 
   /* DIN VISHESH */
   .din-box{
-    margin:16px;padding:14px;font-weight:900;
+    margin:16px;padding:14px;font-weight:700;
     background:#fff8e6;border:2px solid #e4b236;border-radius:8px;display:none
   }
 
