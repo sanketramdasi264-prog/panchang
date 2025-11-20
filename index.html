@@ -77,26 +77,26 @@
 
 .title{
     font-family:'Baloo 2';
-    font-size:25px;           /* 34px → 30px (looks same, less height) */
+    font-size:22px;           /* 34px → 30px (looks same, less height) */
     font-weight:700;
     color:#0b2b3a;
     line-height:1.50;         /* height कमी */
 }
 .date{
-    font-size:18px;           /* 22px → 19px */
+    font-size:17px;           /* 22px → 19px */
     font-weight:700;
     color:var(--accent);
     margin-top:4px;
 }
 .day{
-    font-size:18px;           /* 18px → 16px */
+    font-size:17px;           /* 18px → 16px */
     font-weight:700;
     color:var(--accent);
     margin-top:4px;
 }
 
 .ganesh-center{
-    width:130px;            /* little bigger, good proportion */
+    width:120px;            /* little bigger, good proportion */
     margin:0 auto;
     padding:10px;
     background:#fff;
@@ -138,15 +138,15 @@
  .shalivahan h4    background:linear-gradient(90deg,var(--blue1),var(--blue2));
 {
     font-family:'Baloo 2';
-    font-size:16px;          /* 28 → 22 */
-    font-weight:700;
+    font-size:14px;          /* 28 → 22 */
+    font-weight:600;
     margin-bottom:4px;
     line-height:1.1;         /* height कमी */
 }
 
 .shalivahan p{
-    font-size:16px;          /* 20 → 18 */
-    font-weight:700;
+    font-size:15px;          /* 20 → 18 */
+    font-weight:600;
     margin:0;
     line-height:1.1;         /* दोन्ही height match */
     opacity:0.95;
@@ -177,7 +177,7 @@
 
 
 .sun-icon{
-    font-size:24px;                     /* moon-box सारखे */
+    font-size:20px;                     /* moon-box सारखे */
 }
 
 .sun-data{
@@ -190,72 +190,105 @@
     margin:0;
     color:#fff;
     font-weight:700;
-    font-size:16px;                     /* moon-box सारखे */
+    font-size:14px;                     /* moon-box सारखे */
 }
 
 .sun-data .time{
     color:var(--gold);
-    font-size:20px;                     /* moon-box सारखे */
-    font-weight:900;
-}
-
-
-
-/* ⭐ EXACT SAME SIZE MOON / RAHUKAL ROW */
-.moon-row{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    padding:8px 12px;              /* 14px → 8px */
-    background:#000;
-    border-bottom:4px solid var(--gold);  /* 6 → 4 */
-}
-.black-box{
-    display:flex;
-    align-items:center;
-    gap:8px;                       /* 10 → 8 */
-    padding:6px 10px;              /* 8 12 → 6 10 */
-    border-radius:30px;            /* 40 → 30 */
-    background:rgba(255,255,255,0.12);
-}
-.black-box h4{
-    margin:0;
-    color:#fff;
+    font-size:16px;                     /* moon-box सारखे */
     font-weight:700;
-    font-size:15px;                /* 16 → 15 (same as sunrise compact) */
+}
+
+
+
+/* MOON / RAHUKAL BOX — EXACT SAME AS SUN BOX */
+.moon-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;  
+  background:#000;
+  border-bottom:4px solid var(--gold);
+}
+
+.black-box{
+  display:flex;
+  align-items:center;
+  gap:5px;                /* same as sun-box */
+  padding:3px 6px;        /* same as sun-box */
+  border-radius:22px;     /* same as sun-box */
+  background:rgba(255,255,255,0.12);
+}
+
+.black-box h4{
+  margin:0;
+  color:#fff;
+  font-weight:700;
+  font-size:14px;         /* same as sun-box */
 }
 
 .black-box .time{
     color:var(--gold);
-    font-size:18px;                /* 20 → 18 */
-    font-weight:900;
+    font-size:16px;
+    font-weight:700;
+    white-space:nowrap;      /* <— THIS IS THE FIX */
 }
+
+
 
 
   
 /* TABLE */
-.table-section{padding:12px 14px;background:#fffdf8}
-.p-table{width:100%;border-collapse:collapse;font-weight:700}
+.table-section{
+    padding:8px 12px;
+    background:#fffdf8;
+}
 
+.p-table{
+    width:100%;
+    border-collapse:collapse;
+    font-weight:700;
+}
+
+/* TABLE CELLS */
 .p-table td{
-    padding:5px 5px;
+    padding:6px 4px;                 /* perfect compact */
     font-size:15px;
-    line-height:1.15;
+    line-height:1.25;
     border-bottom:1px dashed #f1d7b2;
 }
 
-.event{width:18%;color:#666}
-.info{width:40%}
-.
- time{width:22%;color:var(--accent);font-weight:900;text-align:center}
-.next{width:12%;text-align:center;color:#444}
+/* COLUMNS WIDTH + COLOR PERFECT BALANCE */
+.event{
+    width:20%;
+    color:#0d47a1;    /* DARK BLUE */
+    text-align:left;
+}
+
+.info{
+    width:36%;                       /* 30 → 32 (main content bigger) */
+    text-align:left;
+}
+
+.time{
+    width:14%;                       /* 21 → 18 (balanced compact) */
+    color:var(--accent);
+    font-weight:700;
+    text-align:center;
+}
+
+.next{
+    width:30%;
+    text-align:center;
+    color:#0d47a1;    /* DARK BLUE */
+}
 
   /* RASHI */
  .rashi-section{
     display:flex;
     gap:10px;              /* 12 → 10 */
-    padding:10px 14px;     /* 16 → 10 */
+    padding:6px 12px;     /* 16 → 10 */
     border-bottom:4px solid var(--gold);
 
     background:#fff;
@@ -307,7 +340,7 @@
 
   /* DIN VISHESH */
   .din-box{
-    margin:16px;padding:14px;font-weight:700;
+    margin:7px;padding:14px;font-weight:700;
     background:#fff8e6;border:2px solid #e4b236;border-radius:8px;display:none
   }
 
@@ -316,11 +349,11 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:14px 18px;                    /* smaller & tighter */
+    padding:14px 14px; 
     background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
     color:#fff;
     border-top:4px solid var(--gold);
-    gap:10px;                             /* spacing balance */
+    gap:10px;
 }
 
 /* LEFT TEXT BLOCK */
@@ -330,28 +363,37 @@
 
 #footer_name{
     font-family:'Arya';
-    font-size:26px;                       /* 30px → 26px (premium look) */
+    font-size:26px;
     color:var(--gold);
     font-weight:900;
     line-height:1.1;
 }
 
 .footer-left div{
-    margin-top:4px;                       /* 6px → 4px (compact) */
-    font-size:17px;                       /* 18px → 17px (balanced) */
+    margin-top:4px;
+    font-size:17px;
 }
 
-/* RIGHT PHOTO FIXED PERFECT SIZE */
+/* RIGHT PHOTO — BIGGER + GOLDEN GLOW */
 #footer_img{
-    width:130px;                          /* 180 → 130 (perfect size) */
-    height:160px;                         /* 220 → 160 (best proportion) */
+    width:150px;             /* bigger image */
+    height:190px;            /* tall image */
     object-fit:cover;
+
     border-radius:10px;
-    border:5px solid var(--gold);         /* 6px → 5px */
+    border:2px solid var(--gold);  /* thin border */
     background:#fff;
-    box-shadow:0 8px 16px rgba(0,0,0,0.25);
-    flex-shrink:0;                        /* IMPORTANT — fixed size */
+
+    /* GOLD GLOW EFFECT */
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.70),   /* inner glow */
+        0 0 26px rgba(255, 215, 0, 0.55),   /* mid glow */
+        0 0 40px rgba(255, 215, 0, 0.35),   /* outer glow */
+        0 8px 20px rgba(0,0,0,0.30);        /* natural shadow */
+
+    flex-shrink:0;  
 }
+
 
 
 
@@ -414,7 +456,7 @@
       </div>
 
       <div class="ganesh-center">
-        <img id="ganesh" src="pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png" crossorigin="anonymous">
+        <img id="ganesh" src="https://pngmagic.com/download.php?f=product_images%2Fcreative-ganesha-png-for-ganesh-chaturthi-event-flyers_qa4.png" crossorigin="anonymous">
       </div>
 
       <div class="logo-right">
@@ -452,12 +494,7 @@
             <td class="next" id="tithi_next">--</td>
           </tr>
 
-          <tr>
-            <td class="event">वार</td>
-            <td class="info" id="vaar">--</td>
-            <td class="time" id="vaar_time">--</td>
-            <td class="next" id="vaar_sanskrit">--</td>
-          </tr>
+         
 
           <tr>
             <td class="event">नक्षत्र</td>
@@ -493,8 +530,7 @@
         <div class="val" id="moon_rashi">--</div>
     </div>
 </div>
-
-
+      
      <div class="rashi-card">
     <div class="icon">☀️</div>
     <div class="rashi-text-block">
@@ -618,9 +654,9 @@ document.getElementById("rahukaal").textContent = p.rahukaal || "--";
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-  document.getElementById("vaar").textContent=p.vaar || daysMR[now.getDay()];
-  document.getElementById("vaar_time").textContent=p.vaar_time || "--";
-  document.getElementById("vaar_sanskrit").textContent=p.vaar_sanskrit || "--";
+  //document.getElementById("vaar").textContent=p.vaar || daysMR[now.getDay()];
+  //document.getElementById("vaar_time").textContent=p.vaar_time || "--";
+  //document.getElementById("vaar_sanskrit").textContent=p.vaar_sanskrit || "--";
 
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
