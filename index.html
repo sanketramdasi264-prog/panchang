@@ -29,7 +29,7 @@
     background:#eef2f1;
     display:flex;
     justify-content:center;
-    padding:13px;  /* 14 → 13 */
+    padding:13px;
   }
 
   .page{width:100%;max-width:var(--max-w)}
@@ -45,11 +45,22 @@
   .ipt-row{display:flex;flex-wrap:wrap;gap:15px}
 
   .ipt-box{flex:1;min-width:240px}
+  .ipt-box-small{flex:0 0 auto;min-width:180px}
   label{font-weight:700;margin-bottom:3px;display:block}
   input[type="text"], input[type="tel"], input[type="file"]{
     width:100%;padding:9px;font-size:14px;border:2px solid #eee;border-radius:8px;
   }
   #preview{width:120px;height:120px;margin-top:7px;border-radius:8px;border:3px solid var(--accent);object-fit:cover;display:none}
+  
+  #kuldeviPreview, #guradevaPreview{
+    width:100px;
+    height:100px;
+    margin-top:7px;
+    border-radius:8px;
+    border:3px solid var(--gold);
+    object-fit:cover;
+    display:none;
+  }
 
   .btn-apply{
     background:linear-gradient(135deg,var(--accent),#9c2020);
@@ -67,45 +78,76 @@
 .top-header{
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
-    padding:11px 17px 0px 17px; 
+    align-items:center;
+    padding:11px 17px; 
     background:#fff;
     border-bottom:4px solid var(--gold);
     position:relative;
 }
-.left-info{max-width:42%}
+
+.left-info{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+}
 
 .title{
     font-family:'Baloo 2';
     font-size:20px; 
     font-weight:700;
     color:#0b2b3a;
-    line-height:1.50;
+    line-height:1.2;
+    margin:0;
 }
+
+.date-day-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
 .date{
     font-size:16px; 
     font-weight:700;
     color:var(--accent);
-    margin-top:3.5px;
+    margin:0;
 }
 .day{
     font-size:16px;
     font-weight:700;
     color:var(--accent);
-    margin-top:4px;
+    margin:0;
+}
+
+.kuldevi-frame{
+    width:80px;
+    height:80px;
+    border:3px solid var(--gold);
+    border-radius:10px;
+    overflow:hidden;
+    background:#f5f5f5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.kuldevi-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .ganesh-center{
-    width:100px;
-    margin:0 auto;
+    width:80px;
+    margin:0;
     padding:3px; 
     background:#fff;
     border-radius:12px;
     display:flex;
     justify-content:center;
     align-items:center;
-    position:relative;
-    top:-3px;
 }
 
 .ganesh-center img{
@@ -115,15 +157,23 @@
     display:block;
 }
 
-.logo-right{
-    width:100px;
+.gurudeva-frame{
+    width:80px;
+    height:80px;
+    border:3px solid var(--gold);
+    border-radius:10px;
+    overflow:hidden;
+    background:#f5f5f5;
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-right:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
-.logo-right img{
-    max-width:120px;
+
+.gurudeva-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
   /* SHALIVAHAN */
@@ -397,6 +447,18 @@
 
     <div class="ipt-row">
 
+      <div class="ipt-box-small">
+        <label>🙏 कुलदेवी फोटो</label>
+        <input id="kuldeviFile" type="file" accept="image/*">
+        <img id="kuldeviPreview" />
+      </div>
+
+      <div class="ipt-box-small">
+        <label>🕉️ गुरुदेव फोटो</label>
+        <input id="guradevaFile" type="file" accept="image/*">
+        <img id="guradevaPreview" />
+      </div>
+
       <div class="ipt-box">
         <label>📸 आपला फोटो</label>
         <input id="userFile" type="file" accept="image/*">
@@ -430,18 +492,24 @@
 
     <!-- HEADER -->
     <div class="top-header">
+      <div class="kuldevi-frame">
+        <img id="kuldevi_img" src="https://via.placeholder.com/80x80/f5f5f5/999?text=कुलदेवी" crossorigin="anonymous">
+      </div>
+
       <div class="left-info">
         <div class="title">आजचे पंचांग</div>
-        <div class="date" id="hdrDate">--</div>
-        <div class="day" id="hdrDay">--</div>
+        <div class="date-day-row">
+          <div class="date" id="hdrDate">--</div>
+          <div class="day" id="hdrDay">--</div>
+        </div>
       </div>
 
       <div class="ganesh-center">
-        <img id="ganesh" src="pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-png-image_14089909.png" crossorigin="anonymous">
+        <img id="ganesh" src="https://png.pngtree.com/png-clipart/20230805/original/pngtree-artistic-vinayaka-chavithi-celebrations-for-ganesh-chaturthi-bal-free-transparent-vector-picture-image_7700738.png" crossorigin="anonymous">
       </div>
 
-      <div class="logo-right">
-        <img id="logo" src="@Om Karmyog_20251120_190235_0000.jpg" crossorigin="anonymous" style="width:150px;">
+      <div class="gurudeva-frame">
+        <img id="gurudeva_img" src="https://via.placeholder.com/80x80/f5f5f5/999?text=गुरुदेव" crossorigin="anonymous">
       </div>
     </div>
 
@@ -476,13 +544,12 @@
           </tr>
 
           <tr>
-    <td class="event">वार</td>
-    <td class="info" id="vaar">--</td>
-    <td class="time" id="vaar_time">--</td>
-    <td class="next" id="vaar_sanskrit">--</td>
-</tr>
+            <td class="event">वार</td>
+            <td class="info" id="vaar">--</td>
+            <td class="time" id="vaar_time">--</td>
+            <td class="next" id="vaar_sanskrit">--</td>
+          </tr>
 
-          
           <tr>
             <td class="event">नक्षत्र</td>
             <td class="info" id="nak">--</td>
@@ -640,11 +707,10 @@ async function populatePanchang(){
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-document.getElementById('vaar').textContent = p.vaar || daysMR[now.getDay()];
-document.getElementById('vaar_time').textContent = p.vaar_time || '--';
-document.getElementById('vaar_sanskrit').textContent = p.vaar_sanskrit || p.vaarSanskrit || '--';
+  document.getElementById('vaar').textContent = p.vaar || daysMR[now.getDay()];
+  document.getElementById('vaar_time').textContent = p.vaar_time || '--';
+  document.getElementById('vaar_sanskrit').textContent = p.vaar_sanskrit || p.vaarSanskrit || '--';
 
-  
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
   document.getElementById("nak_next").textContent=nextN(p.nakshatra_next);
@@ -670,6 +736,36 @@ document.getElementById('vaar_sanskrit').textContent = p.vaar_sanskrit || p.vaar
 
 
 /* -------- USER INPUT HANDLING -------- */
+
+const kuldeviFile = document.getElementById("kuldeviFile");
+const kuldeviPreview = document.getElementById("kuldeviPreview");
+
+kuldeviFile.addEventListener("change", e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    kuldeviPreview.src = r.result;
+    kuldeviPreview.style.display = "block";
+    document.getElementById("kuldevi_img").src = r.result;
+  };
+  r.readAsDataURL(f);
+});
+
+const guradevaFile = document.getElementById("guradevaFile");
+const guradevaPreview = document.getElementById("guradevaPreview");
+
+guradevaFile.addEventListener("change", e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    guradevaPreview.src = r.result;
+    guradevaPreview.style.display = "block";
+    document.getElementById("gurudeva_img").src = r.result;
+  };
+  r.readAsDataURL(f);
+});
 
 const userFile=document.getElementById("userFile");
 const preview=document.getElementById("preview");
