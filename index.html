@@ -139,23 +139,42 @@
   }
 
   .brand-logo{
-    width:95px;            /* इथे size नियंत्रित होतो */
-    height:95px;           /* date section height शी match होईल */
+    width:70px;
+    height:70px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:12px;
+    margin-left:10px;
+    border-radius:8px;
     overflow:hidden;
-    background:#ffffff00;  /* transparent */
     position:relative;
 }
 
-/* Image perfect fit */
-#brandImage{
+/* Logo fits perfectly */
+.brand-logo img{
     width:100%;
     height:100%;
-    object-fit:contain;    /* फोटो proper visible */
+    object-fit:contain;
 }
+
+/* soft bottom glow */
+.brand-logo::after{
+    content:"";
+    position:absolute;
+    bottom:-12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80px;
+    height:35px;
+    background:radial-gradient(
+        ellipse at bottom,
+        rgba(255,220,120,0.7),
+        rgba(255,220,120,0)
+    );
+    filter:blur(10px);
+    z-index:0;
+}
+
 
 
   /* SHALIVAHAN */
@@ -497,8 +516,8 @@
           <span id="hdrDay">--</span>
         </div>
       </div>
-     <div class="brand-logo">
-  <img src="Video.Guru_20251202-123311012.jpg" id="brandImage" />
+  <div class="brand-logo">
+   <img src="Video.Guru_20251202-123311012.jpg" alt="logo">
 </div>
     </div>
 
