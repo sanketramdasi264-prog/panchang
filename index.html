@@ -783,17 +783,27 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
 
 /* -------- PNG DOWNLOAD -------- */
 
-async function generatePNG(){
-  const el=document.getElementById("panchangCard");
-  await new Promise(res=>setTimeout(res,200));
+async function generatePNG() {
 
-  return html2canvas(el,{
-    scale:3,
-    useCORS:true,
-    allowTaint:true,
-    backgroundColor:"#ffffff"
+  // FORCE SAME DPI FOR ALL DEVICES
+  window.devicePixelRatio = 1;
+
+  const el = document.getElementById("panchangCard");
+
+  await new Promise(res => setTimeout(res, 200));
+
+  return html2canvas(el, {
+    scale: 2,                      // required clarity
+    width: 1296,                   // fixed width
+    height: 2325,                  // fixed height
+    windowWidth: 1296,             // force canvas width
+    windowHeight: 2325,            // force canvas height
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: "#ffffff"
   });
 }
+
 
 document.getElementById("downloadFab").addEventListener("click",async()=>{
   const canvas=await generatePNG();
