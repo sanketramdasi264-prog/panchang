@@ -23,10 +23,10 @@ jobs:
       - name: Run update script
         run: node update/update.js
 
-      - name: Commit updated Panchang
-        run: |
-          git config user.name "Panchang Auto Bot"
-          git config user.email "bot@example.com"
-          git add panchang/panchang.json
-          git commit -m "Daily Panchang Auto Update"
-          git push
+     - name: Commit updated Panchang
+  run: |
+      git config user.name "Panchang Auto Bot"
+      git config user.email "bot@example.com"
+      git add panchang.json
+      git commit -m "Daily Panchang Update"
+      git push
