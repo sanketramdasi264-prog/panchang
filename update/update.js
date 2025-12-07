@@ -1,7 +1,7 @@
 import fs from "fs";
 import fetch from "node-fetch";
 
-const API_KEY = "PUT_YOUR_API_KEY_HERE";   // इथे नवीन API key टाक
+const API_KEY = "Qt8dyDA5jz709uhbe8F1y1fykUIVbqEl99tGH4T6";   // इथे नवीन API key टाक
 
 const filePath = "./panchang/panchang.json";
 
