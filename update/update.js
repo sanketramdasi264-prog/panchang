@@ -7,7 +7,8 @@ const timezone = 5.5;
 
 const API_KEY = "Qt8dyDA5jz709uhbe8F1y1fykUIVbqEl99tGH4T6";
 
-const filePath = "./panchang/panchang.json";
+const filePath = "./panchang.json";
+
 
 // Today's date
 const today = new Date();
