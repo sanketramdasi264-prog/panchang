@@ -1,22 +1,27 @@
-import fs from "fs";
-import fetch from "node-fetch";
-
-const API_KEY = "Qt8dyDA5jz709uhbe8F1y1fykUIVbqEl99tGH4T6";   // इथे नवीन API key टाक
-
-const filePath = "./panchang/panchang.json";
+const fs = require("fs");
 
 // Mumbai location
 const latitude = 19.0760;
 const longitude = 72.8777;
 const timezone = 5.5;
 
+const API_KEY = "Qt8dyDA5jz709uhbe8F1y1fykUIVbqEl99tGH4T6";
+
+const filePath = "./panchang/panchang.json";
+
+// Today's date
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = today.getMonth() + 1;
+const dd = today.getDate();
+
 async function fetchPanchang() {
     const url = "https://json.freeastrologyapi.com/v1/panchang";
 
     const body = {
-        year: new Date().getFullYear(),
-        month: new Date().getMonth() + 1,
-        date: new Date().getDate(),
+        year: yyyy,
+        month: mm,
+        date: dd,
         hours: 6,
         minutes: 0,
         seconds: 0,
@@ -70,8 +75,7 @@ function transform(api) {
 async function updateJSON() {
     const api = await fetchPanchang();
 
-    const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
+    const formattedDate = `${yyyy}-${String(mm).padStart(2, "0")}-${String(dd).padStart(2, "0")}`;
 
     let existing = {};
     if (fs.existsSync(filePath)) {
