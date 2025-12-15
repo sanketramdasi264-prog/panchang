@@ -786,33 +786,30 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
   setTimeout(()=>btn.textContent="✔ लागू करा",1200);
 });
 
-
-
-/* -------- PNG DOWNLOAD -------- */
+/* -------- PNG DOWNLOAD (FIXED FOR ALL DEVICES) -------- */
 
 async function generatePNG(){
-  const el=document.getElementById("panchangCard");
-  await new Promise(res=>setTimeout(res,200));
+  const el = document.getElementById("panchangCard");
 
-  return html2canvas(el,{
-    scale:3,
-    useCORS:true,
-    allowTaint:true,
-    backgroundColor:"#ffffff"
+  // 🔐 TEMPORARY FIXED WIDTH (IMAGE MODE)
+  const oldWidth = el.style.width;
+  el.style.width = "1080px";
+
+  await new Promise(res=>setTimeout(res,300));
+
+  const canvas = await html2canvas(el,{
+    scale: 2,              // ❗ fixed scale
+    width: 1080,           // ❗ fixed width
+    windowWidth: 1080,     // ❗ ignore mobile screen
+    useCORS: true,
+    backgroundColor: "#ffffff"
   });
+
+  // 🔄 restore normal view
+  el.style.width = oldWidth;
+
+  return canvas;
 }
-
-document.getElementById("downloadFab").addEventListener("click",async()=>{
-  const canvas=await generatePNG();
-  canvas.toBlob(blob=>{
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    a.href=url;
-    a.download="panchang.png";
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-});
 
 
 /* INIT */
