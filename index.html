@@ -735,19 +735,6 @@ if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
 }
 
-  // Label
-  dvLabelCell.textContent = "दिनविशेष";
-  dvLabelCell.className = "time din-pill";
-
-  // Data
-  dvDataCell.textContent = p.din_vishesh;
-  dvDataCell.className = "next din-pill";
-
-} else {
-  dvLabelCell.textContent = "--";
-  dvDataCell.textContent = "--";
-}
-
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
   document.getElementById("nak_next").textContent=nextN(p.nakshatra_next);
