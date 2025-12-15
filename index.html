@@ -704,13 +704,17 @@ if (metaParts.length > 0) {
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-  // ---- VAAR ----
+// ===============================
+// VAAR + DIN VISHESH (FINAL)
+// ===============================
+
+// VAAR
 const vaarEl = document.getElementById("vaar");
 if (vaarEl) {
   vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
 }
 
-// ---- DIN VISHESH (ONLY ONCE, SAFE) ----
+// DIN VISHESH
 const dvLabelCell = document.getElementById("vaar_time");
 const dvDataCell  = document.getElementById("vaar_sanskrit");
 
@@ -725,8 +729,10 @@ if (p.din_vishesh && p.din_vishesh.trim() !== "") {
   }
 
 } else {
+
   if (dvLabelCell) dvLabelCell.textContent = "--";
   if (dvDataCell)  dvDataCell.textContent  = "--";
+
 }
 
   // Label
