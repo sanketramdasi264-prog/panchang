@@ -341,27 +341,28 @@
 }
 
   /* DIN VISHESH */
-  .din-box{
-    margin:7px;
-    padding:13px;
-    font-weight:700;
-    background:#fff8e6;
-    border:2px solid #e4b236;
-    border-radius:8px;
-    display:none
-  }
-  .din-pill{
-  display:inline-block;
-  padding:5px 10px;
-  background:#ffeb3b;
-  color:#8b0000;
-  font-weight:800;
-  font-size:13px;
-  border-radius:999px;
-  white-space:nowrap;
-  box-shadow:0 2px 5px rgba(0,0,0,0.18);
-  }
+.din-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
+  padding:5px 14px;
+  margin:2px 0;
+
+  /* 👇 light cream background */
+  background:#fff8e1;
+
+  /* 👇 golden line */
+  border:2px solid #f1b500;
+
+  border-radius:999px;   /* full rounded */
+
+  color:#8b0000;         /* dark red text */
+  font-size:13px;
+  font-weight:700;
+
+  white-space:nowrap;
+}
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
 .footer{
     display:flex;
@@ -721,11 +722,11 @@ const dvDataCell  = document.getElementById("vaar_sanskrit");
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
   if (dvLabelCell) {
-    dvLabelCell.innerHTML = `<div class="rashi-pill">दिनविशेष</div>`;
+    dvLabelCell.innerHTML = `<div class="din-pill">दिनविशेष</div>`;
   }
 
   if (dvDataCell) {
-    dvDataCell.innerHTML  = `<div class="rashi-pill">${p.din_vishesh}</div>`;
+    dvDataCell.innerHTML  = `<div class="din-pill">${p.din_vishesh}</div>`;
   }
 
 } else {
