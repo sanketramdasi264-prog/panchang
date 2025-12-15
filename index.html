@@ -350,15 +350,16 @@
     border-radius:8px;
     display:none
   }
-  .din-vishesh-highlight{
-  color:#b71c1c;
+  ..din-pill{
+  display:inline-block;
+  padding:6px 10px;
+  background:#ffeb3b;          /* full yellow */
+  color:#8b0000;               /* dark red text */
   font-weight:800;
   font-size:13px;
-  background:#fff3cd;
-  border:1.5px dashed #ffb300;
-  border-radius:8px;
-  padding:4px 6px;
-  display:inline-block;
+  border-radius:999px;         /* full rounded pill */
+  white-space:nowrap;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
   }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
@@ -537,7 +538,9 @@
             <td class="event">वार</td>
             <td class="info" id="vaar">--</td>
             <td class="time" id="vaar_time">--</td>
-            <td class="next" id="vaar_sanskrit">--</td>
+            <td class="next">
+  <div id="vaar_sanskrit">--</div>
+            </td>
           </tr>
 
           <tr>
@@ -705,14 +708,21 @@ if (metaParts.length > 0) {
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-  // ---- DIN VISHESH IN VAAR COLUMN ----
+  // ---- VAAR ----
+document.getElementById("vaar").textContent =
+  p.vaar || p.weekday || daysMR[new Date().getDay()];
+
+// ---- DIN VISHESH (in vaar row) ----
+const dvBox = document.getElementById("vaar_sanskrit");
+
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
-  const dvCell = document.getElementById("vaar_sanskrit");
-  dvCell.textContent = "✨ " + p.din_vishesh;
-  dvCell.classList.add("din-vishesh-highlight");
+  dvBox.textContent = "दिनविशेष: " + p.din_vishesh;
+  dvBox.className = "din-pill";
 } else {
-  document.getElementById("vaar_sanskrit").textContent = "--";
+  dvBox.textContent = "--";
+  dvBox.className = "";
 }
+
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
   document.getElementById("nak_next").textContent=nextN(p.nakshatra_next);
