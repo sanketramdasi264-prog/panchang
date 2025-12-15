@@ -44,5 +44,165 @@
     "solar_month": "मार्गशीर्ष",
 
     "din_vishesh": "एकादशी व्रत"
+  },
+  
+  "2025-12-16": {
+    "tithi": "द्वादशी",
+    "tithi_end": "23:55",
+    "tithi_next": "त्रयोदशी",
+
+    "nakshatra": "स्वाती",
+    "nakshatra_end": "14:07",
+    "nakshatra_next": "विशाखा",
+
+    "yog": "अतिगंड",
+    "yog_time": "13:21",
+    "yog_next": "सुकर्मा",
+
+    "karan": "कौलव",
+    "karan_end": "10:36",
+    "karan_next": "तैतिल",
+
+    "sunrise": "07:01",
+    "sunset": "17:41",
+
+    "moonrise": "14:51",
+    "rahukaal": "15:02 ते 16:22",
+
+    "moon_rashi": "तुळ",
+    "sun_rashi": "धनु",
+    "guru_rashi": "वृषभ",
+
+    "din_vishesh": "",
+    "shalivahan": "1947",
+    "shalivahan_meta": "मार्गशीर्ष, कृष्ण पक्ष"
+  },
+
+  "2025-12-17": {
+    "tithi": "त्रयोदशी",
+    "tithi_end": "26:31",
+    "tithi_next": "चतुर्दशी",
+
+    "nakshatra": "विशाखा",
+    "nakshatra_end": "17:09",
+    "nakshatra_next": "अनुराधा",
+
+    "yog": "सुकर्मा",
+    "yog_time": "14:14",
+    "yog_next": "धृति",
+
+    "karan": "गर",
+    "karan_end": "13:14",
+    "karan_next": "वणिज",
+
+    "sunrise": "07:01",
+    "sunset": "17:42",
+
+    "moonrise": "15:29",
+    "rahukaal": "12:22 ते 13:42",
+
+    "moon_rashi": "तुळ",
+    "sun_rashi": "धनु",
+    "guru_rashi": "वृषभ",
+
+    "din_vishesh": "",
+    "shalivahan": "1947",
+    "shalivahan_meta": "मार्गशीर्ष, कृष्ण पक्ष"
+  },
+
+  "2025-12-18": {
+    "tithi": "चतुर्दशी",
+    "tithi_end": "28:57",
+    "tithi_next": "अमावस्या",
+
+    "nakshatra": "अनुराधा",
+    "nakshatra_end": "20:04",
+    "nakshatra_next": "ज्येष्ठा",
+
+    "yog": "धृति",
+    "yog_time": "15:03",
+    "yog_next": "शूल",
+
+    "karan": "विष्टी",
+    "karan_end": "15:45",
+    "karan_next": "शकुनी",
+
+    "sunrise": "07:02",
+    "sunset": "17:42",
+
+    "moonrise": "16:12",
+    "rahukaal": "13:43 ते 15:03",
+
+    "moon_rashi": "वृश्चिक",
+    "sun_rashi": "धनु",
+    "guru_rashi": "वृषभ",
+
+    "din_vishesh": "",
+    "shalivahan": "1947",
+    "shalivahan_meta": "मार्गशीर्ष, कृष्ण पक्ष"
+  },
+
+  "2025-12-19": {
+    "tithi": "अमावस्या",
+    "tithi_end": "",
+    "tithi_next": "प्रतिपदा",
+
+    "nakshatra": "ज्येष्ठा",
+    "nakshatra_end": "22:49",
+    "nakshatra_next": "मूळ",
+
+    "yog": "शूल",
+    "yog_time": "15:44",
+    "yog_next": "गंड",
+
+    "karan": "चतुष्पद",
+    "karan_end": "18:06",
+    "karan_next": "नाग",
+
+    "sunrise": "07:02",
+    "sunset": "17:43",
+
+    "moonrise": "17:00",
+    "rahukaal": "11:03 ते 12:23",
+
+    "moon_rashi": "वृश्चिक",
+    "sun_rashi": "धनु",
+    "guru_rashi": "वृषभ",
+
+    "din_vishesh": "अमावस्या",
+    "shalivahan": "1947",
+    "shalivahan_meta": "मार्गशीर्ष अमावस्या"
+  },
+
+  "2025-12-20": {
+    "tithi": "अमावस्या",
+    "tithi_end": "07:11",
+    "tithi_next": "प्रतिपदा",
+
+    "nakshatra": "मूळ",
+    "nakshatra_end": "25:19",
+    "nakshatra_next": "पूर्वाषाढा",
+
+    "yog": "गंड",
+    "yog_time": "16:15",
+    "yog_next": "वृद्धि",
+
+    "karan": "नाग",
+    "karan_end": "07:11",
+    "karan_next": "किंस्तुघ्न",
+
+    "sunrise": "07:03",
+    "sunset": "17:43",
+
+    "moonrise": "17:53",
+    "rahukaal": "09:42 ते 11:02",
+
+    "moon_rashi": "धनु",
+    "sun_rashi": "धनु",
+    "guru_rashi": "वृषभ",
+
+    "din_vishesh": "अमावस्या",
+    "shalivahan": "1947",
+    "shalivahan_meta": "मार्गशीर्ष अमावस्या"
   }
 }
