@@ -459,7 +459,7 @@
 
       <div class="ipt-box">
         <label>👤 आपले नाव</label>
-        <input id="inpName" type="text" placeholder="आपले नाव">
+        <input id="inpName" type="text" placeholder="उदा. वेदमूर्ती. श्री._________ गुरुजी">
         
         <label style="margin-top:10px">🏢 कार्यालय / व्यवसाय</label>
         <input id="inpOffice" type="text" placeholder="कार्यालय / व्यवसाय">
@@ -471,6 +471,9 @@
       <div class="ipt-box">
         <label>📱 संपर्क</label>
         <input id="inpContact" type="tel" placeholder="मोबाईल नंबर">
+        
+<label>Tag-line</label>
+        <input id="inpContact" type="tel" placeholder="उदा. सर्व धार्मिक विधी केले जातील...">
 
         <button class="btn-apply" id="applyBtn">✔ लागू करा</button>
       </div>
@@ -622,6 +625,7 @@
         <div id="footer_office"></div>
         <div id="footer_address"></div>
         <div id="footer_contact"></div>
+        <div id="footer_tag-line"></div>
       </div>
       <img id="footer_img" />
     </div>
@@ -825,6 +829,7 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
   if(office) document.getElementById("footer_office").textContent=office;
   if(addr) document.getElementById("footer_address").textContent=addr;
   if(contact) document.getElementById("footer_contact").textContent="संपर्क: "+contact;
+  if(contact) document.getElementById("footer_tag-line").textContent="संपर्क: "+tag-line;
 
   const btn=document.getElementById("applyBtn");
   btn.textContent="लागू झाले ✓";
