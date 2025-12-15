@@ -535,11 +535,11 @@
           </tr>
 
           <tr>
-            <td class="event">वार</td>
-            <td class="info" id="vaar">--</td>
-            <td class="time" id="vaar_time">--</td>
-            <td class="next">
-  <div id="vaar_sanskrit">--</div>
+            <tr>
+  <td class="event">वार</td>
+  <td class="info" id="vaar">--</td>
+  <td class="time" id="vaar_time">--</td>
+  <td class="next" id="vaar_sanskrit">--</td>
             </td>
           </tr>
 
@@ -707,21 +707,28 @@ if (metaParts.length > 0) {
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
   // ---- VAAR ----
-document.getElementById("vaar").textContent =
-  p.vaar || p.weekday || daysMR[new Date().getDay()];
+const vaarEl = document.getElementById("vaar");
+if (vaarEl) {
+  vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
+}
 
-// ---- DIN VISHESH only here ----
+// ---- DIN VISHESH (SAFE MODE) ----
 const dvLabelCell = document.getElementById("vaar_time");
 const dvDataCell  = document.getElementById("vaar_sanskrit");
 
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
-  dvLabelCell.innerHTML = `<span class="din-pill">दिनविशेष</span>`;
-  dvDataCell.innerHTML  = `<span class="din-pill">${p.din_vishesh}</span>`;
+  if (dvLabelCell) {
+    dvLabelCell.innerHTML = `<span class="din-pill">दिनविशेष</span>`;
+  }
+
+  if (dvDataCell) {
+    dvDataCell.innerHTML = `<span class="din-pill">${p.din_vishesh}</span>`;
+  }
 
 } else {
-  dvLabelCell.textContent = "--";
-  dvDataCell.textContent  = "--";
+  if (dvLabelCell) dvLabelCell.textContent = "--";
+  if (dvDataCell)  dvDataCell.textContent  = "--";
 }
 
   // Label
