@@ -1,10 +1,12 @@
 {
   "2025-12-15": {
-    "date_display": "15 डिसेंबर 2025",
+    "date": "15-12-2025",
     "weekday": "सोमवार",
 
     "tithi": "एकादशी",
     "tithi_end": "21:18",
+    "tithi_next": "द्वादशी",
+
     "paksha": "कृष्ण",
 
     "nakshatra": "चित्रा",
@@ -13,25 +15,11 @@
 
     "yog": "शोभन",
     "yog_end": "12:28",
+    "yog_next": "अतिगण्ड",
 
     "karan": "बव",
     "karan_end": "08:01",
     "karan_next": "बालव",
-
-    "moon_rashi": "तुला",
-    "sun_rashi": "वृश्चिक",
-
-    "ritu": "हेमंत",
-    "ayan": "दक्षिणायण",
-
-    "samvatsar": "विश्वावसु",
-    "samvatsar_uttarayan": "सिद्धार्थी",
-
-    "vikram_samvat": "2082",
-    "shaka_samvat": "1947",
-    "kali_samvat": "5126",
-
-    "saur_maas": "मार्गशीर्ष (30)",
 
     "sunrise": "07:00",
     "sunset": "17:41",
@@ -39,10 +27,22 @@
     "moonrise": "14:16",
     "moonset": "27:40",
 
-    "rahukaal": "08:32 ते 09:52",
+    "rahukaal": "07:30 ते 09:00",
 
-    "din_vishesh": "एकादशी व्रत",
+    "moon_rashi": "तुला",
+    "sun_rashi": "वृश्चिक",
+    "guru_rashi": "मिथुन",
 
-    "location": "Ujjain, India"
+    "ritu": "हेमंत",
+    "ayan": "दक्षिणायन",
+
+    "samvatsar": "विश्वावसु",
+    "shaka_samvat": "1947",
+    "vikram_samvat": "2082",
+    "kali_samvat": "5126",
+
+    "solar_month": "मार्गशीर्ष",
+
+    "din_vishesh": "एकादशी व्रत"
   }
 }
