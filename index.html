@@ -682,8 +682,24 @@ async function populatePanchang(){
 
   const p=data[key];
 
-  if(p.shalivahan) document.getElementById("shalivahanLine").textContent=p.shalivahan;
-  if(p.shalivahan_meta) document.getElementById("shalivahanMeta").textContent=p.shalivahan_meta;
+  // --- SHALIVAHAN DATA FROM JSON ---
+if (p.shaka_samvat) {
+  document.getElementById("shalivahanLine").textContent =
+    "शालिवाहन शके " + p.shaka_samvat;
+}
+
+const metaParts = [];
+
+if (p.samvatsar) metaParts.push(p.samvatsar + " नाम संवत्सर");
+if (p.ayan) metaParts.push(p.ayan);
+if (p.ritu) metaParts.push(p.ritu + " ऋतू");
+if (p.solar_month) metaParts.push(p.solar_month + " मास");
+if (p.paksha) metaParts.push(p.paksha + " पक्ष");
+
+if (metaParts.length > 0) {
+  document.getElementById("shalivahanMeta").textContent =
+    metaParts.join(", ");
+}
 
   document.getElementById("moonrise").textContent = p.moonrise || "--";
   document.getElementById("rahukaal").textContent = p.rahukaal || "--";
