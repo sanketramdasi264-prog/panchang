@@ -350,16 +350,13 @@
 }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
-.footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:10px 13px; 
-    background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
-    color:#fff;
-    border-top:4px solid var(--gold);
-    gap:10px;
+.footer-wrap{
+  display:flex;
+  align-items:center;
+  gap:16px;                 /* कमी gap */
+  padding:18px 20px;        /* compact */
 }
+
 
 .footer-left{
   flex:1;
@@ -370,38 +367,61 @@
 }
 
 
-#footer_name{
-  font-family:'Baloo 2';
-  font-size:26px;
-  font-weight:800;
-  color:var(--gold);
+.footer-name{
+  font-family:'Baloo 2', cursive;
+  font-size:24px;           /* ⬅️ कमी केलं */
+  font-weight:700;
+  color:#ffd36a;
+  line-height:1.2;
   margin-bottom:6px;
 }
 
+
 .footer-left div{
-  font-family:'Baloo 2';
-  font-size:15px;
-  line-height:1.35;
-  opacity:0.95;
+   font-family:'Baloo 2', cursive;
+  font-size:15px;           /* ⬅️ खूपच readable */
+  line-height:1.5;
+  color:#f3f3f3;
 }
+  .footer-text{
+  max-width:420px;          /* ⬅️ limit घातली */
+}
+
 
 
 #footer_img{
-  width:150px;
-  height:200px;              /* 🔥 मोठी */
-  object-fit:cover;
-  border-radius:10px;
+ width:140px;              /* ⬅️ आधीचा balanced size */
+  height:190px;
   border:3px solid var(--gold);
-  background:#fff;
-
-  box-shadow:
-    0 0 14px rgba(255,215,0,0.9),
-    0 0 30px rgba(255,215,0,0.6),
-    0 10px 25px rgba(0,0,0,0.35);
-
-  align-self:stretch;        /* 👈 top to bottom touch */
+  border-radius:14px;
+  overflow:hidden;
+  flex-shrink:0;
 }
 
+.footer_img{
+  width:100%;
+  height:100%;
+  object-fit:cover;         /* clear & sharp */
+}
+
+  @media (max-width:600px){
+  .footer-wrap{
+    padding:16px;
+  }
+
+  .footer-img{
+    width:120px;
+    height:170px;
+  }
+
+  .footer-name{
+    font-size:22px;
+  }
+
+  .footer-info{
+    font-size:14px;
+  }
+}
 
   /* DOWNLOAD BUTTON */
   #downloadFab{
