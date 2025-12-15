@@ -1,43 +1,48 @@
 {
-  "2025-12-14": {
-    "tithi": "दशमी",
-    "tithi_end": "18:49:11",
-    "tithi_next": "एकादशी",
-    "nakshatra": "हस्त",
-    "nakshatra_end": "08:17:33",
-    "nakshatra_next": "चित्रा",
-    "yog": "सौभाग्य",
-    "yog_time": "11:44:20",
-    "karan": "विष्टि भद्र",
-    "karan_end": "18:49:12",
-    "karan_next": "बव",
-    "sunrise": "07:01:08",
-    "sunset": "17:42:13",
-    "moonrise": "13:45:31",
-    "rahukaal": "00",
-    "moon_rashi": "कन्या",
-    "sun_rashi": "वृश्चिक",
-    "din_vishesh": "दशमी"
-  },
-
   "2025-12-15": {
+    "date_display": "15 डिसेंबर 2025",
+    "weekday": "सोमवार",
+
     "tithi": "एकादशी",
-    "tithi_end": "21:19:28",
-    "tithi_next": "द्वादशी",
+    "tithi_end": "21:18",
+    "paksha": "कृष्ण",
+
     "nakshatra": "चित्रा",
-    "nakshatra_end": "11:07:50",
+    "nakshatra_end": "11:06",
     "nakshatra_next": "स्वाती",
+
     "yog": "शोभन",
-    "yog_time": "12:29:17",
+    "yog_end": "12:28",
+
     "karan": "बव",
-    "karan_end": "08:02:46",
+    "karan_end": "08:01",
     "karan_next": "बालव",
-    "sunrise": "07:01:44",
-    "sunset": "17:42:36",
-    "moonrise": "14:17:26",
-    "rahukaal": "00",
+
     "moon_rashi": "तुला",
     "sun_rashi": "वृश्चिक",
-    "din_vishesh": "एकादशी व्रत"
+
+    "ritu": "हेमंत",
+    "ayan": "दक्षिणायण",
+
+    "samvatsar": "विश्वावसु",
+    "samvatsar_uttarayan": "सिद्धार्थी",
+
+    "vikram_samvat": "2082",
+    "shaka_samvat": "1947",
+    "kali_samvat": "5126",
+
+    "saur_maas": "मार्गशीर्ष (30)",
+
+    "sunrise": "07:00",
+    "sunset": "17:41",
+
+    "moonrise": "14:16",
+    "moonset": "27:40",
+
+    "rahukaal": "08:32 ते 09:52",
+
+    "din_vishesh": "एकादशी व्रत",
+
+    "location": "Ujjain, India"
   }
 }
