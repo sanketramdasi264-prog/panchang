@@ -723,37 +723,6 @@ if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
 /* -------- USER INPUT HANDLING -------- */
 
-const kuldeviFile = document.getElementById("kuldeviFile");
-const kuldeviPreview = document.getElementById("kuldeviPreview");
-
-kuldeviFile.addEventListener("change", e => {
-  const f = e.target.files[0];
-  if (!f) return;
-  const r = new FileReader();
-  r.onload = () => {
-    kuldeviPreview.src = r.result;
-    kuldeviPreview.style.display = "block";
-    document.getElementById("kuldevi_img").src = r.result;
-  };
-r.readAsDataURL(f);
-
-});
-
-const guradevaFile = document.getElementById("guradevaFile");
-const guradevaPreview = document.getElementById("guradevaPreview");
-
-guradevaFile.addEventListener("change", e => {
-  const f = e.target.files[0];
-  if (!f) return;
-  const r = new FileReader();
-  r.onload = () => {
-    guradevaPreview.src = r.result;
-    guradevaPreview.style.display = "block";
-    document.getElementById("gurudeva_img").src = r.result;
-  };
-  r.readAsDataURL(f);
-});
-
 const userFile=document.getElementById("userFile");
 const preview=document.getElementById("preview");
 
