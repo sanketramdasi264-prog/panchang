@@ -350,6 +350,16 @@
     border-radius:8px;
     display:none
   }
+  .din-vishesh-highlight{
+  color:#b71c1c;
+  font-weight:800;
+  font-size:13px;
+  background:#fff3cd;
+  border:1.5px dashed #ffb300;
+  border-radius:8px;
+  padding:4px 6px;
+  display:inline-block;
+  }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
 .footer{
@@ -695,10 +705,14 @@ if (metaParts.length > 0) {
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-  document.getElementById('vaar').textContent = p.vaar || daysMR[now.getDay()];
-  document.getElementById('vaar_time').textContent = p.vaar_time || '--';
-  document.getElementById('vaar_sanskrit').textContent = p.vaar_sanskrit || p.vaarSanskrit || '--';
-
+  // ---- DIN VISHESH IN VAAR COLUMN ----
+if (p.din_vishesh && p.din_vishesh.trim() !== "") {
+  const dvCell = document.getElementById("vaar_sanskrit");
+  dvCell.textContent = "✨ " + p.din_vishesh;
+  dvCell.classList.add("din-vishesh-highlight");
+} else {
+  document.getElementById("vaar_sanskrit").textContent = "--";
+}
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
   document.getElementById("nak_next").textContent=nextN(p.nakshatra_next);
