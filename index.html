@@ -65,6 +65,8 @@
     border-radius:12px;
     overflow:hidden;
     box-shadow:0 24px 50px rgba(0,0,0,.16);
+      width:1080px;
+  max-width:1080px;
   }
 
   /* NEW HEADER LAYOUT */
@@ -416,7 +418,9 @@
 </style>
 </head>
 <body>
+
 <div class="page">
+
 
   <!-- USER INPUT PANEL -->
   <div class="input-panel">
@@ -791,16 +795,19 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
 /* -------- PNG DOWNLOAD -------- */
 
 async function generatePNG(){
+  await document.fonts.ready;
   const el=document.getElementById("panchangCard");
-  await new Promise(res=>setTimeout(res,200));
 
   return html2canvas(el,{
     scale:3,
+    dpi:300,
     useCORS:true,
-    allowTaint:true,
-    backgroundColor:"#ffffff"
+    backgroundColor:"#ffffff",
+    windowWidth:1080,
+    windowHeight:el.scrollHeight
   });
 }
+
 
 document.getElementById("downloadFab").addEventListener("click",async()=>{
   const canvas=await generatePNG();
