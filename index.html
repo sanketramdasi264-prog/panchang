@@ -350,77 +350,47 @@
 }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
-.footer-wrap{
-  display:flex;
-  align-items:center;
-  gap:16px;                 /* कमी gap */
-  padding:18px 20px;        /* compact */
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 13px; 
+    background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
+    color:#fff;
+    border-top:4px solid var(--gold);
+    gap:10px;
 }
-
 
 .footer-left{
-  flex:1;
-  padding-left:10px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;   /* vertically center */
+    flex:1;
 }
 
-
-.footer-name{
-  font-family:'Baloo 2', cursive;
-  font-size:24px;           /* ⬅️ कमी केलं */
-  font-weight:700;
-  color:#ffd36a;
-  line-height:1.2;
-  margin-bottom:6px;
+#footer_name{
+    font-family:'Arya';
+    font-size:20px;
+    color:var(--gold);
+    font-weight:900;
+    line-height:1.1;
 }
-
 
 .footer-left div{
-   font-family:'Baloo 2', cursive;
-  font-size:15px;           /* ⬅️ खूपच readable */
-  line-height:1.5;
-  color:#f3f3f3;
+    margin-top:2px;
+    font-size:13px;
 }
-  .footer-text{
-  max-width:420px;          /* ⬅️ limit घातली */
-}
-
-
 
 #footer_img{
- width:140px;              /* ⬅️ आधीचा balanced size */
-  height:190px;
-  border:3px solid var(--gold);
-  border-radius:14px;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.footer_img{
-  width:100%;
-  height:100%;
-  object-fit:cover;         /* clear & sharp */
-}
-
-  @media (max-width:600px){
-  .footer-wrap{
-    padding:16px;
-  }
-
-  .footer-img{
-    width:120px;
-    height:170px;
-  }
-
-  .footer-name{
-    font-size:22px;
-  }
-
-  .footer-info{
-    font-size:14px;
-  }
+    width:110px;
+    height:140px;
+    object-fit:cover;
+    border-radius:8px;
+    border:2px solid var(--gold);
+    background:#fff;
+    box-shadow:
+        0 0 12px rgba(255, 215, 0, 0.70),
+        0 0 26px rgba(255, 215, 0, 0.55),
+        0 0 40px rgba(255, 215, 0, 0.35),
+        0 8px 20px rgba(0,0,0,0.30);
+    flex-shrink:0;  
 }
 
   /* DOWNLOAD BUTTON */
