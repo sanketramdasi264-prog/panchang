@@ -786,38 +786,31 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
   setTimeout(()=>btn.textContent="✔ लागू करा",1200);
 });
 
-/* -------- PNG DOWNLOAD (FIXED FOR ALL DEVICES) -------- */
+/* -------- PNG DOWNLOAD -------- */
 
 async function generatePNG(){
-  const el = document.getElementById("panchangCard");
+  const el=document.getElementById("panchangCard");
+  await new Promise(res=>setTimeout(res,200));
 
-  // 🔐 WhatsApp Status FIXED SIZE
-  const oldWidth = el.style.width;
-  const oldMinHeight = el.style.minHeight;
-
-  el.style.width = "1080px";
-  el.style.minHeight = "1920px";
-
-  // थोडा वेळ layout settle व्हायला
-  await new Promise(res => setTimeout(res, 300));
-
-  const canvas = await html2canvas(el, {
-    width: 1080,
-    height: 1920,
-    scale: 2,               // clarity
-    useCORS: true,
-    backgroundColor: "#ffffff",
-    windowWidth: 1080,
-    windowHeight: 1920
+  return html2canvas(el,{
+    scale:3,
+    useCORS:true,
+    allowTaint:true,
+    backgroundColor:"#ffffff"
   });
-
-  // 🔄 परत normal screen view
-  el.style.width = oldWidth;
-  el.style.minHeight = oldMinHeight;
-
-  return canvas;
 }
 
+document.getElementById("downloadFab").addEventListener("click",async()=>{
+  const canvas=await generatePNG();
+  canvas.toBlob(blob=>{
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="panchang.png";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+});
 
 /* INIT */
 window.addEventListener("load",populatePanchang);
