@@ -102,10 +102,17 @@
   justify-content:center;
 }
 .hdr-center img{
-  height:90px;        /* 👈 increase here */
-  max-width:120px;
+  height:115px;          /* 🔥 अजून मोठा */
+  max-width:150px;
   object-fit:contain;
 }
+@media (max-width:600px){
+  .hdr-center img{
+    height:85px;         /* mobile वर too big नको */
+    max-width:110px;
+  }
+}
+
 
 
 /* RIGHT */
