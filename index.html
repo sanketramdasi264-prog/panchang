@@ -721,11 +721,11 @@ const dvDataCell  = document.getElementById("vaar_sanskrit");
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
   if (dvLabelCell) {
-    dvLabelCell.innerHTML = `<span class="din-pill">दिनविशेष</span>`;
+    dvLabelCell.innerHTML = `<div class="rashi-pill">दिनविशेष</div>`;
   }
 
   if (dvDataCell) {
-    dvDataCell.innerHTML = `<span class="din-pill">${p.din_vishesh}</span>`;
+    dvDataCell.innerHTML  = `<div class="rashi-pill">${p.din_vishesh}</div>`;
   }
 
 } else {
