@@ -350,14 +350,14 @@
     border-radius:8px;
     display:none
   }
-  ..din-pill{
-  display:inline-block;
-  padding:6px 10px;
+  .din-pill{
   background:#ffeb3b;          /* full yellow */
   color:#8b0000;               /* dark red text */
   font-weight:800;
   font-size:13px;
-  border-radius:999px;         /* full rounded pill */
+  padding:6px 10px;
+  border-radius:999px;         /* full rounded */
+  display:inline-block;
   white-space:nowrap;
   box-shadow:0 2px 6px rgba(0,0,0,0.15);
   }
@@ -712,15 +712,23 @@ if (metaParts.length > 0) {
 document.getElementById("vaar").textContent =
   p.vaar || p.weekday || daysMR[new Date().getDay()];
 
-// ---- DIN VISHESH (in vaar row) ----
-const dvBox = document.getElementById("vaar_sanskrit");
+// ---- DIN VISHESH placement ----
+const dvLabelCell = document.getElementById("vaar_time");      // time column
+const dvDataCell  = document.getElementById("vaar_sanskrit");  // next column
 
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
-  dvBox.textContent = "दिनविशेष: " + p.din_vishesh;
-  dvBox.className = "din-pill";
+
+  // Label
+  dvLabelCell.textContent = "दिनविशेष";
+  dvLabelCell.className = "time din-pill";
+
+  // Data
+  dvDataCell.textContent = p.din_vishesh;
+  dvDataCell.className = "next din-pill";
+
 } else {
-  dvBox.textContent = "--";
-  dvBox.className = "";
+  dvLabelCell.textContent = "--";
+  dvDataCell.textContent = "--";
 }
 
   document.getElementById("nak").textContent=p.nakshatra || "--";
