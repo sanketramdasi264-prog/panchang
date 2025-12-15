@@ -295,35 +295,25 @@
     color:var(--accent);
     font-weight:600;
     text-align:center;
-    vertical-align:middle;
 }
 
 .next{
     width:25%;
     text-align:center;
-    vertical-align:middle;
     color:#0d47a1;
 }
 
   /* RASHI */
- /* RASHI BUTTONS – ORIGINAL */
-.rashi-pill{
-  display:inline-flex;
+ .rashi-row{
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:6px;
-
-  padding:6px 12px;
-  border:2px solid #f4b400;
-  border-radius:999px;
-
+  gap:8px;
+  padding:8px 10px;
   background:#fff;
-  color:#d84315;
-  font-weight:700;
-  font-size:13px;
-
-  white-space:nowrap;
+  border-bottom:4px solid var(--gold);
+  flex-wrap:nowrap;
 }
-
 
 .rashi-item{
   display:flex;
@@ -350,26 +340,27 @@
   color:var(--accent);
 }
 
-/* DIN VISHESH – SPECIAL HIGHLIGHT */
-.din-pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:5px 14px;
-  margin:2px 0;
-
-  background:#fff8e1;          /* cream */
-  border:2px solid #f1b500;    /* golden line */
-  border-radius:999px;
-
-  color:#8b0000;               /* dark red */
+  /* DIN VISHESH */
+  .din-box{
+    margin:7px;
+    padding:13px;
+    font-weight:700;
+    background:#fff8e6;
+    border:2px solid #e4b236;
+    border-radius:8px;
+    display:none
+  }
+  .din-pill{
+  display:inline-block;
+  padding:5px 10px;
+  background:#ffeb3b;
+  color:#8b0000;
+  font-weight:800;
   font-size:13px;
-  font-weight:700;
-
+  border-radius:999px;
   white-space:nowrap;
-}
-
+  box-shadow:0 2px 5px rgba(0,0,0,0.18);
+  }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
 .footer{
@@ -730,11 +721,11 @@ const dvDataCell  = document.getElementById("vaar_sanskrit");
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
 
   if (dvLabelCell) {
-    dvLabelCell.innerHTML = `<div class="din-pill">दिनविशेष</div>`;
+    dvLabelCell.innerHTML = `<div class="rashi-pill">दिनविशेष</div>`;
   }
 
   if (dvDataCell) {
-    dvDataCell.innerHTML  = `<div class="din-pill">${p.din_vishesh}</div>`;
+    dvDataCell.innerHTML  = `<div class="rashi-pill">${p.din_vishesh}</div>`;
   }
 
 } else {
