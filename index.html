@@ -351,15 +351,15 @@
     display:none
   }
   .din-pill{
-  background:#ffeb3b;          /* full yellow */
-  color:#8b0000;               /* dark red text */
+  display:inline-block;
+  padding:5px 10px;
+  background:#ffeb3b;
+  color:#8b0000;
   font-weight:800;
   font-size:13px;
-  padding:6px 10px;
-  border-radius:999px;         /* full rounded */
-  display:inline-block;
+  border-radius:999px;
   white-space:nowrap;
-  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  box-shadow:0 2px 5px rgba(0,0,0,0.18);
   }
 
   /* FOOTER INSIDE IMAGE - REDUCED SIZE */
@@ -608,8 +608,6 @@
       </div>
     </div>
 
-    <!-- DIN VISHESH -->
-    <div id="din_vishesh" class="din-box"></div>
 
     <!-- FOOTER (INSIDE CARD) - REDUCED SIZE -->
     <div class="footer">
@@ -712,11 +710,19 @@ if (metaParts.length > 0) {
 document.getElementById("vaar").textContent =
   p.vaar || p.weekday || daysMR[new Date().getDay()];
 
-// ---- DIN VISHESH placement ----
-const dvLabelCell = document.getElementById("vaar_time");      // time column
-const dvDataCell  = document.getElementById("vaar_sanskrit");  // next column
+// ---- DIN VISHESH only here ----
+const dvLabelCell = document.getElementById("vaar_time");
+const dvDataCell  = document.getElementById("vaar_sanskrit");
 
 if (p.din_vishesh && p.din_vishesh.trim() !== "") {
+
+  dvLabelCell.innerHTML = `<span class="din-pill">दिनविशेष</span>`;
+  dvDataCell.innerHTML  = `<span class="din-pill">${p.din_vishesh}</span>`;
+
+} else {
+  dvLabelCell.textContent = "--";
+  dvDataCell.textContent  = "--";
+}
 
   // Label
   dvLabelCell.textContent = "दिनविशेष";
@@ -747,11 +753,7 @@ if (p.din_vishesh && p.din_vishesh.trim() !== "") {
   document.getElementById("sun_rashi").textContent=p.sun_rashi || "--";
   document.getElementById("guru_rashi").textContent=p.guru_rashi || "--";
 
-  if(p.din_vishesh){
-    const dv=document.getElementById("din_vishesh");
-    dv.textContent="दिनविशेष: "+p.din_vishesh;
-    dv.style.display="block";
-  }
+  
 }
 
 
@@ -769,7 +771,7 @@ kuldeviFile.addEventListener("change", e => {
     kuldeviPreview.style.display = "block";
     document.getElementById("kuldevi_img").src = r.result;
   };
-  r.readAsDataURL(f);
+  r.readAsDataURL(f;
 });
 
 const guradevaFile = document.getElementById("guradevaFile");
