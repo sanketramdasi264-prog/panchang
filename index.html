@@ -534,14 +534,12 @@
             <td class="next" id="tithi_next">--</td>
           </tr>
 
-          <tr>
             <tr>
   <td class="event">वार</td>
   <td class="info" id="vaar">--</td>
   <td class="time" id="vaar_time">--</td>
   <td class="next" id="vaar_sanskrit">--</td>
-            </td>
-          </tr>
+</tr>
 
           <tr>
             <td class="event">नक्षत्र</td>
@@ -712,7 +710,7 @@ if (vaarEl) {
   vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
 }
 
-// ---- DIN VISHESH (SAFE MODE) ----
+// ---- DIN VISHESH (ONLY ONCE, SAFE) ----
 const dvLabelCell = document.getElementById("vaar_time");
 const dvDataCell  = document.getElementById("vaar_sanskrit");
 
@@ -778,7 +776,8 @@ kuldeviFile.addEventListener("change", e => {
     kuldeviPreview.style.display = "block";
     document.getElementById("kuldevi_img").src = r.result;
   };
-  r.readAsDataURL(f;
+r.readAsDataURL(f);
+
 });
 
 const guradevaFile = document.getElementById("guradevaFile");
