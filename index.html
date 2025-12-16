@@ -65,8 +65,6 @@
     border-radius:12px;
     overflow:hidden;
     box-shadow:0 24px 50px rgba(0,0,0,.16);
-    width: 100%;
-    max-width: 1080px;
   }
 
   /* NEW HEADER LAYOUT */
@@ -105,13 +103,13 @@
   justify-content:center;
 }
 .hdr-center img{
-  height:115px;
+  height:115px;          /* 🔥 अजून मोठा */
   max-width:150px;
   object-fit:contain;
 }
 @media (max-width:600px){
   .hdr-center img{
-    height:85px;
+    height:85px;         /* mobile वर too big नको */
     max-width:110px;
   }
 }
@@ -366,7 +364,7 @@
 
 #footer_name{
   font-family: 'Aparajita','Noto Serif Devanagari','Baloo Bhai 2',serif;
-  font-size:22px;
+  font-size:22px;          /* थोडं smaller, elegant */
   color:var(--gold);
   font-weight:700;
   line-height:1.2;
@@ -377,13 +375,13 @@
 .footer-left div{
   font-family:'Baloo Bhai 2','Baloo 2',sans-serif;
   font-size:14px;
-  line-height:1.45;
+  line-height:1.45;      /* spacing neat */
   margin-top:2px;
   color:#fff;
 }
 
   #footer_tag-line{
-  color:#ffd54a;
+  color:#ffd54a;         /* gold yellow */
   font-weight:600;
   margin-top:6px;
   font-size:14px;
@@ -475,12 +473,12 @@
   </div>
 
   <div class="hdr-center">
-    <img src="https://i.postimg.cc/fLZx1Jm6/ganesh-placeholder.png"
+    <img src="pngtree-ganesha-the-embodiment-of-prosperity-and-joy-png-image_15287837.png"
          alt="Ganesh">
   </div>
 
   <div class="hdr-right">
-    <img src="https://i.postimg.cc/nrk8VW5N/om-karmyog-logo.png"
+    <img src="@Om Karmyog_20251202_135333_0000.jpg"
          alt="OmKarmyog Logo">
   </div>
 
@@ -598,13 +596,13 @@
         <div id="footer_contact"></div>
         <div id="footer_tag-line"></div>
       </div>
-      <img id="footer_img" src="https://i.postimg.cc/d1qYWkZV/placeholder-photo.jpg" />
+      <img id="footer_img" />
     </div>
 
   </div>
 
   <!-- DOWNLOAD BUTTON -->
-  <button id="downloadFab">📥 Download Panchang (1296×1857px)</button>
+  <button id="downloadFab">Download Panchang</button>
 
 </div>
 
@@ -613,40 +611,10 @@
 <script>
 /* -------- PANCHANG DATA LOADING -------- */
 
-const daysMR=['रविवार','सोमवार','मंगळवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
+const LOCAL_JSON="./panchang.json";
+const FALLBACK_JSON="https://sanketramdasi264-prog.github.io/panchang/panchang.json";
 
-// Sample panchang data
-const samplePanchangData = {
-  "2025-12-16": {
-    "shaka_samvat": "1947",
-    "samvatsar": "विश्वावसु",
-    "ayan": "दक्षिणायन",
-    "ritu": "हेमंत",
-    "solar_month": "मार्गशीर्ष",
-    "paksha": "शुक्ल",
-    "moonrise": "14:51",
-    "rahukaal": "15:02 ते 16:22",
-    "sunrise": "07:01",
-    "sunset": "17:41",
-    "tithi": "द्वादशी",
-    "tithi_end": "23:55",
-    "tithi_next": "त्रयोदशी",
-    "vaar": "मंगळवार",
-    "din_vishesh": "",
-    "nakshatra": "स्वाती",
-    "nakshatra_end": "14:07",
-    "nakshatra_next": "विशाखा",
-    "yog": "अतिगंड",
-    "yog_time": "13:21",
-    "yog_next": "सुकर्मा",
-    "karan": "कौलव",
-    "karan_end": "10:36",
-    "karan_next": "तैतिल",
-    "moon_rashi": "तुळ",
-    "sun_rashi": "धनु",
-    "guru_rashi": "वृषभ"
-  }
-};
+const daysMR=['रविवार','सोमवार','मंगळवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
 
 function todayISO(){
   const d=new Date();
@@ -657,8 +625,22 @@ function fmtDate(d=new Date()){
   return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`
 }
 
+async function fetchPanchangJson(){
+  try{
+    const r=await fetch(LOCAL_JSON,{cache:"no-store"});
+    if(r.ok) return await r.json();
+  }catch(e){}
+
+  try{
+    const r2=await fetch(FALLBACK_JSON,{cache:"no-store"});
+    if(r2.ok) return await r2.json();
+  }catch(e){}
+
+  return null;
+}
+
 async function populatePanchang(){
-  const data = samplePanchangData;
+  const data=await fetchPanchangJson();
   const key=todayISO();
   const now=new Date();
 
@@ -673,23 +655,23 @@ async function populatePanchang(){
   const p=data[key];
 
   // --- SHALIVAHAN DATA FROM JSON ---
-  if (p.shaka_samvat) {
-    document.getElementById("shalivahanLine").textContent =
-    "श्रीमन्नृपशालिवाहन शके " + p.shaka_samvat;
-  }
+if (p.shaka_samvat) {
+  document.getElementById("shalivahanLine").textContent =
+  "श्रीमन्नृपशालिवाहन शके " + p.shaka_samvat;
+}
 
-  const metaParts = [];
+const metaParts = [];
 
-  if (p.samvatsar) metaParts.push(p.samvatsar + " नाम संवत्सर");
-  if (p.ayan) metaParts.push(p.ayan);
-  if (p.ritu) metaParts.push(p.ritu + " ऋतू");
-  if (p.solar_month) metaParts.push(p.solar_month + " मास");
-  if (p.paksha) metaParts.push(p.paksha + " पक्ष");
+if (p.samvatsar) metaParts.push(p.samvatsar + " नाम संवत्सर");
+if (p.ayan) metaParts.push(p.ayan);
+if (p.ritu) metaParts.push(p.ritu + " ऋतू");
+if (p.solar_month) metaParts.push(p.solar_month + " मास");
+if (p.paksha) metaParts.push(p.paksha + " पक्ष");
 
-  if (metaParts.length > 0) {
-    document.getElementById("shalivahanMeta").textContent =
-      metaParts.join(", ");
-  }
+if (metaParts.length > 0) {
+  document.getElementById("shalivahanMeta").textContent =
+    metaParts.join(", ");
+}
 
   document.getElementById("moonrise").textContent = p.moonrise || "--";
   document.getElementById("rahukaal").textContent = p.rahukaal || "--";
@@ -703,30 +685,39 @@ async function populatePanchang(){
   document.getElementById("tithi_end").textContent=endP(p.tithi_end);
   document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
 
-  // VAAR + DIN VISHESH
-  const vaarEl = document.getElementById("vaar");
-  if (vaarEl) {
-    vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
-  }
+// ===============================
+// VAAR + DIN VISHESH (FINAL)
+// ===============================
 
-  const dvLabelCell = document.getElementById("vaar_time");
-  const dvDataCell  = document.getElementById("vaar_sanskrit");
+// VAAR
+const vaarEl = document.getElementById("vaar");
+if (vaarEl) {
+  vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
+}
 
-  if (p.din_vishesh && p.din_vishesh.trim() !== "") {
-    dvLabelCell.innerHTML = `
-      <div class="din-pill din-left">
-        दिनविशेष
-      </div>
-    `;
-    dvDataCell.innerHTML = `
-      <div class="din-pill din-right">
-        ${p.din_vishesh}
-      </div>
-    `;
-  } else {
-    dvLabelCell.textContent = "--";
-    dvDataCell.textContent = "--";
-  }
+// DIN VISHESH
+const dvLabelCell = document.getElementById("vaar_time");
+const dvDataCell  = document.getElementById("vaar_sanskrit");
+
+if (p.din_vishesh && p.din_vishesh.trim() !== "") {
+
+  dvLabelCell.innerHTML = `
+    <div class="din-pill din-left">
+      दिनविशेष
+    </div>
+  `;
+
+  dvDataCell.innerHTML = `
+    <div class="din-pill din-right">
+      ${p.din_vishesh}
+    </div>
+  `;
+
+} else {
+  dvLabelCell.textContent = "--";
+  dvDataCell.textContent = "--";
+}
+
 
   document.getElementById("nak").textContent=p.nakshatra || "--";
   document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
@@ -743,6 +734,8 @@ async function populatePanchang(){
   document.getElementById("moon_rashi").textContent=p.moon_rashi || "--";
   document.getElementById("sun_rashi").textContent=p.sun_rashi || "--";
   document.getElementById("guru_rashi").textContent=p.guru_rashi || "--";
+
+  
 }
 
 
@@ -795,70 +788,30 @@ document.getElementById("applyBtn").addEventListener("click",()=>{
 
 
 
-/* -------- PNG DOWNLOAD - FIXED SIZE -------- */
+/* -------- PNG DOWNLOAD -------- */
 
 async function generatePNG(){
-  const el = document.getElementById("panchangCard");
-  
-  // Wait for rendering
-  await new Promise(res=>setTimeout(res,300));
+  const el=document.getElementById("panchangCard");
+  await new Promise(res=>setTimeout(res,200));
 
-  // Get current width of card
-  const currentWidth = el.offsetWidth;
-  
-  // Target dimensions
-  const targetWidth = 1296;
-  const targetHeight = 1857;
-  
-  // Calculate scale to achieve exact target dimensions
-  const scaleX = targetWidth / currentWidth;
-  
-  return html2canvas(el, {
-    scale: scaleX,
-    width: currentWidth,
-    height: el.offsetHeight,
-    useCORS: true,
-    allowTaint: true,
-    backgroundColor: "#ffffff",
-    windowWidth: currentWidth,
-    windowHeight: el.offsetHeight
+  return html2canvas(el,{
+    scale:3,
+    useCORS:true,
+    allowTaint:true,
+    backgroundColor:"#ffffff"
   });
 }
 
-document.getElementById("downloadFab").addEventListener("click", async()=>{
-  const btn = document.getElementById("downloadFab");
-  const originalText = btn.textContent;
-  btn.textContent = "⏳ तयार करत आहे...";
-  btn.disabled = true;
-  
-  try {
-    const canvas = await generatePNG();
-    
-    // Verify dimensions
-    console.log(`Generated canvas: ${canvas.width}×${canvas.height}px`);
-    
-    canvas.toBlob(blob=>{
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `panchang_${fmtDate()}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
-      
-      btn.textContent = "✅ डाउनलोड झाले!";
-      setTimeout(()=>{
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 2000);
-    });
-  } catch(error) {
-    console.error("Download error:", error);
-    btn.textContent = "❌ त्रुटी झाली";
-    setTimeout(()=>{
-      btn.textContent = originalText;
-      btn.disabled = false;
-    }, 2000);
-  }
+document.getElementById("downloadFab").addEventListener("click",async()=>{
+  const canvas=await generatePNG();
+  canvas.toBlob(blob=>{
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="panchang.png";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
 });
 
 
