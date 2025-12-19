@@ -279,33 +279,33 @@
     color:#0d47a1;
 }
 
-  /* RASHI */
- .rashi-row{
+/* RASHI – slightly reduced size */
+.rashi-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:8px;
-  padding:8px 10px;
+  gap:6px;                 /* gap कमी */
+  padding:6px 8px;         /* padding कमी */
   background:#fff;
-  border-bottom:4px solid var(--gold);
+  border-bottom:3px solid var(--gold); /* थोडा thin */
   flex-wrap:nowrap;
 }
 
 .rashi-item{
   display:flex;
   align-items:center;
-  gap:4px;
-  padding:4px 6px;
-  border:2px solid #ffb300;
-  border-radius:18px;
+  gap:3px;                 /* icon-text gap कमी */
+  padding:3px 5px;         /* inner padding कमी */
+  border:1.5px solid #ffb300; /* border हलकी */
+  border-radius:16px;      /* थोडी कमी round */
   background:#fffdf5;
   font-weight:700;
-  font-size:13px;
+  font-size:12px;          /* text size कमी */
   white-space:nowrap;
 }
 
 .rashi-item .icon{
-  font-size:15px;
+  font-size:14px;          /* icon थोडा लहान */
 }
 
 .rashi-item .label{
@@ -315,6 +315,7 @@
 .rashi-item .value{
   color:var(--accent);
 }
+
 
   /* DIN VISHESH */
 /* base capsule */
