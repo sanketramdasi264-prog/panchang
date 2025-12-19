@@ -279,9 +279,8 @@
     color:#0d47a1;
 }
 
-  /* ========== RASHI – RESPONSIVE SAME SIZE ========== */
-
-.rashi-row{
+  /* RASHI */
+ .rashi-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -290,31 +289,23 @@
   background:#fff;
   border-bottom:4px solid var(--gold);
   flex-wrap:nowrap;
-  overflow-x:auto;                 /* 🔑 important */
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-
-.rashi-row::-webkit-scrollbar{
-  display:none;
 }
 
 .rashi-item{
   display:flex;
   align-items:center;
   gap:4px;
-  padding:4px 6px;                 /* SAME */
+  padding:4px 6px;
   border:2px solid #ffb300;
   border-radius:18px;
   background:#fffdf5;
   font-weight:700;
-  font-size:13px;                  /* SAME */
+  font-size:13px;
   white-space:nowrap;
-  flex-shrink:0;                   /* 🔑 prevent squeezing */
 }
 
 .rashi-item .icon{
-  font-size:15px;                  /* SAME */
+  font-size:15px;
 }
 
 .rashi-item .label{
@@ -324,7 +315,6 @@
 .rashi-item .value{
   color:var(--accent);
 }
-
 
   /* DIN VISHESH */
 /* base capsule */
