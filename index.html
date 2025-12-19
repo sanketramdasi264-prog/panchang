@@ -13,62 +13,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
-  :root{
-    --max-w:1080px;
-    --cream:#fff9f1;
-    --maroon:#4e0f0f;
-    --gold:#ffd54a;
-    --accent:#c62828;
-    --blue1:#1565c0;
-    --blue2:#0d47a1;
-    --muted:#6b6b6b;
-  }
+:root{
+  --max-w:1080px;
+  --cream:#fff9f1;
+  --maroon:#4e0f0f;
+  --gold:#ffd54a;
+  --accent:#c62828;
+  --blue1:#1565c0;
+  --blue2:#0d47a1;
+}
 
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:'Noto Sans Devanagari',sans-serif;
-    background:#eef2f1;
-    display:flex;
-    justify-content:center;
-    padding:13px;
-  }
+/* ===== GLOBAL RESET ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Sans Devanagari',sans-serif;
+  background:#eef2f1;
+  display:flex;
+  justify-content:center;
+  padding:12px;
+}
+.page{width:100%;max-width:var(--max-w)}
 
-  .page{width:100%;max-width:var(--max-w)}
+/* ===== INPUT PANEL ===== */
+.input-panel{
+  background:#fff;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.input-panel h2{font-size:18px;font-weight:900;margin-bottom:8px}
+.ipt-row{display:flex;flex-wrap:wrap;gap:14px}
+.ipt-box{flex:1;min-width:220px}
+label{font-weight:700;margin-bottom:4px;display:block}
+input{width:100%;padding:8px;font-size:14px;border:2px solid #eee;border-radius:8px}
+#preview{width:110px;height:110px;margin-top:6px;border-radius:8px;border:3px solid var(--accent);display:none}
+.btn-apply{
+  background:linear-gradient(135deg,var(--accent),#9c2020);
+  color:#fff;border:0;padding:10px 16px;font-weight:800;border-radius:8px;margin-top:6px;cursor:pointer;
+}
 
-  /* USER INPUT PANEL */
-  .input-panel{
-    background:#fff;border-radius:12px;padding:15px;margin-bottom:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-  }
-  .input-panel h2{
-    font-size:19px;font-weight:900;margin-bottom:9px;color:#222;
-  }
-  .ipt-row{display:flex;flex-wrap:wrap;gap:15px}
+/* ===== PANCHANG CARD ===== */
+#panchangCard{
+  background:var(--cream);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 24px 50px rgba(0,0,0,.16);
 
-  .ipt-box{flex:1;min-width:240px}
-  .ipt-box-small{flex:0 0 auto;min-width:180px}
-  label{font-weight:700;margin-bottom:3px;display:block}
-  input[type="text"], input[type="tel"], input[type="file"]{
-    width:100%;padding:9px;font-size:14px;border:2px solid #eee;border-radius:8px;
-  }
-  #preview{width:120px;height:120px;margin-top:7px;border-radius:8px;border:3px solid var(--accent);object-fit:cover;display:none}
-  
+  /* 🔥 FINAL SIZE REDUCTION */
+  transform: scale(0.95);
+  transform-origin: top center;
+}
 
-  .btn-apply{
-    background:linear-gradient(135deg,var(--accent),#9c2020);
-    color:#fff;border:0;padding:11px;font-weight:900;border-radius:8px;margin-top:7px;cursor:pointer;
-  }
-
-  /* CARD */
-  #panchangCard{
-    background:var(--cream);
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 24px 50px rgba(0,0,0,.16);
-  }
-
-  /* NEW HEADER LAYOUT */
-  /* ===== FINAL HEADER ===== */
+/* ===== HEADER ===== */
 .main-header{
   display:flex;
   align-items:center;
@@ -76,749 +73,147 @@
   padding:10px 14px;
   background:#fff;
   border-bottom:4px solid var(--gold);
-  gap:8px;
 }
+.hdr-left .panchang-title{font-family:'Baloo 2';font-size:18px;font-weight:600}
+.hdr-left .date-display{font-size:14px;font-weight:600;color:var(--accent)}
+.hdr-center img{height:90px;object-fit:contain}
+.hdr-right img{height:46px;object-fit:contain}
 
-/* LEFT */
-.hdr-left{
-  flex:1;
-  min-width:0;
+/* ===== SHALIVAHAN ===== */
+.shalivahan{
+  background:linear-gradient(180deg,var(--accent),#8c1c1c);
+  color:#fff;text-align:center;
+  padding:7px;
+  border-bottom:4px solid var(--gold)
 }
-.hdr-left .panchang-title{
-  font-family:'Baloo 2';
-  font-size:18px;
-  font-weight:600;
-  color:#0b2b3a;
-}
-.hdr-left .date-display{
-  font-size:14px;
-  font-weight:600;
-  color:var(--accent);
-}
+.shalivahan h3{font-size:13px;font-family:'Baloo 2'}
+.shalivahan p{font-size:14px;font-weight:600}
 
-/* CENTER */
-.hdr-center{
-  flex:0 0 auto;
-  display:flex;
-  justify-content:center;
-}
-.hdr-center img{
-  height:115px;          /* 🔥 अजून मोठा */
-  max-width:150px;
-  object-fit:contain;
-}
-@media (max-width:600px){
-  .hdr-center img{
-    height:85px;         /* mobile वर too big नको */
-    max-width:110px;
-  }
-}
-
-
-
-/* RIGHT */
-.hdr-right{
-  flex:1;
-  display:flex;
-  justify-content:flex-end;
-}
-.hdr-right img{
-  height:50px;
-  max-width:160px;
-  object-fit:contain;
-}
-
-/* ===== MOBILE PERFECT ===== */
-@media (max-width:600px){
-  .hdr-center img{height:58px}
-  .hdr-right img{height:42px}
-  .hdr-left .panchang-title{font-size:20px}
-}
-
-  /* SHALIVAHAN */
-  .shalivahan{
-    background:linear-gradient(180deg,var(--accent),#8c1c1c);color:#fff;
-    padding:7px;
-    text-align:center;
-    border-bottom:4px solid var(--gold)
-  }
- .shalivahan h3{
-    font-family:'Baloo 2';
-    font-size:13px;
-    font-weight:600;
-    margin-bottom:3px;
-    line-height:1.1;
-}
-
-.shalivahan p{
-    font-size:14px;
-    font-weight:600;
-    margin:0;
-    line-height:1.1;
-    opacity:0.95;
-}
-
- /* SUN BOX */
+/* ===== SUN ROW ===== */
 .sun-row{
   display:flex;
   justify-content:center;
-  align-items:center;
   gap:10px;
-  padding:7px 11px;
+  padding:7px;
   background:linear-gradient(90deg,var(--blue1),var(--blue2));
   border-bottom:4px solid var(--gold);
 }
-
 .sun-box{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    padding:2px 5px; 
-    border-radius:22px;
-    background:rgba(255,255,255,0.10);
-}
-
-.sun-icon{
-    font-size:19px; 
-}
-
-.sun-data{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.sun-data h4{
-    margin:0;
-    color:#fff;
-    font-weight:700;
-    font-size:13px;
-}
-
-.sun-data .time{
-    color:var(--gold);
-    font-size:15px;
-    font-weight:700;
-}
-
-/* MOON / RAHUKAL BOX */
-.moon-row{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  padding:7px 11px;  
-  background:#000;
-  border-bottom:4px solid var(--gold);
-}
-
-.black-box{
   display:flex;
   align-items:center;
   gap:5px;
-  padding:2px 5px;
+  padding:3px 6px;
   border-radius:22px;
-  background:rgba(255,255,255,0.12);
+  background:rgba(255,255,255,.12)
 }
+.sun-icon{font-size:18px}
+.sun-data h4{font-size:13px;color:#fff}
+.sun-data .time{font-size:15px;color:var(--gold);font-weight:700}
 
-.black-box h4{
-  margin:0;
-  color:#fff;
-  font-weight:700;
-  font-size:13px;
-}
-
-.black-box .time{
-    color:var(--gold);
-    font-size:15px;
-    font-weight:700;
-    white-space:nowrap;
-}
-
-  
-/* TABLE */
-.table-section{
-    padding:7px 11px;
-    background:#fffdf8;
-}
-
-.p-table{
-    width:100%;
-    border-collapse:collapse;
-    font-weight:700;
-}
-
+/* ===== TABLE ===== */
+.table-section{padding:8px;background:#fffdf8}
+.p-table{width:100%;border-collapse:collapse;font-weight:700}
 .p-table td{
-    padding:5px 3px; 
-    font-size:14px;
-    line-height:1.25;
-    border-bottom:1px dashed #f1d7b2;
+  padding:5px 4px;
+  font-size:14px;
+  border-bottom:1px dashed #f1d7b2;
 }
 
-.event{
-    width:20%;
-    color:#0d47a1;
-    text-align:left;
-}
-
-.info{
-    width:36%;
-    text-align:left;
-}
-
-.time{
-    width:19%;
-    color:var(--accent);
-    font-weight:600;
-    text-align:center;
-}
-
-.next{
-    width:25%;
-    text-align:center;
-    color:#0d47a1;
-}
-
-/* RASHI – slightly reduced size */
+/* ===== RASHI ===== */
 .rashi-row{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:6px;                 /* gap कमी */
-  padding:6px 8px;         /* padding कमी */
-  background:#fff;
-  border-bottom:3px solid var(--gold); /* थोडा thin */
-  flex-wrap:nowrap;
+  gap:6px;
+  padding:6px 8px;
+  border-bottom:3px solid var(--gold);
 }
-
 .rashi-item{
   display:flex;
-  align-items:center;
-  gap:3px;                 /* icon-text gap कमी */
-  padding:3px 5px;         /* inner padding कमी */
-  border:1.5px solid #ffb300; /* border हलकी */
-  border-radius:16px;      /* थोडी कमी round */
+  gap:3px;
+  padding:3px 5px;
+  border:1.5px solid #ffb300;
+  border-radius:16px;
+  font-size:12px;
+  font-weight:700;
   background:#fffdf5;
-  font-weight:700;
-  font-size:12px;          /* text size कमी */
   white-space:nowrap;
 }
 
-.rashi-item .icon{
-  font-size:14px;          /* icon थोडा लहान */
-}
-
-.rashi-item .label{
-  color:#0d47a1;
-}
-
-.rashi-item .value{
-  color:var(--accent);
-}
-
-
-  /* DIN VISHESH */
-/* base capsule */
-.din-pill{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:5px 14px;
-  background:#fff580;
-  border:1px solid #f1b500;
-
-  color:#8b0000;
-  font-size:14px;
-  font-weight:700;
-
-  white-space:nowrap;
-}
-
-/* left part (time column) */
-.din-left{
-  border-right:none;
-  border-radius:999px 0 0 999px;
-}
-
-/* right part (next column) */
-.din-right{
-  border-left:none;
-  border-radius:0 999px 999px 0;
-}
-
-  /* FOOTER INSIDE IMAGE - REDUCED SIZE */
+/* ===== FOOTER ===== */
 .footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-   padding:12px 14px;
-    background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
-    color:#fff;
-    border-top:4px solid var(--gold);
-   gap:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 14px;
+  background:linear-gradient(90deg,#4e0f0f,#3b0b0b);
+  color:#fff;
+  border-top:4px solid var(--gold);
 }
-
-.footer-left{
-    flex:1;
-}
-
 #footer_name{
-  font-family: 'Aparajita','Noto Serif Devanagari','Baloo Bhai 2',serif;
-  font-size:22px;          /* थोडं smaller, elegant */
+  font-family:'Baloo Bhai 2';
+  font-size:22px;
   color:var(--gold);
   font-weight:700;
-  line-height:1.2;
-  margin-bottom:4px;
 }
-
-
-.footer-left div{
-  font-family:'Baloo Bhai 2','Baloo 2',sans-serif;
-  font-size:14px;
-  line-height:1.45;      /* spacing neat */
-  margin-top:2px;
-  color:#fff;
-}
-
-  #footer_tag-line{
-  color:#ffd54a;         /* gold yellow */
-  font-weight:600;
-  margin-top:6px;
-  font-size:14px;
-}
-
-
+.footer-left div{font-size:14px;margin-top:2px}
 #footer_img{
-  width:120px;
-  height:155px;
-  object-fit:cover;
+  width:120px;height:155px;
   border-radius:10px;
   border:2px solid var(--gold);
-  background:#fff;
-  flex-shrink:0;
+  object-fit:cover;
 }
 
-
-  /* DOWNLOAD BUTTON */
-  #downloadFab{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border:0;
-    border-radius:10px;
-    background:linear-gradient(135deg,var(--accent),#8c1b1b);
-    color:#fff;
-    font-size:19px;
-    font-weight:900;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(0,0,0,.2)
-  }
+/* ===== DOWNLOAD ===== */
+#downloadFab{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  font-size:18px;
+  font-weight:900;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#8c1b1b);
+  color:#fff;
+}
 </style>
 </head>
+
 <body>
 <div class="page">
-
-  <!-- USER INPUT PANEL -->
-  <div class="input-panel">
-    <h2>📋 आपली माहिती भरा</h2>
-
-    <div class="ipt-row">
-
-      <div class="ipt-box">
-        <label>📸 आपला फोटो</label>
-        <input id="userFile" type="file" accept="image/*">
-        <img id="preview" />
-      </div>
-
-      <div class="ipt-box">
-        <label>👤 आपले नाव</label>
-        <input id="inpName" type="text" placeholder="उदा. वेदमूर्ती. श्री._________ गुरुजी">
-        
-        <label style="margin-top:10px">🏢 कार्यालय / व्यवसाय</label>
-        <input id="inpOffice" type="text" placeholder="कार्यालय / व्यवसाय">
-
-        <label style="margin-top:10px">📍 पत्ता</label>
-        <input id="inpAddress" type="text" placeholder="पत्ता">
-      </div>
-
-      <div class="ipt-box">
-        <label>📱 संपर्क</label>
-        <input id="inpContact" type="tel" placeholder="मोबाईल नंबर">
-        
-<label>Tag-line</label>
-<input id="inpTagline" type="text"
- placeholder="उदा. सर्व धार्मिक विधी केले जातील...">
-
-
-        <button class="btn-apply" id="applyBtn">✔ लागू करा</button>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- PANCHANG CARD -->
+  <!-- Panchang Card -->
   <div id="panchangCard">
-
-    <!-- CLEAN RESPONSIVE HEADER -->
-<div class="main-header">
-
-  <div class="hdr-left">
-    <div class="panchang-title">आजचे पंचांग</div>
-    <div class="date-display">
-      <span id="hdrDate">--</span>
-      <span>|</span>
-      <span id="hdrDay">--</span>
+    <div class="main-header">
+      <div class="hdr-left">
+        <div class="panchang-title">आजचे पंचांग</div>
+        <div class="date-display">—</div>
+      </div>
+      <div class="hdr-center">
+        <img src="pngtree-ganesha-the-embodiment-of-prosperity-and-joy-png-image_15287837.png">
+      </div>
+      <div class="hdr-right">
+        <img src="@Om Karmyog_20251202_135333_0000.jpg">
+      </div>
     </div>
-  </div>
 
-  <div class="hdr-center">
-    <img src="pngtree-ganesha-the-embodiment-of-prosperity-and-joy-png-image_15287837.png"
-         alt="Ganesh">
-  </div>
-
-  <div class="hdr-right">
-    <img src="@Om Karmyog_20251202_135333_0000.jpg"
-         alt="OmKarmyog Logo">
-  </div>
-
-</div>
-
-    <!-- SHALIVAHAN -->
     <div class="shalivahan">
-    <h3 id="shalivahanLine">--</h3>
-<p id="shalivahanMeta">--</p>
+      <h3>श्रीमन्नृपशालिवाहन शके</h3>
+      <p>—</p>
     </div>
 
-    <!-- SUN -->
     <div class="sun-row">
-      <div class="sun-box">
-        <div class="sun-icon">🌅</div>
-        <div class="sun-data"><h4>सूर्योदय</h4><div id="sunrise" class="time">--</div></div>
-      </div>
-      <div class="sun-box">
-        <div class="sun-icon">🌄</div>
-        <div class="sun-data"><h4>सूर्यास्त</h4><div id="sunset" class="time">--</div></div>
-      </div>
+      <div class="sun-box"><span class="sun-icon">🌅</span><div class="sun-data"><h4>सूर्योदय</h4><div class="time">--</div></div></div>
+      <div class="sun-box"><span class="sun-icon">🌄</span><div class="sun-data"><h4>सूर्यास्त</h4><div class="time">--</div></div></div>
     </div>
 
-    <!-- TABLE -->
-    <div class="table-section">
-      <table class="p-table">
-        <tbody>
-
-          <tr>
-            <td class="event">तिथी</td>
-            <td class="info" id="tithi">--</td>
-            <td class="time" id="tithi_end">--</td>
-            <td class="next" id="tithi_next">--</td>
-          </tr>
-
-            <tr>
-  <td class="event">वार</td>
-  <td class="info" id="vaar">--</td>
-  <td class="time" id="vaar_time">--</td>
-  <td class="next" id="vaar_sanskrit">--</td>
-</tr>
-
-          <tr>
-            <td class="event">नक्षत्र</td>
-            <td class="info" id="nak">--</td>
-            <td class="time" id="nak_end">--</td>
-            <td class="next" id="nak_next">--</td>
-          </tr>
-
-          <tr>
-            <td class="event">योग</td>
-            <td class="info" id="yog">--</td>
-            <td class="time" id="yog_time">--</td>
-            <td class="next" id="yog_next">--</td>
-          </tr>
-
-          <tr>
-            <td class="event">करण</td>
-            <td class="info" id="kar">--</td>
-            <td class="time" id="kar_end">--</td>
-            <td class="next" id="kar_next">--</td>
-          </tr>
-
-        </tbody>
-      </table>
-    </div>
-
-    <!-- RASHIS -->
-    <div class="rashi-row">
-  <div class="rashi-item">
-    <span class="icon">🌙</span>
-    <span class="label">चंद्र राशी :</span>
-    <span class="value" id="moon_rashi">--</span>
-  </div>
-
-  <div class="rashi-item">
-    <span class="icon">☀️</span>
-    <span class="label">सूर्य राशी :</span>
-    <span class="value" id="sun_rashi">--</span>
-  </div>
-
-  <div class="rashi-item">
-    <span class="icon">🔆</span>
-    <span class="label">गुरु राशी :</span>
-    <span class="value" id="guru_rashi">--</span>
-  </div>
-    </div>
-
-    <!-- MOON + RAHUKAL -->
-    <div class="moon-row">
-      <div class="sun-box black-box">
-        <div class="sun-icon">🌙</div>
-        <div class="sun-data">
-          <h4>चंद्रोदय</h4>
-          <div id="moonrise" class="time">--</div>
-        </div>
-      </div>
-
-      <div class="sun-box black-box">
-        <div class="sun-icon">⏱️</div>
-        <div class="sun-data">
-          <h4>राहुकाल</h4>
-          <div id="rahukaal" class="time">--</div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- FOOTER (INSIDE CARD) - REDUCED SIZE -->
     <div class="footer">
       <div class="footer-left">
         <div id="footer_name">आपले नाव</div>
-        <div id="footer_office"></div>
-        <div id="footer_address"></div>
-        <div id="footer_contact"></div>
-        <div id="footer_tag-line"></div>
       </div>
-      <img id="footer_img" />
+      <img id="footer_img">
     </div>
-
   </div>
 
-  <!-- DOWNLOAD BUTTON -->
   <button id="downloadFab">Download Panchang</button>
-
 </div>
-
-
-<!-- SCRIPT -->
-<script>
-/* -------- PANCHANG DATA LOADING -------- */
-
-const LOCAL_JSON="./panchang.json";
-const FALLBACK_JSON="https://sanketramdasi264-prog.github.io/panchang/panchang.json";
-
-const daysMR=['रविवार','सोमवार','मंगळवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
-
-function todayISO(){
-  const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`
-}
-
-function fmtDate(d=new Date()){
-  return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`
-}
-
-async function fetchPanchangJson(){
-  try{
-    const r=await fetch(LOCAL_JSON,{cache:"no-store"});
-    if(r.ok) return await r.json();
-  }catch(e){}
-
-  try{
-    const r2=await fetch(FALLBACK_JSON,{cache:"no-store"});
-    if(r2.ok) return await r2.json();
-  }catch(e){}
-
-  return null;
-}
-
-async function populatePanchang(){
-  const data=await fetchPanchangJson();
-  const key=todayISO();
-  const now=new Date();
-
-  document.getElementById("hdrDate").textContent=fmtDate(now);
-  document.getElementById("hdrDay").textContent=daysMR[now.getDay()];
-
-  if(!data || !data[key]){
-    console.warn("Missing panchang",key);
-    return;
-  }
-
-  const p=data[key];
-
-  // --- SHALIVAHAN DATA FROM JSON ---
-if (p.shaka_samvat) {
-  document.getElementById("shalivahanLine").textContent =
-  "श्रीमन्नृपशालिवाहन शके " + p.shaka_samvat;
-}
-
-const metaParts = [];
-
-if (p.samvatsar) metaParts.push(p.samvatsar + " नाम संवत्सर");
-if (p.ayan) metaParts.push(p.ayan);
-if (p.ritu) metaParts.push(p.ritu + " ऋतू");
-if (p.solar_month) metaParts.push(p.solar_month + " मास");
-if (p.paksha) metaParts.push(p.paksha + " पक्ष");
-
-if (metaParts.length > 0) {
-  document.getElementById("shalivahanMeta").textContent =
-    metaParts.join(", ");
-}
-
-  document.getElementById("moonrise").textContent = p.moonrise || "--";
-  document.getElementById("rahukaal").textContent = p.rahukaal || "--";
-  document.getElementById("sunrise").textContent=p.sunrise || "--";
-  document.getElementById("sunset").textContent=p.sunset || "--";
-
-  const endP=v=> v ? (v+' प') : '--';
-  const nextN=v=> v ? ('नं — '+v) : '--';
-
-  document.getElementById("tithi").textContent=p.tithi || "--";
-  document.getElementById("tithi_end").textContent=endP(p.tithi_end);
-  document.getElementById("tithi_next").textContent=nextN(p.tithi_next);
-
-// ===============================
-// VAAR + DIN VISHESH (FINAL)
-// ===============================
-
-// VAAR
-const vaarEl = document.getElementById("vaar");
-if (vaarEl) {
-  vaarEl.textContent = p.vaar || p.weekday || daysMR[new Date().getDay()];
-}
-
-// DIN VISHESH
-const dvLabelCell = document.getElementById("vaar_time");
-const dvDataCell  = document.getElementById("vaar_sanskrit");
-
-if (p.din_vishesh && p.din_vishesh.trim() !== "") {
-
-  dvLabelCell.innerHTML = `
-    <div class="din-pill din-left">
-      दिनविशेष
-    </div>
-  `;
-
-  dvDataCell.innerHTML = `
-    <div class="din-pill din-right">
-      ${p.din_vishesh}
-    </div>
-  `;
-
-} else {
-  dvLabelCell.textContent = "--";
-  dvDataCell.textContent = "--";
-}
-
-
-  document.getElementById("nak").textContent=p.nakshatra || "--";
-  document.getElementById("nak_end").textContent=endP(p.nakshatra_end);
-  document.getElementById("nak_next").textContent=nextN(p.nakshatra_next);
-
-  document.getElementById("yog").textContent=p.yog || "--";
-  document.getElementById("yog_time").textContent=p.yog_time || "--";
-  document.getElementById("yog_next").textContent=nextN(p.yog_next);
-
-  document.getElementById("kar").textContent=p.karan || "--";
-  document.getElementById("kar_end").textContent=endP(p.karan_end);
-  document.getElementById("kar_next").textContent=nextN(p.karan_next);
-
-  document.getElementById("moon_rashi").textContent=p.moon_rashi || "--";
-  document.getElementById("sun_rashi").textContent=p.sun_rashi || "--";
-  document.getElementById("guru_rashi").textContent=p.guru_rashi || "--";
-
-  
-}
-
-
-/* -------- USER INPUT HANDLING -------- */
-
-const userFile=document.getElementById("userFile");
-const preview=document.getElementById("preview");
-
-userFile.addEventListener("change",e=>{
-  const f=e.target.files[0];
-  if(!f) return;
-  const r=new FileReader();
-  r.onload=()=>{
-    preview.src=r.result;
-    preview.style.display="block";
-    document.getElementById("footer_img").src=r.result;
-    document.getElementById("footer_img").style.display="block";
-  };
-  r.readAsDataURL(f);
-});
-
-document.getElementById("applyBtn").addEventListener("click",()=>{
-
-  const name = document.getElementById("inpName").value.trim();
-  const office = document.getElementById("inpOffice").value.trim();
-  const addr = document.getElementById("inpAddress").value.trim();
-  const contact = document.getElementById("inpContact").value.trim();
-  const tagline = document.getElementById("inpTagline").value.trim();
-
-  if(name)
-    document.getElementById("footer_name").textContent = name;
-
-  if(office)
-    document.getElementById("footer_office").textContent = office;
-
-  if(addr)
-    document.getElementById("footer_address").textContent = addr;
-
-  if(contact)
-    document.getElementById("footer_contact").textContent =
-      "संपर्क: " + contact;
-
-  if(tagline)
-    document.getElementById("footer_tag-line").textContent = tagline;
-
-  const btn = document.getElementById("applyBtn");
-  btn.textContent = "लागू झाले ✓";
-  setTimeout(()=>btn.textContent="✔ लागू करा",1200);
-});
-
-
-
-/* -------- PNG DOWNLOAD -------- */
-
-async function generatePNG(){
-  const el=document.getElementById("panchangCard");
-  await new Promise(res=>setTimeout(res,200));
-
-  return html2canvas(el,{
-    scale:3,
-    useCORS:true,
-    allowTaint:true,
-    backgroundColor:"#ffffff"
-  });
-}
-
-document.getElementById("downloadFab").addEventListener("click",async()=>{
-  const canvas=await generatePNG();
-  canvas.toBlob(blob=>{
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    a.href=url;
-    a.download="panchang.png";
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-});
-
-
-/* INIT */
-window.addEventListener("load",populatePanchang);
-</script>
-
 </body>
 </html>
